@@ -28,9 +28,17 @@ closing 7/15" — and Claude updates the CSV row for you.
 
 ---
 
+## Daily: "Give me today's realtor contact list"
+
+Claude combines (a) partners due for follow-up today from your tracker and
+(b) a fresh batch of new Realtor/brokerage prospects from the next region
+in the rotation (see `automation/realtor-prospecting-rotation.md`), adding
+new rows to `partner-tracker.csv` automatically. You get a daily call/email
+list without repeats.
+
 ## Weekly: "Find me new referral partners" + "Plan this week's content"
 
-**New partners:**
+**New partners (deeper dive on a specific area):**
 > "Find me 5 new Realtors in [Town] for my partner tracker"
 
 Claude follows `automation/lead-finder-guide.md` — public license lookups
