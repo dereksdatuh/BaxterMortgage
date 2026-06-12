@@ -13,6 +13,14 @@ marketing. Everything is written to plug in directly (just fill in names,
 dates, and personal touches) and is built around Baxter Mortgage's
 green/navy branding.
 
+## Start Here Every Day
+
+Open a Claude Code session in this repo and say **"give me my daily
+briefing."** See `automation/DAILY_WORKFLOW.md` for the full daily/weekly/
+monthly routine — this is your AI command center: daily task lists, drafted
+emails/texts, new referral partner lists, content creation, and ad planning,
+all driven from the data files below.
+
 ## Folder Map
 
 | Folder | What's in it |

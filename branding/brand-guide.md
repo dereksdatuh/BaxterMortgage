@@ -59,6 +59,14 @@ Long version (emails, newsletters, printed materials):
 > to change without notice. This is not an offer to extend credit or a
 > commitment to lend. Terms and conditions apply.
 
+## Required Compliance Logo
+Every flyer, print piece, and paid ad must include the **Equal Housing
+Opportunity** logo (the house + equal sign icon) alongside the NMLS
+disclosure text. Place it in a footer/corner, sized legibly (at least
+~0.5in / 40px). Save the official logo file to
+`branding/assets/equal-housing-logo.png` and reuse it in every Canva
+template, flyer, and ad creative.
+
 ## Photo/Graphic Guidelines
 - Use real Maine imagery where possible: coastal scenes, classic New
   England homes, fall foliage, downtown Main Streets (Portland, Bangor,
