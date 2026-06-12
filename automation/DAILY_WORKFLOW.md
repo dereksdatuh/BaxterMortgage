@@ -28,6 +28,12 @@ closing 7/15" — and Claude updates the CSV row for you.
 
 ---
 
+## Best Source for Newer Agents (1-5 yrs): LinkedIn Sales Navigator
+See `automation/linkedin-sales-navigator-recipe.md` — a ready-to-use saved
+search + workflow for finding newer Maine Realtors (the highest-opportunity
+referral partners) once you have Sales Navigator access. Pairs with
+Apollo.io/Hunter.io for email lookup.
+
 ## Daily: "Give me today's realtor contact list"
 
 Claude combines (a) partners due for follow-up today from your tracker and
