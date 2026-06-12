@@ -24,6 +24,7 @@ green/navy branding.
 | `client-pipeline/` | Lead/client CRM tracker, follow-up sequences from inquiry to closing to repeat/referral |
 | `events-community/` | Local event, sponsorship, and community-visibility ideas across Maine |
 | `compliance/` | NMLS, Fair Housing, CAN-SPAM/TCPA checklist for everything you send |
+| `automation/` | Lead gen automation blueprint (Zapier), content batching SOP (Canva/Higgsfield), and recommended tool stack |
 
 ## 90-Day Quick Start
 
@@ -44,6 +45,7 @@ green/navy branding.
 
 **Month 3: Compound**
 10. Ask every closed client for a Google review + 2 referral names using `client-pipeline/review-referral-request-templates.md`.
+10b. Set up the lead capture form + Google Sheet from `automation/zapier-lead-pipeline-blueprint.md` (Zap 1) so new leads get an instant response.
 11. Host or co-host a first-time homebuyer seminar with a Realtor partner
     (see `events-community/event-and-sponsorship-ideas.md`).
 12. Review your `partner-tracker.csv` — drop dead relationships, double down on active referral sources (Pareto: 20% of partners = 80% of referrals).
