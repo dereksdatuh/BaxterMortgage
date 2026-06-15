@@ -19,8 +19,7 @@ function ehoBadge(color) {
   </svg>`;
 }
 
-// Layered vector illustrations giving a sense of depth ("3D-ish") for local
-// spotlight posts, built from brand-palette shapes instead of stock photos.
+// ---------- Layered vector scenes (Local Spotlight series) ----------
 function pineRow(y, scale, color, count, spread, seed) {
   let trees = '';
   for (let i = 0; i < count; i++) {
@@ -57,12 +56,9 @@ function scene(type) {
       <rect width="1080" height="1080" fill="url(#sky)"/>
       <circle cx="170" cy="430" r="280" fill="url(#sun2)"/>
       <circle cx="820" cy="380" r="320" fill="url(#sun)"/>
-      <!-- distant headland -->
       <path d="M0,640 Q220,560 480,615 T1080,590 V780 H0 Z" fill="#13314f" opacity="0.85"/>
-      <!-- mid headland with pines -->
       <path d="M0,720 Q260,650 560,705 T1080,680 V900 H0 Z" fill="#1E3A5F"/>
       ${pineRow(700, 1, '#16324f', 14, 85, 7)}
-      <!-- water -->
       <rect x="0" y="780" width="1080" height="300" fill="url(#water)"/>
       <g stroke="#4ADE80" stroke-opacity="0.18" stroke-width="3">
         <line x1="40" y1="840" x2="320" y2="840"/>
@@ -72,7 +68,6 @@ function scene(type) {
         <line x1="60" y1="1000" x2="380" y2="1000"/>
         <line x1="500" y1="1040" x2="980" y2="1040"/>
       </g>
-      <!-- lighthouse on rocky point -->
       <g transform="translate(860,560)">
         <polygon points="-60,260 60,260 90,340 -90,340" fill="#0c2235"/>
         <rect x="-22" y="60" width="44" height="200" fill="#F8F9FA"/>
@@ -83,7 +78,6 @@ function scene(type) {
         <circle cx="0" cy="34" r="14" fill="#4ADE80" opacity="0.9"/>
         <circle cx="0" cy="34" r="34" fill="#4ADE80" opacity="0.18"/>
       </g>
-      <!-- birds -->
       <g stroke="#94A3B8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6">
         <path d="M120,180 q14,-14 28,0 q14,-14 28,0"/>
         <path d="M260,240 q12,-12 24,0 q12,-12 24,0"/>
@@ -115,7 +109,6 @@ function scene(type) {
     <rect width="1080" height="1080" fill="url(#sky2)"/>
     <circle cx="850" cy="360" r="300" fill="url(#glow1)"/>
     <circle cx="200" cy="420" r="280" fill="url(#glow2)"/>
-    <!-- mill buildings skyline -->
     <g fill="#13314f">
       <rect x="40" y="480" width="160" height="280" />
       <rect x="210" y="420" width="190" height="340" />
@@ -129,10 +122,8 @@ function scene(type) {
       <rect x="440" y="520" width="100" height="240" />
       <rect x="600" y="460" width="170" height="300" />
       <rect x="830" y="520" width="190" height="240" />
-      <!-- smokestack -->
       <rect x="330" y="320" width="30" height="120" />
     </g>
-    <!-- windows -->
     <g fill="#4ADE80" opacity="0.5">
       ${Array.from({length: 24}).map((_,i) => {
         const x = 80 + (i % 8) * 110;
@@ -140,7 +131,6 @@ function scene(type) {
         return `<rect x="${x}" y="${y}" width="22" height="32"/>`;
       }).join('')}
     </g>
-    <!-- river -->
     <rect x="0" y="760" width="1080" height="320" fill="url(#river)"/>
     <g stroke="#2563EB" stroke-opacity="0.25" stroke-width="3">
       <line x1="60" y1="830" x2="380" y2="830"/>
@@ -149,7 +139,6 @@ function scene(type) {
       <line x1="620" y1="960" x2="1000" y2="960"/>
       <line x1="80" y1="1010" x2="420" y2="1010"/>
     </g>
-    <!-- bridge arches -->
     <g fill="none" stroke="#0c2235" stroke-width="18">
       <path d="M120,780 Q300,680 480,780"/>
       <path d="M480,780 Q660,680 840,780"/>
@@ -158,74 +147,160 @@ function scene(type) {
   </svg>`;
 }
 
+// ---------- Southern Maine map illustration (used on posts 1 & 6) ----------
+function mapScene(mode) {
+  // mode: 'home' (highlight Kennebunk as home base) | 'dpa' (highlight all towns as eligible)
+  const towns = [
+    { name: 'Portland',      x: 840, y: 90 },
+    { name: 'Westbrook',     x: 700, y: 150 },
+    { name: 'Saco',          x: 790, y: 320 },
+    { name: 'Biddeford',     x: 720, y: 420 },
+    { name: 'Kennebunk',     x: 660, y: 580 },
+    { name: 'Kennebunkport', x: 770, y: 660 },
+    { name: 'Wells',         x: 600, y: 800 },
+  ];
+  const pins = towns.map(t => {
+    const isHome = mode === 'home' && t.name === 'Kennebunk';
+    const r = isHome ? 16 : (mode === 'dpa' ? 12 : 9);
+    const fill = isHome ? '#4ADE80' : '#1DB89A';
+    const labelSize = isHome ? 26 : 22;
+    const labelWeight = isHome ? '700' : '500';
+    return `
+      <g>
+        ${isHome ? `<circle cx="${t.x}" cy="${t.y}" r="${r + 14}" fill="#4ADE80" opacity="0.18"/>` : ''}
+        ${mode === 'dpa' ? `<circle cx="${t.x}" cy="${t.y}" r="${r + 10}" fill="#4ADE80" opacity="0.14"/>` : ''}
+        <circle cx="${t.x}" cy="${t.y}" r="${r}" fill="${fill}"/>
+        <circle cx="${t.x}" cy="${t.y}" r="${r}" fill="none" stroke="#081726" stroke-width="3"/>
+        <text x="${t.x - r - 14}" y="${t.y + 8}" text-anchor="end" font-family="DM Sans" font-size="${labelSize}" font-weight="${labelWeight}" fill="#E2E8F0">${t.name}${isHome ? '  (HQ)' : ''}</text>
+      </g>`;
+  }).join('');
+  return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <radialGradient id="mapglow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#1DB89A" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#1DB89A" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="720" cy="420" r="480" fill="url(#mapglow)"/>
+    <!-- coastline: land to the left, ocean to the right -->
+    <path d="M1080,0 L1080,1080 L500,1080 Q620,900 560,760 Q500,640 600,560 Q680,480 640,380 Q600,260 700,160 Q780,80 760,0 Z"
+          fill="#0E2438" opacity="0.9"/>
+    <path d="M1080,0 L1080,1080 L500,1080 Q620,900 560,760 Q500,640 600,560 Q680,480 640,380 Q600,260 700,160 Q780,80 760,0 Z"
+          fill="none" stroke="#1DB89A" stroke-width="3" stroke-opacity="0.4"/>
+    ${pins}
+  </svg>`;
+}
+
 const posts = [
+  // ---------------- 1. Mon 6/15 — Meet Your Lender (map decoration) ----------------
   {
     file: '01-mon-0615-intro.png',
+    layout: 'standard',
+    decoration: 'map-home',
     category: 'Meet Your Lender',
     headline: 'Southern Maine’s mortgage guy who actually <em>picks up the phone</em>',
     body: 'I’m Derek Smith, a local mortgage broker based right here in Kennebunk. I work with 20+ wholesale lenders so I can shop your loan around and find the fit that works for you, not just the one option a single bank hands you.',
     cta: 'New here? Follow along for real talk on buying, refinancing, and the Maine market. Got a question? Send me a DM, I read every one.',
   },
+  // ---------------- 2. Tue 6/16 — Myth vs Fact split ----------------
   {
     file: '02-tue-0616-myth.png',
+    layout: 'myth',
     category: 'Myth Buster',
-    headline: '"You need <em>20% down</em> to buy a home"',
-    body: 'Not true for most buyers. Conventional loans can go as low as 3% down, FHA as low as 3.5%, and depending on where you’re buying in York County, USDA financing could mean $0 down. Down payment assistance programs can stack with these too.',
+    headline: 'The 20% down payment myth',
+    mythText: '"You need 20% down to buy a home, so I can’t afford one yet."',
+    factText: 'Conventional loans can go as low as 3% down, FHA as low as 3.5%, and depending on where you’re buying in York County, USDA financing could mean $0 down. Down payment assistance may stack with these too.',
     cta: 'Don’t let this myth keep you on the sidelines. Reach out and I will run your numbers, free, no pressure.',
   },
+  // ---------------- 3. Wed 6/17 — Local Spotlight: Kennebunk (scene) ----------------
   {
     file: '03-wed-0617-local-kennebunk.png',
+    layout: 'scene',
     scene: 'coast',
     category: 'Local Spotlight',
     headline: 'Kennebunk & Kennebunkport are <em>heating up</em> for summer',
     body: 'Inventory in York County tends to move fast once the weather turns, especially around Kennebunk, Kennebunkport, and Wells. If you’re thinking about buying this season, getting pre-approved now means you can move the moment the right home hits the market.',
     cta: 'Want to be ready before the next open house? Let’s get your pre-approval started this week.',
   },
+  // ---------------- 4. Thu 6/18 — Pre-qualified vs Pre-approved (compare cards) ----------------
   {
     file: '04-thu-0618-preapproval.png',
+    layout: 'compare',
     category: 'Know The Difference',
-    headline: 'Pre-qualified vs. <em>pre-approved</em>: it’s not the same thing',
-    body: 'Pre-qualified is a quick estimate based on what you tell me. Pre-approval means I’ve verified your income, assets, and credit, so when you make an offer, sellers and agents know it’s real.',
+    headline: 'Pre-qualified vs. <em>pre-approved</em>',
+    compare: [
+      {
+        label: 'Pre-Qualified',
+        accent: '#64748B',
+        icon: 'clock',
+        text: 'A quick estimate based on what you tell me about income, debts, and credit. Good for a ballpark, not verified.',
+      },
+      {
+        label: 'Pre-Approved',
+        accent: '#4ADE80',
+        icon: 'check',
+        text: 'I’ve verified your income, assets, and credit. When you make an offer, sellers and agents know it’s real.',
+      },
+    ],
     cta: 'House hunting this summer? Pre-approval is your edge. Let’s get yours done.',
   },
+  // ---------------- 5. Fri 6/19 — Why work with me (giant stat) ----------------
   {
     file: '05-fri-0619-valueprop.png',
+    layout: 'stat',
     category: 'Why Work With Me',
-    headline: 'I shop <em>20+ lenders</em>, so you don’t have to',
-    body: 'As a mortgage broker, I’m not stuck with one bank’s rates and rules. I compare options across 20+ wholesale lenders to find the program and terms that fit your situation, then I do the legwork while you focus on the move.',
+    statNumber: '20+',
+    statLabel: 'Wholesale Lenders, Shopped For You',
+    headline: 'One broker. <em>Dozens of options.</em>',
+    body: 'As a mortgage broker, I’m not stuck with one bank’s rates and rules. I compare programs and terms across 20+ wholesale lenders to find what fits your situation, then I do the legwork while you focus on the move.',
     cta: 'Curious what’s out there for you? Reach out and let’s talk it through.',
   },
+  // ---------------- 6. Mon 6/22 — First-time buyers / DPA (map decoration) ----------------
   {
     file: '06-mon-0622-dpa.png',
+    layout: 'standard',
+    decoration: 'map-dpa',
     category: 'First-Time Buyers',
     headline: 'Maine has <em>down payment help</em> you might not know about',
-    body: 'Programs through MaineHousing and other first-time buyer assistance can help cover down payment and closing costs for eligible buyers. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
+    body: 'Programs through MaineHousing and other first-time buyer assistance can help cover down payment and closing costs for eligible buyers across York County and Southern Maine. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
     cta: 'I will check what you may qualify for, no cost, no obligation. Send me a message to get started.',
   },
+  // ---------------- 7. Tue 6/23 — Credit tips (numbered list) ----------------
   {
     file: '07-tue-0623-credit.png',
+    layout: 'list',
     category: 'Credit Tips',
-    headline: '3 things to do (and <em>not</em> do) before you apply',
-    body: 'Keep your credit cards where they are, don’t open new accounts. Avoid large purchases or new loans before closing. Keep paying everything on time, even the small bills matter.',
-    cta: 'Already have questions about your credit and how it affects your options? Let’s talk before you start shopping.',
+    headline: '3 things to do <em>before</em> you apply',
+    tips: [
+      { n: '1', text: 'Leave your credit cards alone. Don’t open new accounts, don’t close old ones.' },
+      { n: '2', text: 'Hold off on big purchases. A new car or store-financed furniture can change what you qualify for.' },
+      { n: '3', text: 'Keep paying everything on time. Even small bills like a phone or streaming bill matter.' },
+    ],
+    cta: 'Already worried about something on your credit? Let’s talk before you start house hunting.',
   },
+  // ---------------- 8. Wed 6/24 — Local Spotlight: Saco/Biddeford/Westbrook (scene) ----------------
   {
     file: '08-wed-0624-local-saco.png',
+    layout: 'scene',
     scene: 'river',
     category: 'Local Spotlight',
     headline: 'Saco, Biddeford & Westbrook are the <em>value play</em> right now',
     body: 'As Portland prices push buyers outward, towns like Saco, Biddeford, and Westbrook are seeing more first-time buyer activity, often with more home for the money and an easy commute into the city.',
     cta: 'Thinking about widening your search area? Let’s talk about what your budget can really do in these towns.',
   },
+  // ---------------- 9. Thu 6/25 — Process timeline ----------------
   {
     file: '09-thu-0625-process.png',
+    layout: 'timeline',
     category: 'How It Works',
-    headline: 'From application to <em>keys in hand</em>: what to expect',
-    body: 'Application and documents, then underwriting review, then conditional approval, then clear to close, then closing day. Timelines vary, but I will walk you through every step so nothing feels like a surprise.',
-    cta: 'Ready to start the process? Let’s set up a quick call.',
+    headline: 'From application to <em>keys in hand</em>',
+    steps: ['Application', 'Underwriting', 'Conditional Approval', 'Clear to Close', 'Closing Day'],
+    cta: 'Timelines vary, but I will walk you through every step so nothing feels like a surprise. Ready? Let’s set up a quick call.',
   },
+  // ---------------- 10. Fri 6/26 — Refinance check-in (cycle icon) ----------------
   {
     file: '10-fri-0626-refi.png',
+    layout: 'cycle',
     category: 'Refinance Check-In',
     headline: 'Bought in the last couple years? It <em>might be worth a look</em>',
     body: 'If your rate, term, or monthly payment hasn’t been reviewed lately, it could be worth running a quick check. Sometimes a refinance makes sense, sometimes it doesn’t, but you won’t know until we look at the numbers.',
@@ -233,7 +308,177 @@ const posts = [
   },
 ];
 
+// ---------- Small icon set ----------
+function icon(name, color) {
+  const icons = {
+    clock: `<circle cx="24" cy="24" r="20" fill="none" stroke="${color}" stroke-width="4"/><path d="M24,12 V24 L33,29" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`,
+    check: `<circle cx="24" cy="24" r="20" fill="none" stroke="${color}" stroke-width="4"/><path d="M14,25 L21,32 L35,16" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`,
+    cycle: `<path d="M10,32 A22,22 0 1 1 18,49" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+            <path d="M54,32 A22,22 0 1 1 46,15" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
+            <polygon points="10,32 22,32 14,44" fill="${color}"/>
+            <polygon points="54,32 42,32 50,20" fill="${color}"/>`,
+  };
+  return icons[name] || '';
+}
+
 function html(post) {
+  // ----- build the per-layout content block -----
+  let contentInner = '';
+  let extraStyle = '';
+
+  if (post.layout === 'standard' || post.layout === 'scene') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="headline">${post.headline}</div>
+      <div class="body">${post.body}</div>`;
+  }
+
+  if (post.layout === 'myth') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="headline" style="margin-bottom:30px;">${post.headline}</div>
+      <div class="myth-card myth">
+        <div class="myth-label">The Myth</div>
+        <div class="myth-text">${post.mythText}</div>
+      </div>
+      <div class="myth-card fact">
+        <div class="myth-label">The Truth</div>
+        <div class="myth-text">${post.factText}</div>
+      </div>`;
+    extraStyle = `
+      .myth-card { border-radius:14px; padding:30px 36px; margin-bottom:22px; }
+      .myth-card.myth { background:rgba(220,38,38,0.08); border:2px solid #DC2626; }
+      .myth-card.fact { background:rgba(74,222,128,0.08); border:2px solid #4ADE80; }
+      .myth-label { font-size:22px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; }
+      .myth-card.myth .myth-label { color:#DC2626; }
+      .myth-card.fact .myth-label { color:#4ADE80; }
+      .myth-card.myth .myth-text { font-size:28px; font-style:italic; color:#94A3B8; text-decoration:line-through; line-height:1.4; }
+      .myth-card.fact .myth-text { font-size:28px; color:#E2E8F0; line-height:1.5; }
+    `;
+  }
+
+  if (post.layout === 'compare') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="headline" style="margin-bottom:40px;">${post.headline}</div>
+      <div class="compare-row">
+        ${post.compare.map(c => `
+          <div class="compare-card" style="border-color:${c.accent};">
+            <div class="compare-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${icon(c.icon, c.accent)}</svg></div>
+            <div class="compare-title" style="color:${c.accent};">${c.label}</div>
+            <div class="compare-text">${c.text}</div>
+          </div>`).join('')}
+      </div>`;
+    extraStyle = `
+      .compare-row { display:flex; gap:28px; }
+      .compare-card { flex:1; border:2px solid; border-radius:14px; padding:32px 28px; background:rgba(255,255,255,0.03); }
+      .compare-icon { margin-bottom:18px; }
+      .compare-title { font-family:'Playfair Display', serif; font-weight:900; font-size:34px; margin-bottom:14px; }
+      .compare-text { font-size:24px; line-height:1.5; color:#CBD5E1; }
+    `;
+  }
+
+  if (post.layout === 'stat') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="stat-hero">
+        <div class="stat-rays"><svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+          ${Array.from({length: 24}).map((_,i) => {
+            const angle = (i / 24) * 360;
+            return `<line x1="300" y1="300" x2="300" y2="0" stroke="#1DB89A" stroke-opacity="0.12" stroke-width="3" transform="rotate(${angle} 300 300)"/>`;
+          }).join('')}
+        </svg></div>
+        <div class="stat-number">${post.statNumber}</div>
+        <div class="stat-label">${post.statLabel}</div>
+      </div>
+      <div class="headline" style="margin:28px 0 18px;">${post.headline}</div>
+      <div class="body">${post.body}</div>`;
+    extraStyle = `
+      .stat-hero { position:relative; display:flex; flex-direction:column; align-items:flex-start; margin-bottom:6px; }
+      .stat-rays { position:absolute; top:-130px; left:-100px; z-index:0; pointer-events:none; }
+      .stat-number {
+        font-family:'Playfair Display', serif; font-weight:900; font-size:200px; line-height:1;
+        background:linear-gradient(90deg, #1DB89A, #4ADE80);
+        -webkit-background-clip:text; background-clip:text; color:transparent;
+        position:relative; z-index:1;
+      }
+      .stat-label { font-size:26px; letter-spacing:4px; text-transform:uppercase; color:#94A3B8; font-weight:600; position:relative; z-index:1; }
+    `;
+  }
+
+  if (post.layout === 'list') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="headline" style="margin-bottom:36px;">${post.headline}</div>
+      <div class="tip-list">
+        ${post.tips.map(t => `
+          <div class="tip-row">
+            <div class="tip-num">${t.n}</div>
+            <div class="tip-text">${t.text}</div>
+          </div>`).join('')}
+      </div>`;
+    extraStyle = `
+      .tip-list { display:flex; flex-direction:column; gap:24px; }
+      .tip-row { display:flex; align-items:flex-start; gap:24px; }
+      .tip-num {
+        flex:0 0 56px; width:56px; height:56px; border-radius:50%;
+        background:rgba(29,184,154,0.14); border:1px solid #1DB89A; color:#1DB89A;
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Playfair Display', serif; font-weight:900; font-size:28px;
+      }
+      .tip-text { font-size:28px; line-height:1.5; color:#E2E8F0; padding-top:8px; }
+    `;
+  }
+
+  if (post.layout === 'timeline') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="headline" style="margin-bottom:54px;">${post.headline}</div>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        ${post.steps.map((s, i) => `
+          <div class="timeline-step">
+            <div class="timeline-circle">${i + 1}</div>
+            <div class="timeline-label">${s}</div>
+          </div>`).join('')}
+      </div>`;
+    extraStyle = `
+      .timeline { position:relative; display:flex; justify-content:space-between; padding-top:10px; }
+      .timeline-line { position:absolute; top:38px; left:38px; right:38px; height:3px; background:rgba(29,184,154,0.35); z-index:0; }
+      .timeline-step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; width:160px; }
+      .timeline-circle {
+        width:76px; height:76px; border-radius:50%; background:#0E2438; border:3px solid #1DB89A;
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Playfair Display', serif; font-weight:900; font-size:32px; color:#4ADE80; margin-bottom:18px;
+      }
+      .timeline-label { font-size:21px; text-align:center; color:#CBD5E1; font-weight:600; line-height:1.3; }
+    `;
+  }
+
+  if (post.layout === 'cycle') {
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="cycle-row">
+        <div class="cycle-icon"><svg width="120" height="120" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">${icon('cycle', '#2563EB')}</svg></div>
+        <div class="headline" style="margin:0;">${post.headline}</div>
+      </div>
+      <div class="body" style="margin-top:28px;">${post.body}</div>`;
+    extraStyle = `
+      .cycle-row { display:flex; align-items:center; gap:36px; margin-bottom:6px; }
+      .cycle-icon { flex:0 0 auto; background:rgba(37,99,235,0.12); border:1px solid #2563EB; border-radius:50%; width:140px; height:140px; display:flex; align-items:center; justify-content:center; }
+    `;
+  }
+
+  // ----- background / scene -----
+  let bgLayer = '';
+  if (post.layout === 'scene') {
+    bgLayer = `<div class="scene-bg">${scene(post.scene)}</div><div class="scene-overlay"></div>`;
+  } else if (post.decoration === 'map-home') {
+    bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('home')}</div><div class="map-overlay"></div>`;
+  } else if (post.decoration === 'map-dpa') {
+    bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa')}</div><div class="map-overlay"></div>`;
+  }
+
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -260,12 +505,14 @@ body {
   background:linear-gradient(90deg, #1DB89A, #4ADE80, #1E3A5F);
   z-index:3;
 }
-.scene-bg {
-  position:absolute; inset:0; z-index:0;
-}
+.scene-bg { position:absolute; inset:0; z-index:0; }
 .scene-overlay {
   position:absolute; inset:0; z-index:1;
   background: linear-gradient(180deg, rgba(8,23,38,0.45) 0%, rgba(8,23,38,0.55) 45%, rgba(8,23,38,0.92) 100%);
+}
+.map-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(90deg, rgba(8,23,38,0.97) 0%, rgba(8,23,38,0.85) 45%, rgba(8,23,38,0.35) 100%);
 }
 .header {
   position:relative; z-index:3;
@@ -332,19 +579,18 @@ body {
 }
 .meta .handle { color:#1DB89A; font-weight:600; }
 .meta .legal { text-align:right; max-width:620px; }
+${extraStyle}
 </style>
 </head>
 <body>
-  ${post.scene ? `<div class="scene-bg">${scene(post.scene)}</div><div class="scene-overlay"></div>` : ''}
+  ${bgLayer}
   <div class="gradient-bar"></div>
   <div class="header">
     <img class="logo" src="${LOGO}" />
     <div class="eho-badge">${ehoBadge('#E2E8F0')}<span>EQUAL HOUSING<br/>OPPORTUNITY</span></div>
   </div>
   <div class="content">
-    <div class="pill">${post.category}</div>
-    <div class="headline">${post.headline}</div>
-    <div class="body">${post.body}</div>
+    ${contentInner}
   </div>
   <div class="footer">
     <div class="cta">${post.cta}</div>
