@@ -114,7 +114,7 @@ Derek Smith NMLS# 2810853. Baxter Mortgage, LLC NMLS# 2752768. 75 Portland Rd, K
 
 Maine has down payment help you might not know about. 🍁
 
-If you're a first-time buyer (or haven't owned in a few years), there are programs through MaineHousing and other assistance options that can help cover part of your down payment and closing costs for eligible buyers.
+If you're a first-time buyer (or haven't owned in a few years), there are down payment and closing cost assistance programs out there for eligible buyers.
 
 Paired with FHA, USDA, or conventional financing, this could make homeownership a lot more reachable than people assume, especially if you've been told you need to save for years before you can even start looking.
 
@@ -127,7 +127,7 @@ I will check what you may qualify for, no cost, no obligation. Send me a message
 
 Derek Smith NMLS# 2810853. Baxter Mortgage, LLC NMLS# 2752768. 75 Portland Rd, Kennebunk, ME 04043. All loans subject to credit approval and underwriting. Not a commitment to lend. Equal Housing Opportunity.
 
-#firsttimehomebuyer #downpaymentassistance #mainehousing #kennebunkmaine #southernmaine #yorkcountymaine #mainerealestate #mortgagebroker #dereklends #baxtermortgage #maine #homebuyingtips #affordablehousing #equalhousingopportunity
+#firsttimehomebuyer #downpaymentassistance #kennebunkmaine #southernmaine #yorkcountymaine #mainerealestate #mortgagebroker #dereklends #baxtermortgage #maine #homebuyingtips #affordablehousing #equalhousingopportunity
 
 ---
 

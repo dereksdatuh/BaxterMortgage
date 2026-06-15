@@ -8,6 +8,14 @@ const LOGO_DARK = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 
 
 const FOOTER_TEXT = 'Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768 | Equal Housing Opportunity';
 
+function hexToRgba(hex, alpha) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 // EHO_White_Transparent.png / EHO_Navy_Transparent.png in the brand kit are corrupt
 // (solid-color rectangles with no logo content), so render the standard HUD
 // Equal Housing Opportunity house-and-equal-sign mark inline as SVG instead.
@@ -299,6 +307,8 @@ const posts = [
     file: '01-mon-0615-intro.png',
     layout: 'standard',
     bgType: 'map-home',
+    accent: '#1DB89A',
+    accent2: '#4ADE80',
     category: 'Meet Your Lender',
     headline: 'Southern Maine’s mortgage guy who actually <em>picks up the phone</em>',
     body: 'I’m Derek Smith, a local mortgage broker based right here in Kennebunk. I work with 20+ wholesale lenders so I can shop your loan around and find the fit that works for you, not just the one option a single bank hands you.',
@@ -309,6 +319,9 @@ const posts = [
     file: '02-tue-0616-myth.png',
     layout: 'myth',
     bgType: 'myth-bg',
+    accent: '#E2E8F0',
+    accent2: '#4ADE80',
+    gradientBar: 'linear-gradient(90deg, #DC2626, #4ADE80, #1E3A5F)',
     category: 'Myth Buster',
     headline: 'The 20% down payment myth',
     mythText: '"You need 20% down to buy a home, so I can’t afford one yet."',
@@ -321,6 +334,8 @@ const posts = [
     layout: 'scene',
     bgType: 'scene-coast',
     scene: 'coast',
+    accent: '#1DB89A',
+    accent2: '#4ADE80',
     category: 'Local Spotlight',
     headline: 'Kennebunk & Kennebunkport are <em>heating up</em> for summer',
     body: 'Inventory in York County tends to move fast once the weather turns, especially around Kennebunk, Kennebunkport, and Wells. If you’re thinking about buying this season, getting pre-approved now means you can move the moment the right home hits the market.',
@@ -332,6 +347,9 @@ const posts = [
     layout: 'compare',
     theme: 'light',
     bgType: 'light-grid',
+    accent: '#2563EB',
+    accent2: '#1DB89A',
+    emColor: '#2563EB',
     category: 'Know The Difference',
     headline: 'Pre-qualified vs. <em>pre-approved</em>',
     compare: [
@@ -343,7 +361,7 @@ const posts = [
       },
       {
         label: 'Pre-Approved',
-        accent: '#4ADE80',
+        accent: '#2563EB',
         icon: 'check',
         text: 'I’ve verified your income, assets, and credit. When you make an offer, sellers and agents know it’s real.',
       },
@@ -355,6 +373,8 @@ const posts = [
     file: '05-fri-0619-valueprop.png',
     layout: 'stat',
     bgType: 'network',
+    accent: '#1DB89A',
+    accent2: '#4ADE80',
     category: 'Why Work With Me',
     statNumber: '20+',
     statLabel: 'Wholesale Lenders, Shopped For You',
@@ -367,9 +387,12 @@ const posts = [
     file: '06-mon-0622-dpa.png',
     layout: 'standard',
     bgType: 'map-dpa',
+    accent: '#D97706',
+    accent2: '#4ADE80',
+    gradientBar: 'linear-gradient(90deg, #D97706, #4ADE80, #1E3A5F)',
     category: 'First-Time Buyers',
     headline: 'Maine has <em>down payment help</em> you might not know about',
-    body: 'Programs through MaineHousing and other first-time buyer assistance can help cover down payment and closing costs for eligible buyers across York County and Southern Maine. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
+    body: 'There are down payment and closing cost assistance programs out there for eligible first-time buyers across York County and Southern Maine. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
     cta: 'I will check what you may qualify for, no cost, no obligation. Send me a message to get started.',
   },
   // ---------------- 7. Tue 6/23 — Credit tips (numbered list) ----------------
@@ -378,6 +401,9 @@ const posts = [
     layout: 'list',
     theme: 'light',
     bgType: 'light-paper',
+    accent: '#D97706',
+    accent2: '#1DB89A',
+    gradientBar: 'linear-gradient(90deg, #D97706, #1DB89A, #1E3A5F)',
     category: 'Credit Tips',
     headline: '3 things to do <em>before</em> you apply',
     tips: [
@@ -393,6 +419,9 @@ const posts = [
     layout: 'scene',
     bgType: 'scene-river',
     scene: 'river',
+    accent: '#2563EB',
+    accent2: '#1DB89A',
+    gradientBar: 'linear-gradient(90deg, #2563EB, #1DB89A, #1E3A5F)',
     category: 'Local Spotlight',
     headline: 'Saco, Biddeford & Westbrook are the <em>value play</em> right now',
     body: 'As Portland prices push buyers outward, towns like Saco, Biddeford, and Westbrook are seeing more first-time buyer activity, often with more home for the money and an easy commute into the city.',
@@ -403,6 +432,8 @@ const posts = [
     file: '09-thu-0625-process.png',
     layout: 'timeline',
     bgType: 'road',
+    accent: '#1DB89A',
+    accent2: '#4ADE80',
     category: 'How It Works',
     headline: 'From application to <em>keys in hand</em>',
     steps: ['Application', 'Underwriting', 'Conditional Approval', 'Clear to Close', 'Closing Day'],
@@ -413,6 +444,9 @@ const posts = [
     file: '10-fri-0626-refi.png',
     layout: 'cycle',
     bgType: 'orbit',
+    accent: '#2563EB',
+    accent2: '#1DB89A',
+    gradientBar: 'linear-gradient(90deg, #2563EB, #1DB89A, #1E3A5F)',
     category: 'Refinance Check-In',
     headline: 'Bought in the last couple years? It <em>might be worth a look</em>',
     body: 'If your rate, term, or monthly payment hasn’t been reviewed lately, it could be worth running a quick check. Sometimes a refinance makes sense, sometimes it doesn’t, but you won’t know until we look at the numbers.',
@@ -434,6 +468,10 @@ function icon(name, color) {
 }
 
 function html(post) {
+  const accent = post.accent || '#1DB89A';
+  const accent2 = post.accent2 || '#4ADE80';
+  const gradientBar = post.gradientBar || `linear-gradient(90deg, ${accent}, ${accent2}, #1E3A5F)`;
+
   // ----- build the per-layout content block -----
   let contentInner = '';
   let extraStyle = '';
@@ -497,7 +535,7 @@ function html(post) {
         <div class="stat-rays"><svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
           ${Array.from({length: 24}).map((_,i) => {
             const angle = (i / 24) * 360;
-            return `<line x1="300" y1="300" x2="300" y2="0" stroke="#1DB89A" stroke-opacity="0.12" stroke-width="3" transform="rotate(${angle} 300 300)"/>`;
+            return `<line x1="300" y1="300" x2="300" y2="0" stroke="${accent}" stroke-opacity="0.12" stroke-width="3" transform="rotate(${angle} 300 300)"/>`;
           }).join('')}
         </svg></div>
         <div class="stat-number">${post.statNumber}</div>
@@ -510,7 +548,7 @@ function html(post) {
       .stat-rays { position:absolute; top:-130px; left:-100px; z-index:0; pointer-events:none; }
       .stat-number {
         font-family:'Playfair Display', serif; font-weight:900; font-size:200px; line-height:1;
-        background:linear-gradient(90deg, #1DB89A, #4ADE80);
+        background:linear-gradient(90deg, ${accent}, ${accent2});
         -webkit-background-clip:text; background-clip:text; color:transparent;
         position:relative; z-index:1;
       }
@@ -534,7 +572,7 @@ function html(post) {
       .tip-row { display:flex; align-items:flex-start; gap:24px; }
       .tip-num {
         flex:0 0 56px; width:56px; height:56px; border-radius:50%;
-        background:rgba(29,184,154,0.14); border:1px solid #1DB89A; color:#1DB89A;
+        background:${hexToRgba(accent, 0.14)}; border:1px solid ${accent}; color:${accent};
         display:flex; align-items:center; justify-content:center;
         font-family:'Playfair Display', serif; font-weight:900; font-size:28px;
       }
@@ -556,12 +594,12 @@ function html(post) {
       </div>`;
     extraStyle = `
       .timeline { position:relative; display:flex; justify-content:space-between; padding-top:10px; }
-      .timeline-line { position:absolute; top:38px; left:38px; right:38px; height:3px; background:rgba(29,184,154,0.35); z-index:0; }
+      .timeline-line { position:absolute; top:38px; left:38px; right:38px; height:3px; background:${hexToRgba(accent, 0.35)}; z-index:0; }
       .timeline-step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; width:160px; }
       .timeline-circle {
-        width:76px; height:76px; border-radius:50%; background:#0E2438; border:3px solid #1DB89A;
+        width:76px; height:76px; border-radius:50%; background:#0E2438; border:3px solid ${accent};
         display:flex; align-items:center; justify-content:center;
-        font-family:'Playfair Display', serif; font-weight:900; font-size:32px; color:#4ADE80; margin-bottom:18px;
+        font-family:'Playfair Display', serif; font-weight:900; font-size:32px; color:${accent2}; margin-bottom:18px;
       }
       .timeline-label { font-size:21px; text-align:center; color:#CBD5E1; font-weight:600; line-height:1.3; }
     `;
@@ -571,13 +609,13 @@ function html(post) {
     contentInner = `
       <div class="pill">${post.category}</div>
       <div class="cycle-row">
-        <div class="cycle-icon"><svg width="120" height="120" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">${icon('cycle', '#2563EB')}</svg></div>
+        <div class="cycle-icon"><svg width="120" height="120" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">${icon('cycle', accent)}</svg></div>
         <div class="headline" style="margin:0;">${post.headline}</div>
       </div>
       <div class="body" style="margin-top:28px;">${post.body}</div>`;
     extraStyle = `
       .cycle-row { display:flex; align-items:center; gap:36px; margin-bottom:6px; }
-      .cycle-icon { flex:0 0 auto; background:rgba(37,99,235,0.12); border:1px solid #2563EB; border-radius:50%; width:140px; height:140px; display:flex; align-items:center; justify-content:center; }
+      .cycle-icon { flex:0 0 auto; background:${hexToRgba(accent, 0.12)}; border:1px solid ${accent}; border-radius:50%; width:140px; height:140px; display:flex; align-items:center; justify-content:center; }
     `;
   }
 
@@ -597,7 +635,7 @@ function html(post) {
       bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('home')}</div><div class="map-overlay"></div>`;
       break;
     case 'map-dpa':
-      bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa', '#D97706')}</div><div class="map-overlay"></div>`;
+      bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa', accent)}</div><div class="map-overlay"></div>`;
       break;
     case 'myth-bg':
       bgLayer = `<div class="scene-bg">${mythScene()}</div><div class="scene-overlay"></div>`;
@@ -645,9 +683,8 @@ body.paper {
     repeating-linear-gradient(0deg, rgba(30,58,95,0.08) 0px, rgba(30,58,95,0.08) 2px, transparent 2px, transparent 64px),
     linear-gradient(90deg, transparent 0, transparent 130px, rgba(220,38,38,0.22) 130px, rgba(220,38,38,0.22) 133px, transparent 133px);
 }
-body.light .pill { background:rgba(30,58,95,0.06); border:1px solid #1E3A5F; color:#1E3A5F; }
+body.light .pill { background:${hexToRgba(accent, 0.08)}; border:1px solid ${accent}; color:${accent}; }
 body.light .headline { color:#1E3A5F; }
-body.light .headline em { color:#1DB89A; }
 body.light .body { color:#475569; }
 body.light .eho-badge { color:#1E3A5F; }
 body.light .footer { border-top:1px solid rgba(30,58,95,0.12); }
@@ -655,11 +692,10 @@ body.light .cta { color:#1E3A5F; }
 body.light .meta { color:#94A3B8; }
 body.light .compare-card { background:#FFFFFF; box-shadow:0 10px 30px rgba(30,58,95,0.08); }
 body.light .compare-text { color:#475569; }
-body.light .tip-num { background:rgba(29,184,154,0.10); color:#0E7C68; }
 body.light .tip-text { color:#334155; }
 .gradient-bar {
   position:absolute; top:0; left:0; right:0; height:12px;
-  background:linear-gradient(90deg, #1DB89A, #4ADE80, #1E3A5F);
+  background:${gradientBar};
   z-index:3;
 }
 .scene-bg { position:absolute; inset:0; z-index:0; }
@@ -688,9 +724,9 @@ body.light .tip-text { color:#334155; }
 }
 .pill {
   display:inline-block;
-  background:rgba(29,184,154,0.14);
-  border:1px solid #1DB89A;
-  color:#1DB89A;
+  background:${hexToRgba(accent, 0.14)};
+  border:1px solid ${accent};
+  color:${accent};
   padding:10px 26px;
   border-radius:999px;
   font-size:23px; font-weight:700;
@@ -708,7 +744,7 @@ body.light .tip-text { color:#334155; }
 }
 .headline em {
   font-style:italic;
-  color:#4ADE80;
+  color:${post.emColor || accent2};
 }
 .body {
   font-size:31px;
