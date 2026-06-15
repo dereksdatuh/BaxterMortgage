@@ -3,7 +3,8 @@ const path = require('path');
 const fs = require('fs');
 
 const BRAND = path.resolve(__dirname, '../../brand');
-const LOGO = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 'Baxter_Logo_White.svg')).toString('base64')}`;
+const LOGO_WHITE = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 'Baxter_Logo_White.svg')).toString('base64')}`;
+const LOGO_DARK = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 'Baxter_Logo_Dark.svg')).toString('base64')}`;
 
 const FOOTER_TEXT = 'Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768 | Equal Housing Opportunity';
 
@@ -148,8 +149,9 @@ function scene(type) {
 }
 
 // ---------- Southern Maine map illustration (used on posts 1 & 6) ----------
-function mapScene(mode) {
+function mapScene(mode, accent) {
   // mode: 'home' (highlight Kennebunk as home base) | 'dpa' (highlight all towns as eligible)
+  accent = accent || '#1DB89A';
   const towns = [
     { name: 'Portland',      x: 840, y: 90 },
     { name: 'Westbrook',     x: 700, y: 150 },
@@ -162,13 +164,13 @@ function mapScene(mode) {
   const pins = towns.map(t => {
     const isHome = mode === 'home' && t.name === 'Kennebunk';
     const r = isHome ? 16 : (mode === 'dpa' ? 12 : 9);
-    const fill = isHome ? '#4ADE80' : '#1DB89A';
+    const fill = isHome ? '#4ADE80' : (mode === 'dpa' ? accent : '#1DB89A');
     const labelSize = isHome ? 26 : 22;
     const labelWeight = isHome ? '700' : '500';
     return `
       <g>
         ${isHome ? `<circle cx="${t.x}" cy="${t.y}" r="${r + 14}" fill="#4ADE80" opacity="0.18"/>` : ''}
-        ${mode === 'dpa' ? `<circle cx="${t.x}" cy="${t.y}" r="${r + 10}" fill="#4ADE80" opacity="0.14"/>` : ''}
+        ${mode === 'dpa' ? `<circle cx="${t.x}" cy="${t.y}" r="${r + 10}" fill="${accent}" opacity="0.16"/>` : ''}
         <circle cx="${t.x}" cy="${t.y}" r="${r}" fill="${fill}"/>
         <circle cx="${t.x}" cy="${t.y}" r="${r}" fill="none" stroke="#081726" stroke-width="3"/>
         <text x="${t.x - r - 14}" y="${t.y + 8}" text-anchor="end" font-family="DM Sans" font-size="${labelSize}" font-weight="${labelWeight}" fill="#E2E8F0">${t.name}${isHome ? '  (HQ)' : ''}</text>
@@ -177,8 +179,8 @@ function mapScene(mode) {
   return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
     <defs>
       <radialGradient id="mapglow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#1DB89A" stop-opacity="0.18"/>
-        <stop offset="100%" stop-color="#1DB89A" stop-opacity="0"/>
+        <stop offset="0%" stop-color="${mode === 'dpa' ? accent : '#1DB89A'}" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="${mode === 'dpa' ? accent : '#1DB89A'}" stop-opacity="0"/>
       </radialGradient>
     </defs>
     <circle cx="720" cy="420" r="480" fill="url(#mapglow)"/>
@@ -186,8 +188,108 @@ function mapScene(mode) {
     <path d="M1080,0 L1080,1080 L500,1080 Q620,900 560,760 Q500,640 600,560 Q680,480 640,380 Q600,260 700,160 Q780,80 760,0 Z"
           fill="#0E2438" opacity="0.9"/>
     <path d="M1080,0 L1080,1080 L500,1080 Q620,900 560,760 Q500,640 600,560 Q680,480 640,380 Q600,260 700,160 Q780,80 760,0 Z"
-          fill="none" stroke="#1DB89A" stroke-width="3" stroke-opacity="0.4"/>
+          fill="none" stroke="${mode === 'dpa' ? accent : '#1DB89A'}" stroke-width="3" stroke-opacity="0.4"/>
     ${pins}
+  </svg>`;
+}
+
+// ---------- Myth Buster background: faint X / check watermarks + diagonal grid ----------
+function mythScene() {
+  const diag = Array.from({ length: 26 }).map((_, i) => {
+    const o = i * 70 - 700;
+    return `<line x1="${o}" y1="1080" x2="${o + 1080}" y2="0"/>`;
+  }).join('');
+  return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <radialGradient id="mythRed" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#DC2626" stop-opacity="0.30"/>
+        <stop offset="100%" stop-color="#DC2626" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="mythGreen" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.32"/>
+        <stop offset="100%" stop-color="#4ADE80" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1080" height="1080" fill="#081726"/>
+    <circle cx="950" cy="110" r="380" fill="url(#mythRed)"/>
+    <circle cx="110" cy="990" r="440" fill="url(#mythGreen)"/>
+    <g stroke="#E2E8F0" stroke-opacity="0.045" stroke-width="2">${diag}</g>
+    <text x="930" y="290" font-family="Playfair Display, serif" font-size="320" font-weight="900" fill="#DC2626" opacity="0.14" text-anchor="middle">&#10005;</text>
+    <text x="150" y="990" font-family="Playfair Display, serif" font-size="320" font-weight="900" fill="#4ADE80" opacity="0.16" text-anchor="middle">&#10003;</text>
+  </svg>`;
+}
+
+// ---------- "20+ lenders" network graph background ----------
+function networkScene() {
+  const cx = 800, cy = 540;
+  let lines = '', nodes = '';
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    const r = 250 + (i % 4) * 80;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r * 0.92;
+    lines += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#1DB89A" stroke-opacity="0.20" stroke-width="2"/>`;
+    const rr = i % 3 === 0 ? 9 : 6;
+    const fill = i % 3 === 0 ? '#4ADE80' : '#1DB89A';
+    nodes += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rr}" fill="${fill}" opacity="0.7"/>`;
+  }
+  return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <radialGradient id="netglow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#1DB89A" stop-opacity="0.24"/>
+        <stop offset="100%" stop-color="#1DB89A" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1080" height="1080" fill="#081726"/>
+    <circle cx="${cx}" cy="${cy}" r="480" fill="url(#netglow)"/>
+    ${lines}
+    ${nodes}
+    <circle cx="${cx}" cy="${cy}" r="46" fill="#0E2438" stroke="#4ADE80" stroke-width="4"/>
+    <circle cx="${cx}" cy="${cy}" r="66" fill="none" stroke="#4ADE80" stroke-opacity="0.35" stroke-width="2"/>
+  </svg>`;
+}
+
+// ---------- "From application to keys" winding road background ----------
+function roadScene() {
+  const path = 'M-150,1250 C150,950 60,760 380,560 C680,370 560,160 880,-120';
+  return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <radialGradient id="roadglow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#1DB89A" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#1DB89A" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1080" height="1080" fill="#081726"/>
+    <circle cx="880" cy="160" r="400" fill="url(#roadglow)"/>
+    <path d="${path}" fill="none" stroke="#13314f" stroke-width="200" stroke-linecap="round"/>
+    <path d="${path}" fill="none" stroke="#4ADE80" stroke-width="5" stroke-dasharray="34 34" opacity="0.30" stroke-linecap="round"/>
+  </svg>`;
+}
+
+// ---------- Refinance "cycle" orbit background ----------
+function orbitScene() {
+  const cx = 800, cy = 520;
+  const dots = [0, 1, 2].map(i => {
+    const r = 230 + i * 150;
+    const angle = (i * 65 + 20) * Math.PI / 180;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r;
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" fill="#2563EB" opacity="0.55"/>`;
+  }).join('');
+  return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <radialGradient id="orbglow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#2563EB" stop-opacity="0.24"/>
+        <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1080" height="1080" fill="#081726"/>
+    <circle cx="${cx}" cy="${cy}" r="500" fill="url(#orbglow)"/>
+    <circle cx="${cx}" cy="${cy}" r="200" fill="none" stroke="#2563EB" stroke-opacity="0.20" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="350" fill="none" stroke="#2563EB" stroke-opacity="0.14" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="500" fill="none" stroke="#2563EB" stroke-opacity="0.09" stroke-width="2"/>
+    ${dots}
   </svg>`;
 }
 
@@ -196,7 +298,7 @@ const posts = [
   {
     file: '01-mon-0615-intro.png',
     layout: 'standard',
-    decoration: 'map-home',
+    bgType: 'map-home',
     category: 'Meet Your Lender',
     headline: 'Southern Maine’s mortgage guy who actually <em>picks up the phone</em>',
     body: 'I’m Derek Smith, a local mortgage broker based right here in Kennebunk. I work with 20+ wholesale lenders so I can shop your loan around and find the fit that works for you, not just the one option a single bank hands you.',
@@ -206,6 +308,7 @@ const posts = [
   {
     file: '02-tue-0616-myth.png',
     layout: 'myth',
+    bgType: 'myth-bg',
     category: 'Myth Buster',
     headline: 'The 20% down payment myth',
     mythText: '"You need 20% down to buy a home, so I can’t afford one yet."',
@@ -216,6 +319,7 @@ const posts = [
   {
     file: '03-wed-0617-local-kennebunk.png',
     layout: 'scene',
+    bgType: 'scene-coast',
     scene: 'coast',
     category: 'Local Spotlight',
     headline: 'Kennebunk & Kennebunkport are <em>heating up</em> for summer',
@@ -226,6 +330,8 @@ const posts = [
   {
     file: '04-thu-0618-preapproval.png',
     layout: 'compare',
+    theme: 'light',
+    bgType: 'light-grid',
     category: 'Know The Difference',
     headline: 'Pre-qualified vs. <em>pre-approved</em>',
     compare: [
@@ -248,6 +354,7 @@ const posts = [
   {
     file: '05-fri-0619-valueprop.png',
     layout: 'stat',
+    bgType: 'network',
     category: 'Why Work With Me',
     statNumber: '20+',
     statLabel: 'Wholesale Lenders, Shopped For You',
@@ -259,7 +366,7 @@ const posts = [
   {
     file: '06-mon-0622-dpa.png',
     layout: 'standard',
-    decoration: 'map-dpa',
+    bgType: 'map-dpa',
     category: 'First-Time Buyers',
     headline: 'Maine has <em>down payment help</em> you might not know about',
     body: 'Programs through MaineHousing and other first-time buyer assistance can help cover down payment and closing costs for eligible buyers across York County and Southern Maine. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
@@ -269,6 +376,8 @@ const posts = [
   {
     file: '07-tue-0623-credit.png',
     layout: 'list',
+    theme: 'light',
+    bgType: 'light-paper',
     category: 'Credit Tips',
     headline: '3 things to do <em>before</em> you apply',
     tips: [
@@ -282,6 +391,7 @@ const posts = [
   {
     file: '08-wed-0624-local-saco.png',
     layout: 'scene',
+    bgType: 'scene-river',
     scene: 'river',
     category: 'Local Spotlight',
     headline: 'Saco, Biddeford & Westbrook are the <em>value play</em> right now',
@@ -292,6 +402,7 @@ const posts = [
   {
     file: '09-thu-0625-process.png',
     layout: 'timeline',
+    bgType: 'road',
     category: 'How It Works',
     headline: 'From application to <em>keys in hand</em>',
     steps: ['Application', 'Underwriting', 'Conditional Approval', 'Clear to Close', 'Closing Day'],
@@ -301,6 +412,7 @@ const posts = [
   {
     file: '10-fri-0626-refi.png',
     layout: 'cycle',
+    bgType: 'orbit',
     category: 'Refinance Check-In',
     headline: 'Bought in the last couple years? It <em>might be worth a look</em>',
     body: 'If your rate, term, or monthly payment hasn’t been reviewed lately, it could be worth running a quick check. Sometimes a refinance makes sense, sometimes it doesn’t, but you won’t know until we look at the numbers.',
@@ -470,13 +582,37 @@ function html(post) {
   }
 
   // ----- background / scene -----
+  const theme = post.theme || 'dark';
+  const logo = theme === 'light' ? LOGO_DARK : LOGO_WHITE;
+  const ehoColor = theme === 'light' ? '#1E3A5F' : '#E2E8F0';
   let bgLayer = '';
-  if (post.layout === 'scene') {
-    bgLayer = `<div class="scene-bg">${scene(post.scene)}</div><div class="scene-overlay"></div>`;
-  } else if (post.decoration === 'map-home') {
-    bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('home')}</div><div class="map-overlay"></div>`;
-  } else if (post.decoration === 'map-dpa') {
-    bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa')}</div><div class="map-overlay"></div>`;
+  switch (post.bgType) {
+    case 'scene-coast':
+      bgLayer = `<div class="scene-bg">${scene('coast')}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'scene-river':
+      bgLayer = `<div class="scene-bg">${scene('river')}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'map-home':
+      bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('home')}</div><div class="map-overlay"></div>`;
+      break;
+    case 'map-dpa':
+      bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa', '#D97706')}</div><div class="map-overlay"></div>`;
+      break;
+    case 'myth-bg':
+      bgLayer = `<div class="scene-bg">${mythScene()}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'network':
+      bgLayer = `<div class="scene-bg">${networkScene()}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'road':
+      bgLayer = `<div class="scene-bg">${roadScene()}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'orbit':
+      bgLayer = `<div class="scene-bg">${orbitScene()}</div><div class="scene-overlay"></div>`;
+      break;
+    default:
+      bgLayer = '';
   }
 
   return `<!DOCTYPE html>
@@ -493,13 +629,34 @@ body {
   position:relative;
   overflow:hidden;
   background-color:#081726;
-  background-image:
-    radial-gradient(circle at 88% 12%, rgba(29,184,154,0.28) 0%, transparent 38%),
-    radial-gradient(circle at 8% 90%, rgba(74,222,128,0.20) 0%, transparent 38%),
-    radial-gradient(circle at 50% 55%, rgba(37,99,235,0.10) 0%, transparent 55%),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 40px);
 }
+body.light {
+  background-color:#F8F9FA;
+  background-image:
+    radial-gradient(circle at 88% 10%, rgba(29,184,154,0.10) 0%, transparent 40%),
+    radial-gradient(circle at 8% 92%, rgba(74,222,128,0.10) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, rgba(30,58,95,0.045) 0px, rgba(30,58,95,0.045) 1px, transparent 1px, transparent 44px),
+    repeating-linear-gradient(90deg, rgba(30,58,95,0.045) 0px, rgba(30,58,95,0.045) 1px, transparent 1px, transparent 44px);
+  color:#1E3A5F;
+}
+body.paper {
+  background-color:#FDFCF7;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(30,58,95,0.08) 0px, rgba(30,58,95,0.08) 2px, transparent 2px, transparent 64px),
+    linear-gradient(90deg, transparent 0, transparent 130px, rgba(220,38,38,0.22) 130px, rgba(220,38,38,0.22) 133px, transparent 133px);
+}
+body.light .pill { background:rgba(30,58,95,0.06); border:1px solid #1E3A5F; color:#1E3A5F; }
+body.light .headline { color:#1E3A5F; }
+body.light .headline em { color:#1DB89A; }
+body.light .body { color:#475569; }
+body.light .eho-badge { color:#1E3A5F; }
+body.light .footer { border-top:1px solid rgba(30,58,95,0.12); }
+body.light .cta { color:#1E3A5F; }
+body.light .meta { color:#94A3B8; }
+body.light .compare-card { background:#FFFFFF; box-shadow:0 10px 30px rgba(30,58,95,0.08); }
+body.light .compare-text { color:#475569; }
+body.light .tip-num { background:rgba(29,184,154,0.10); color:#0E7C68; }
+body.light .tip-text { color:#334155; }
 .gradient-bar {
   position:absolute; top:0; left:0; right:0; height:12px;
   background:linear-gradient(90deg, #1DB89A, #4ADE80, #1E3A5F);
@@ -582,12 +739,12 @@ body {
 ${extraStyle}
 </style>
 </head>
-<body>
+<body class="${post.bgType === 'light-paper' ? 'light paper' : theme}">
   ${bgLayer}
   <div class="gradient-bar"></div>
   <div class="header">
-    <img class="logo" src="${LOGO}" />
-    <div class="eho-badge">${ehoBadge('#E2E8F0')}<span>EQUAL HOUSING<br/>OPPORTUNITY</span></div>
+    <img class="logo" src="${logo}" />
+    <div class="eho-badge">${ehoBadge(ehoColor)}<span>EQUAL HOUSING<br/>OPPORTUNITY</span></div>
   </div>
   <div class="content">
     ${contentInner}
