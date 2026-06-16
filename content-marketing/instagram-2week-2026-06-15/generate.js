@@ -94,7 +94,7 @@ function scene(type) {
       </g>
     </svg>`;
   }
-  // 'river' — mill-town river scene for Saco / Biddeford / Westbrook
+  // 'river' - mill-town river scene for Saco / Biddeford / Westbrook
   return `<svg viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
     <defs>
       <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
@@ -302,155 +302,140 @@ function orbitScene() {
 }
 
 const posts = [
-  // ---------------- 1. Mon 6/15 — Meet Your Lender (map decoration) ----------------
+  // ---------------- 1. Mon 6/15 - Meet Your Lender ----------------
   {
     file: '01-mon-0615-intro.png',
-    layout: 'standard',
+    layout: 'billboard',
     bgType: 'map-home',
     accent: '#1DB89A',
     accent2: '#4ADE80',
     category: 'Meet Your Lender',
-    headline: 'Southern Maine’s mortgage guy who actually <em>picks up the phone</em>',
-    body: 'I’m Derek Smith, a local mortgage broker based right here in Kennebunk. I work with 20+ wholesale lenders so I can shop your loan around and find the fit that works for you, not just the one option a single bank hands you.',
-    cta: 'New here? Follow along for real talk on buying, refinancing, and the Maine market. Got a question? Send me a DM, I read every one.',
+    hook: "Southern Maine's\nmortgage\nbroker.",
+    sub: 'Kennebunk · 20+ lenders · one call',
+    cta: '@dereklends · baxtermortgage.com · (207) 468-6998',
   },
-  // ---------------- 2. Tue 6/16 — Myth vs Fact split ----------------
+  // ---------------- 2. Tue 6/16 - Myth Buster ----------------
   {
     file: '02-tue-0616-myth.png',
-    layout: 'myth',
+    layout: 'myth-split',
     bgType: 'myth-bg',
     accent: '#E2E8F0',
     accent2: '#4ADE80',
     gradientBar: 'linear-gradient(90deg, #DC2626, #4ADE80, #1E3A5F)',
     category: 'Myth Buster',
-    headline: 'The 20% down payment myth',
-    mythText: '"You need 20% down to buy a home, so I can’t afford one yet."',
-    factText: 'Conventional loans can go as low as 3% down, FHA as low as 3.5%, and depending on where you’re buying in York County, USDA financing could mean $0 down. Down payment assistance may stack with these too.',
-    cta: 'Don’t let this myth keep you on the sidelines. Reach out and I will run your numbers, free, no pressure.',
+    mythLine: '"You need 20% down to buy."',
+    factLines: ['3% conventional', '3.5% FHA', '0% USDA (some areas)', 'DPA can stack on top'],
+    cta: 'DM me · I\'ll run your numbers for free',
   },
-  // ---------------- 3. Wed 6/17 — Local Spotlight: Kennebunk (scene) ----------------
+  // ---------------- 3. Wed 6/17 - Local Spotlight: Kennebunk ----------------
   {
     file: '03-wed-0617-local-kennebunk.png',
-    layout: 'scene',
+    layout: 'scene-billboard',
     bgType: 'scene-coast',
-    scene: 'coast',
     accent: '#1DB89A',
     accent2: '#4ADE80',
     category: 'Local Spotlight',
-    headline: 'Kennebunk & Kennebunkport are <em>heating up</em> for summer',
-    body: 'Inventory in York County tends to move fast once the weather turns, especially around Kennebunk, Kennebunkport, and Wells. If you’re thinking about buying this season, getting pre-approved now means you can move the moment the right home hits the market.',
-    cta: 'Want to be ready before the next open house? Let’s get your pre-approval started this week.',
+    hook: 'Kennebunk is\nmoving fast.',
+    sub: 'Summer inventory doesn\'t wait. Get pre-approved first.',
+    cta: 'DM me to start your pre-approval this week',
   },
-  // ---------------- 4. Thu 6/18 — Pre-qualified vs Pre-approved (compare cards) ----------------
+  // ---------------- 4. Thu 6/18 - Pre-qualified vs Pre-approved ----------------
   {
     file: '04-thu-0618-preapproval.png',
-    layout: 'compare',
+    layout: 'split-compare',
     theme: 'light',
     bgType: 'light-grid',
     accent: '#2563EB',
     accent2: '#1DB89A',
     emColor: '#2563EB',
-    category: 'Know The Difference',
-    headline: 'Pre-qualified vs. <em>pre-approved</em>',
+    category: 'Know the Difference',
     compare: [
-      {
-        label: 'Pre-Qualified',
-        accent: '#64748B',
-        icon: 'clock',
-        text: 'A quick estimate based on what you tell me about income, debts, and credit. Good for a ballpark, not verified.',
-      },
-      {
-        label: 'Pre-Approved',
-        accent: '#2563EB',
-        icon: 'check',
-        text: 'I’ve verified your income, assets, and credit. When you make an offer, sellers and agents know it’s real.',
-      },
+      { label: 'Pre-Qualified', accent: '#94A3B8', icon: 'clock', blurb: 'An estimate. Not verified.', tag: 'Not Enough' },
+      { label: 'Pre-Approved', accent: '#2563EB', icon: 'check', blurb: 'Docs reviewed. Credit pulled.', tag: 'Offer Ready' },
     ],
-    cta: 'House hunting this summer? Pre-approval is your edge. Let’s get yours done.',
+    cta: 'Pre-approval costs nothing. DM me.',
   },
-  // ---------------- 5. Fri 6/19 — Why work with me (giant stat) ----------------
+  // ---------------- 5. Fri 6/19 - Why Work With Me ----------------
   {
     file: '05-fri-0619-valueprop.png',
-    layout: 'stat',
+    layout: 'hero-stat',
     bgType: 'network',
     accent: '#1DB89A',
     accent2: '#4ADE80',
     category: 'Why Work With Me',
     statNumber: '20+',
-    statLabel: 'Wholesale Lenders, Shopped For You',
-    headline: 'One broker. <em>Dozens of options.</em>',
-    body: 'As a mortgage broker, I’m not stuck with one bank’s rates and rules. I compare programs and terms across 20+ wholesale lenders to find what fits your situation, then I do the legwork while you focus on the move.',
-    cta: 'Curious what’s out there for you? Reach out and let’s talk it through.',
+    statSub: 'wholesale lenders',
+    hook: 'One broker.\nDozens of options.',
+    cta: '@dereklends · baxtermortgage.com',
   },
-  // ---------------- 6. Mon 6/22 — First-time buyers / DPA (map decoration) ----------------
+  // ---------------- 6. Mon 6/22 - First-Time Buyers / DPA ----------------
   {
     file: '06-mon-0622-dpa.png',
-    layout: 'standard',
+    layout: 'billboard',
     bgType: 'map-dpa',
     accent: '#D97706',
     accent2: '#4ADE80',
     gradientBar: 'linear-gradient(90deg, #D97706, #4ADE80, #1E3A5F)',
     category: 'First-Time Buyers',
-    headline: 'Maine has <em>down payment help</em> you might not know about',
-    body: 'There are down payment and closing cost assistance programs out there for eligible first-time buyers across York County and Southern Maine. Paired with FHA, USDA, or conventional financing, it could make homeownership more reachable than you think.',
-    cta: 'I will check what you may qualify for, no cost, no obligation. Send me a message to get started.',
+    hook: 'Down payment\nhelp is\nout there.',
+    sub: 'Eligible first-time buyers across York County & Southern Maine',
+    cta: 'DM me to see what programs you may qualify for -- no cost',
   },
-  // ---------------- 7. Tue 6/23 — Credit tips (numbered list) ----------------
+  // ---------------- 7. Tue 6/23 - Credit Tips ----------------
   {
     file: '07-tue-0623-credit.png',
-    layout: 'list',
-    theme: 'light',
+    layout: 'bold-tips',
+    theme: 'paper',
     bgType: 'light-paper',
     accent: '#D97706',
     accent2: '#1DB89A',
     gradientBar: 'linear-gradient(90deg, #D97706, #1DB89A, #1E3A5F)',
     category: 'Credit Tips',
-    headline: '3 things to do <em>before</em> you apply',
+    hook: '3 rules\nbefore you\napply.',
     tips: [
-      { n: '1', text: 'Leave your credit cards alone. Don’t open new accounts, don’t close old ones.' },
-      { n: '2', text: 'Hold off on big purchases. A new car or store-financed furniture can change what you qualify for.' },
-      { n: '3', text: 'Keep paying everything on time. Even small bills like a phone or streaming bill matter.' },
+      "Don't touch your credit cards.",
+      'Skip big purchases until after closing.',
+      'Pay everything on time. Every time.',
     ],
-    cta: 'Already worried about something on your credit? Let’s talk before you start house hunting.',
+    cta: 'Worried about your credit? DM me before you start searching.',
   },
-  // ---------------- 8. Wed 6/24 — Local Spotlight: Saco/Biddeford/Westbrook (scene) ----------------
+  // ---------------- 8. Wed 6/24 - Local Spotlight: Saco/Biddeford/Westbrook ----------------
   {
     file: '08-wed-0624-local-saco.png',
-    layout: 'scene',
+    layout: 'scene-billboard',
     bgType: 'scene-river',
-    scene: 'river',
     accent: '#2563EB',
     accent2: '#1DB89A',
     gradientBar: 'linear-gradient(90deg, #2563EB, #1DB89A, #1E3A5F)',
     category: 'Local Spotlight',
-    headline: 'Saco, Biddeford & Westbrook are the <em>value play</em> right now',
-    body: 'As Portland prices push buyers outward, towns like Saco, Biddeford, and Westbrook are seeing more first-time buyer activity, often with more home for the money and an easy commute into the city.',
-    cta: 'Thinking about widening your search area? Let’s talk about what your budget can really do in these towns.',
+    hook: 'More home.\nSame commute.',
+    sub: 'Saco · Biddeford · Westbrook',
+    cta: 'DM me to run your numbers in these towns',
   },
-  // ---------------- 9. Thu 6/25 — Process timeline ----------------
+  // ---------------- 9. Thu 6/25 - Process Timeline ----------------
   {
     file: '09-thu-0625-process.png',
-    layout: 'timeline',
+    layout: 'clean-steps',
     bgType: 'road',
     accent: '#1DB89A',
     accent2: '#4ADE80',
     category: 'How It Works',
-    headline: 'From application to <em>keys in hand</em>',
+    hook: '5 steps to\nclosing day.',
     steps: ['Application', 'Underwriting', 'Conditional Approval', 'Clear to Close', 'Closing Day'],
-    cta: 'Timelines vary, but I will walk you through every step so nothing feels like a surprise. Ready? Let’s set up a quick call.',
+    cta: 'I walk you through every one. Ready? Let\'s talk.',
   },
-  // ---------------- 10. Fri 6/26 — Refinance check-in (cycle icon) ----------------
+  // ---------------- 10. Fri 6/26 - Refinance Check-In ----------------
   {
     file: '10-fri-0626-refi.png',
-    layout: 'cycle',
+    layout: 'billboard',
     bgType: 'orbit',
     accent: '#2563EB',
     accent2: '#1DB89A',
     gradientBar: 'linear-gradient(90deg, #2563EB, #1DB89A, #1E3A5F)',
     category: 'Refinance Check-In',
-    headline: 'Bought in the last couple years? It <em>might be worth a look</em>',
-    body: 'If your rate, term, or monthly payment hasn’t been reviewed lately, it could be worth running a quick check. Sometimes a refinance makes sense, sometimes it doesn’t, but you won’t know until we look at the numbers.',
-    cta: 'I will run a free comparison, no obligation. Reach out and let’s see where you stand.',
+    hook: 'Bought in\n2022-2024?',
+    sub: 'Your options may look different now. Let me run the numbers -- free.',
+    cta: 'Free comparison · No obligation · DM me',
   },
 ];
 
@@ -459,10 +444,6 @@ function icon(name, color) {
   const icons = {
     clock: `<circle cx="24" cy="24" r="20" fill="none" stroke="${color}" stroke-width="4"/><path d="M24,12 V24 L33,29" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`,
     check: `<circle cx="24" cy="24" r="20" fill="none" stroke="${color}" stroke-width="4"/><path d="M14,25 L21,32 L35,16" fill="none" stroke="${color}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`,
-    cycle: `<path d="M10,32 A22,22 0 1 1 18,49" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
-            <path d="M54,32 A22,22 0 1 1 46,15" fill="none" stroke="${color}" stroke-width="6" stroke-linecap="round"/>
-            <polygon points="10,32 22,32 14,44" fill="${color}"/>
-            <polygon points="54,32 42,32 50,20" fill="${color}"/>`,
   };
   return icons[name] || '';
 }
@@ -472,165 +453,17 @@ function html(post) {
   const accent2 = post.accent2 || '#4ADE80';
   const gradientBar = post.gradientBar || `linear-gradient(90deg, ${accent}, ${accent2}, #1E3A5F)`;
 
-  // ----- build the per-layout content block -----
-  let contentInner = '';
-  let extraStyle = '';
-
-  if (post.layout === 'standard' || post.layout === 'scene') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="headline">${post.headline}</div>
-      <div class="body">${post.body}</div>`;
-  }
-
-  if (post.layout === 'myth') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="headline" style="margin-bottom:30px;">${post.headline}</div>
-      <div class="myth-card myth">
-        <div class="myth-label">The Myth</div>
-        <div class="myth-text">${post.mythText}</div>
-      </div>
-      <div class="myth-card fact">
-        <div class="myth-label">The Truth</div>
-        <div class="myth-text">${post.factText}</div>
-      </div>`;
-    extraStyle = `
-      .myth-card { border-radius:14px; padding:30px 36px; margin-bottom:22px; }
-      .myth-card.myth { background:rgba(220,38,38,0.08); border:2px solid #DC2626; }
-      .myth-card.fact { background:rgba(74,222,128,0.08); border:2px solid #4ADE80; }
-      .myth-label { font-size:22px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; }
-      .myth-card.myth .myth-label { color:#DC2626; }
-      .myth-card.fact .myth-label { color:#4ADE80; }
-      .myth-card.myth .myth-text { font-size:28px; font-style:italic; color:#94A3B8; text-decoration:line-through; line-height:1.4; }
-      .myth-card.fact .myth-text { font-size:28px; color:#E2E8F0; line-height:1.5; }
-    `;
-  }
-
-  if (post.layout === 'compare') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="headline" style="margin-bottom:40px;">${post.headline}</div>
-      <div class="compare-row">
-        ${post.compare.map(c => `
-          <div class="compare-card" style="border-color:${c.accent};">
-            <div class="compare-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${icon(c.icon, c.accent)}</svg></div>
-            <div class="compare-title" style="color:${c.accent};">${c.label}</div>
-            <div class="compare-text">${c.text}</div>
-          </div>`).join('')}
-      </div>`;
-    extraStyle = `
-      .compare-row { display:flex; gap:28px; }
-      .compare-card { flex:1; border:2px solid; border-radius:14px; padding:32px 28px; background:rgba(255,255,255,0.03); }
-      .compare-icon { margin-bottom:18px; }
-      .compare-title { font-family:'Playfair Display', serif; font-weight:900; font-size:34px; margin-bottom:14px; }
-      .compare-text { font-size:24px; line-height:1.5; color:#CBD5E1; }
-    `;
-  }
-
-  if (post.layout === 'stat') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="stat-hero">
-        <div class="stat-rays"><svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-          ${Array.from({length: 24}).map((_,i) => {
-            const angle = (i / 24) * 360;
-            return `<line x1="300" y1="300" x2="300" y2="0" stroke="${accent}" stroke-opacity="0.12" stroke-width="3" transform="rotate(${angle} 300 300)"/>`;
-          }).join('')}
-        </svg></div>
-        <div class="stat-number">${post.statNumber}</div>
-        <div class="stat-label">${post.statLabel}</div>
-      </div>
-      <div class="headline" style="margin:28px 0 18px;">${post.headline}</div>
-      <div class="body">${post.body}</div>`;
-    extraStyle = `
-      .stat-hero { position:relative; display:flex; flex-direction:column; align-items:flex-start; margin-bottom:6px; }
-      .stat-rays { position:absolute; top:-130px; left:-100px; z-index:0; pointer-events:none; }
-      .stat-number {
-        font-family:'Playfair Display', serif; font-weight:900; font-size:200px; line-height:1;
-        background:linear-gradient(90deg, ${accent}, ${accent2});
-        -webkit-background-clip:text; background-clip:text; color:transparent;
-        position:relative; z-index:1;
-      }
-      .stat-label { font-size:26px; letter-spacing:4px; text-transform:uppercase; color:#94A3B8; font-weight:600; position:relative; z-index:1; }
-    `;
-  }
-
-  if (post.layout === 'list') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="headline" style="margin-bottom:36px;">${post.headline}</div>
-      <div class="tip-list">
-        ${post.tips.map(t => `
-          <div class="tip-row">
-            <div class="tip-num">${t.n}</div>
-            <div class="tip-text">${t.text}</div>
-          </div>`).join('')}
-      </div>`;
-    extraStyle = `
-      .tip-list { display:flex; flex-direction:column; gap:24px; }
-      .tip-row { display:flex; align-items:flex-start; gap:24px; }
-      .tip-num {
-        flex:0 0 56px; width:56px; height:56px; border-radius:50%;
-        background:${hexToRgba(accent, 0.14)}; border:1px solid ${accent}; color:${accent};
-        display:flex; align-items:center; justify-content:center;
-        font-family:'Playfair Display', serif; font-weight:900; font-size:28px;
-      }
-      .tip-text { font-size:28px; line-height:1.5; color:#E2E8F0; padding-top:8px; }
-    `;
-  }
-
-  if (post.layout === 'timeline') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="headline" style="margin-bottom:54px;">${post.headline}</div>
-      <div class="timeline">
-        <div class="timeline-line"></div>
-        ${post.steps.map((s, i) => `
-          <div class="timeline-step">
-            <div class="timeline-circle">${i + 1}</div>
-            <div class="timeline-label">${s}</div>
-          </div>`).join('')}
-      </div>`;
-    extraStyle = `
-      .timeline { position:relative; display:flex; justify-content:space-between; padding-top:10px; }
-      .timeline-line { position:absolute; top:38px; left:38px; right:38px; height:3px; background:${hexToRgba(accent, 0.35)}; z-index:0; }
-      .timeline-step { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; width:160px; }
-      .timeline-circle {
-        width:76px; height:76px; border-radius:50%; background:#0E2438; border:3px solid ${accent};
-        display:flex; align-items:center; justify-content:center;
-        font-family:'Playfair Display', serif; font-weight:900; font-size:32px; color:${accent2}; margin-bottom:18px;
-      }
-      .timeline-label { font-size:21px; text-align:center; color:#CBD5E1; font-weight:600; line-height:1.3; }
-    `;
-  }
-
-  if (post.layout === 'cycle') {
-    contentInner = `
-      <div class="pill">${post.category}</div>
-      <div class="cycle-row">
-        <div class="cycle-icon"><svg width="120" height="120" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">${icon('cycle', accent)}</svg></div>
-        <div class="headline" style="margin:0;">${post.headline}</div>
-      </div>
-      <div class="body" style="margin-top:28px;">${post.body}</div>`;
-    extraStyle = `
-      .cycle-row { display:flex; align-items:center; gap:36px; margin-bottom:6px; }
-      .cycle-icon { flex:0 0 auto; background:${hexToRgba(accent, 0.12)}; border:1px solid ${accent}; border-radius:50%; width:140px; height:140px; display:flex; align-items:center; justify-content:center; }
-    `;
-  }
-
-  // ----- background / scene -----
+  // ----- theme / logo -----
   const theme = post.theme || 'dark';
-  const logo = theme === 'light' ? LOGO_DARK : LOGO_WHITE;
-  const ehoColor = theme === 'light' ? '#1E3A5F' : '#E2E8F0';
+  const logo = (theme === 'light' || theme === 'paper') ? LOGO_DARK : LOGO_WHITE;
+  const ehoColor = (theme === 'light' || theme === 'paper') ? '#1E3A5F' : '#E2E8F0';
+  const footerBorder = (theme === 'light' || theme === 'paper') ? 'rgba(30,58,95,0.12)' : 'rgba(255,255,255,0.10)';
+  const ctaColor = (theme === 'light' || theme === 'paper') ? '#1E3A5F' : '#fff';
+  const metaColor = (theme === 'light' || theme === 'paper') ? '#64748B' : '#64748B';
+
+  // ----- background layer -----
   let bgLayer = '';
   switch (post.bgType) {
-    case 'scene-coast':
-      bgLayer = `<div class="scene-bg">${scene('coast')}</div><div class="scene-overlay"></div>`;
-      break;
-    case 'scene-river':
-      bgLayer = `<div class="scene-bg">${scene('river')}</div><div class="scene-overlay"></div>`;
-      break;
     case 'map-home':
       bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('home')}</div><div class="map-overlay"></div>`;
       break;
@@ -638,7 +471,13 @@ function html(post) {
       bgLayer = `<div class="scene-bg" style="opacity:0.9;">${mapScene('dpa', accent)}</div><div class="map-overlay"></div>`;
       break;
     case 'myth-bg':
-      bgLayer = `<div class="scene-bg">${mythScene()}</div><div class="scene-overlay"></div>`;
+      bgLayer = `<div class="scene-bg">${mythScene()}</div><div class="myth-overlay"></div>`;
+      break;
+    case 'scene-coast':
+      bgLayer = `<div class="scene-bg">${scene('coast')}</div><div class="scene-overlay"></div>`;
+      break;
+    case 'scene-river':
+      bgLayer = `<div class="scene-bg">${scene('river')}</div><div class="scene-overlay"></div>`;
       break;
     case 'network':
       bgLayer = `<div class="scene-bg">${networkScene()}</div><div class="scene-overlay"></div>`;
@@ -653,6 +492,272 @@ function html(post) {
       bgLayer = '';
   }
 
+  // ----- per-layout content + extra styles -----
+  let contentInner = '';
+  let extraStyle = '';
+
+  // ------------------------------------------------------------------ billboard
+  if (post.layout === 'billboard') {
+    const hookLines = post.hook.split('\n').map(l => `<span style="display:block;">${l}</span>`).join('');
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="hook">${hookLines}</div>
+      <div class="accent-rule"></div>
+      <div class="sub">${post.sub}</div>`;
+    extraStyle = `
+      .hook {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:118px; line-height:1.0;
+        color:#fff;
+        text-shadow: 0 4px 32px rgba(8,23,38,0.7);
+        margin-bottom:28px;
+        letter-spacing:-2px;
+      }
+      .accent-rule {
+        width:160px; height:4px;
+        background:linear-gradient(90deg, ${accent}, ${accent2});
+        border-radius:2px; margin-bottom:30px;
+      }
+      .sub {
+        font-size:38px; font-weight:400; color:#CBD5E1; line-height:1.3;
+        max-width:820px;
+      }
+    `;
+  }
+
+  // ---------------------------------------------------------------- myth-split
+  if (post.layout === 'myth-split') {
+    const factBullets = post.factLines.map(f =>
+      `<div class="fact-bullet"><span class="fact-arrow">&#8594;</span>${f}</div>`
+    ).join('');
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="myth-panel myth-panel-myth">
+        <div class="panel-label panel-label-myth">THE MYTH</div>
+        <div class="myth-line">${post.mythLine}</div>
+      </div>
+      <div class="myth-divider"></div>
+      <div class="myth-panel myth-panel-fact">
+        <div class="panel-label panel-label-fact">THE TRUTH</div>
+        <div class="fact-list">${factBullets}</div>
+      </div>`;
+    extraStyle = `
+      .myth-panel { padding:32px 36px 32px 48px; position:relative; }
+      .myth-panel-myth { border-left:6px solid #DC2626; margin-bottom:0; }
+      .myth-panel-fact { border-left:6px solid #4ADE80; }
+      .myth-divider { height:2px; background:linear-gradient(90deg, rgba(220,38,38,0.4), rgba(74,222,128,0.4)); margin:6px 0; }
+      .panel-label { font-size:22px; font-weight:700; letter-spacing:5px; text-transform:uppercase; margin-bottom:16px; }
+      .panel-label-myth { color:#DC2626; }
+      .panel-label-fact { color:#4ADE80; }
+      .myth-line {
+        font-family:'Playfair Display', serif; font-style:italic;
+        font-size:48px; color:#94A3B8;
+        text-decoration:line-through; text-decoration-color:rgba(220,38,38,0.55);
+        line-height:1.25;
+      }
+      .fact-list { display:flex; flex-direction:column; gap:12px; }
+      .fact-bullet { font-size:32px; font-weight:500; color:#E2E8F0; line-height:1.2; }
+      .fact-arrow { color:#4ADE80; margin-right:14px; font-style:normal; }
+    `;
+  }
+
+  // -------------------------------------------------------------- scene-billboard
+  if (post.layout === 'scene-billboard') {
+    const hookLines = post.hook.split('\n').map(l => `<span style="display:block;">${l}</span>`).join('');
+    contentInner = `
+      <div class="glass-panel">
+        <div class="pill">${post.category}</div>
+        <div class="hook">${hookLines}</div>
+        <div class="accent-rule"></div>
+        <div class="sub">${post.sub}</div>
+      </div>`;
+    extraStyle = `
+      .glass-panel {
+        background:rgba(8,23,38,0.72); border-radius:16px;
+        padding:48px 56px; display:inline-block; max-width:880px;
+      }
+      .hook {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:110px; line-height:1.0;
+        color:#fff;
+        text-shadow: 0 4px 28px rgba(8,23,38,0.9);
+        margin-bottom:28px;
+        letter-spacing:-2px;
+      }
+      .accent-rule {
+        width:140px; height:4px;
+        background:linear-gradient(90deg, ${accent}, ${accent2});
+        border-radius:2px; margin-bottom:26px;
+      }
+      .sub {
+        font-size:34px; font-weight:400; color:#CBD5E1; line-height:1.3;
+        max-width:740px;
+      }
+    `;
+  }
+
+  // -------------------------------------------------------------- split-compare
+  if (post.layout === 'split-compare') {
+    const cards = post.compare.map(c => `
+      <div class="cmp-card">
+        <div class="cmp-top-bar" style="background:${c.accent};"></div>
+        <div class="cmp-body">
+          <div class="cmp-icon">
+            <svg width="72" height="72" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${icon(c.icon, c.accent)}</svg>
+          </div>
+          <div class="cmp-label" style="color:${c.accent};">${c.label}</div>
+          <div class="cmp-blurb">${c.blurb}</div>
+          <div class="cmp-tag" style="background:${hexToRgba(c.accent, 0.12)}; border:1px solid ${c.accent}; color:${c.accent};">${c.tag}</div>
+        </div>
+      </div>`).join('');
+    contentInner = `
+      <div class="pill" style="background:${hexToRgba(accent, 0.10)}; border-color:${accent}; color:${accent};">${post.category}</div>
+      <div class="cmp-row">${cards}</div>`;
+    extraStyle = `
+      .cmp-row { display:flex; gap:36px; margin-top:24px; }
+      .cmp-card {
+        flex:1; background:#fff; border-radius:16px;
+        box-shadow:0 12px 40px rgba(30,58,95,0.10);
+        overflow:hidden;
+      }
+      .cmp-top-bar { height:8px; width:100%; }
+      .cmp-body { padding:44px 40px 44px 40px; display:flex; flex-direction:column; gap:0; }
+      .cmp-icon { margin-bottom:22px; }
+      .cmp-label {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:52px; line-height:1.05;
+        margin-bottom:18px;
+      }
+      .cmp-blurb { font-size:26px; color:#475569; line-height:1.4; margin-bottom:28px; }
+      .cmp-tag {
+        display:inline-block; padding:9px 22px;
+        border-radius:999px; font-size:20px; font-weight:700;
+        letter-spacing:2px; text-transform:uppercase;
+        width:fit-content;
+      }
+    `;
+  }
+
+  // ----------------------------------------------------------------- hero-stat
+  if (post.layout === 'hero-stat') {
+    const hookLines = post.hook.split('\n').map(l => `<span style="display:block;">${l}</span>`).join('');
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="stat-wrap">
+        <div class="stat-num">${post.statNumber}</div>
+        <div class="stat-sub">${post.statSub.toUpperCase()}</div>
+        <div class="stat-divider"></div>
+        <div class="stat-hook">${hookLines}</div>
+      </div>`;
+    extraStyle = `
+      .stat-wrap { display:flex; flex-direction:column; align-items:flex-start; }
+      .stat-num {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:300px; line-height:0.85;
+        background:linear-gradient(90deg, ${accent}, ${accent2});
+        -webkit-background-clip:text; background-clip:text; color:transparent;
+        letter-spacing:-8px;
+      }
+      .stat-sub {
+        font-size:24px; font-weight:700; letter-spacing:6px;
+        color:#94A3B8; margin-top:8px; margin-bottom:20px;
+      }
+      .stat-divider {
+        width:200px; height:2px;
+        background:${hexToRgba(accent, 0.35)};
+        margin-bottom:24px;
+      }
+      .stat-hook {
+        font-size:52px; font-weight:600; color:#fff;
+        line-height:1.15; max-width:700px;
+      }
+    `;
+  }
+
+  // ----------------------------------------------------------------- bold-tips
+  if (post.layout === 'bold-tips') {
+    const hookLines = post.hook.split('\n').map(l => `<span style="display:block;">${l}</span>`).join('');
+    const tipRows = post.tips.map((t, i) => `
+      <div class="tip-row">
+        <div class="tip-circle">${i + 1}</div>
+        <div class="tip-text">${t}</div>
+      </div>`).join('');
+    contentInner = `
+      <div class="pill" style="background:${hexToRgba(accent, 0.12)}; border-color:${accent}; color:${accent};">${post.category}</div>
+      <div class="hook-text">${hookLines}</div>
+      <div class="tip-list">${tipRows}</div>`;
+    extraStyle = `
+      .hook-text {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:80px; line-height:1.0; color:#1E3A5F;
+        margin-bottom:36px; letter-spacing:-1px;
+      }
+      .tip-list { display:flex; flex-direction:column; gap:28px; }
+      .tip-row { display:flex; align-items:center; gap:28px; }
+      .tip-circle {
+        flex:0 0 80px; width:80px; height:80px; border-radius:50%;
+        border:3px solid ${accent}; color:${accent};
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Playfair Display', serif; font-weight:900; font-size:28px;
+        background:${hexToRgba(accent, 0.08)};
+      }
+      .tip-text { font-size:34px; font-weight:500; color:#1E3A5F; line-height:1.25; }
+    `;
+  }
+
+  // --------------------------------------------------------------- clean-steps
+  if (post.layout === 'clean-steps') {
+    const hookLines = post.hook.split('\n').map(l => `<span style="display:block;">${l}</span>`).join('');
+    const stepItems = post.steps.map((s, i) => `
+      <div class="step-item">
+        <div class="step-circle">${i + 1}</div>
+        <div class="step-label">${s}</div>
+      </div>`).join('');
+    contentInner = `
+      <div class="pill">${post.category}</div>
+      <div class="hook">${hookLines}</div>
+      <div class="steps-row">
+        <div class="steps-line"></div>
+        ${stepItems}
+      </div>`;
+    extraStyle = `
+      .hook {
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:90px; line-height:1.0; color:#fff;
+        text-shadow: 0 4px 28px rgba(8,23,38,0.8);
+        margin-bottom:52px; letter-spacing:-2px;
+      }
+      .steps-row {
+        position:relative; display:flex;
+        justify-content:space-between; align-items:flex-start;
+      }
+      .steps-line {
+        position:absolute; top:40px; left:40px; right:40px;
+        height:3px; background:${hexToRgba(accent, 0.30)}; z-index:0;
+      }
+      .step-item {
+        position:relative; z-index:1;
+        display:flex; flex-direction:column; align-items:center;
+        width:170px;
+      }
+      .step-circle {
+        width:80px; height:80px; border-radius:50%;
+        background:#0E2438; border:3px solid ${accent};
+        display:flex; align-items:center; justify-content:center;
+        font-family:'Playfair Display', serif; font-weight:900;
+        font-size:36px; color:${accent2};
+        margin-bottom:16px;
+      }
+      .step-label {
+        font-size:22px; text-align:center; color:#CBD5E1;
+        font-weight:600; line-height:1.3;
+      }
+    `;
+  }
+
+  // ================================================================ HTML shell
+  const bodyClass = (theme === 'paper') ? 'light paper' : theme;
+
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -663,119 +768,81 @@ function html(post) {
 html,body { width:1080px; height:1080px; }
 body {
   font-family:'DM Sans', sans-serif;
-  color:#fff;
-  position:relative;
-  overflow:hidden;
-  background-color:#081726;
+  background-color:#081726; color:#fff;
+  position:relative; overflow:hidden;
 }
 body.light {
-  background-color:#F8F9FA;
-  background-image:
-    radial-gradient(circle at 88% 10%, rgba(29,184,154,0.10) 0%, transparent 40%),
-    radial-gradient(circle at 8% 92%, rgba(74,222,128,0.10) 0%, transparent 40%),
-    repeating-linear-gradient(0deg, rgba(30,58,95,0.045) 0px, rgba(30,58,95,0.045) 1px, transparent 1px, transparent 44px),
-    repeating-linear-gradient(90deg, rgba(30,58,95,0.045) 0px, rgba(30,58,95,0.045) 1px, transparent 1px, transparent 44px);
-  color:#1E3A5F;
+  background-color:#F8F9FA; color:#1E3A5F;
 }
 body.paper {
-  background-color:#FDFCF7;
+  background-color:#FDFCF7; color:#1E3A5F;
   background-image:
     repeating-linear-gradient(0deg, rgba(30,58,95,0.08) 0px, rgba(30,58,95,0.08) 2px, transparent 2px, transparent 64px),
     linear-gradient(90deg, transparent 0, transparent 130px, rgba(220,38,38,0.22) 130px, rgba(220,38,38,0.22) 133px, transparent 133px);
 }
-body.light .pill { background:${hexToRgba(accent, 0.08)}; border:1px solid ${accent}; color:${accent}; }
-body.light .headline { color:#1E3A5F; }
-body.light .body { color:#475569; }
-body.light .eho-badge { color:#1E3A5F; }
-body.light .footer { border-top:1px solid rgba(30,58,95,0.12); }
-body.light .cta { color:#1E3A5F; }
-body.light .meta { color:#94A3B8; }
-body.light .compare-card { background:#FFFFFF; box-shadow:0 10px 30px rgba(30,58,95,0.08); }
-body.light .compare-text { color:#475569; }
-body.light .tip-text { color:#334155; }
 .gradient-bar {
   position:absolute; top:0; left:0; right:0; height:12px;
-  background:${gradientBar};
-  z-index:3;
+  background:${gradientBar}; z-index:3;
 }
 .scene-bg { position:absolute; inset:0; z-index:0; }
 .scene-overlay {
   position:absolute; inset:0; z-index:1;
-  background: linear-gradient(180deg, rgba(8,23,38,0.45) 0%, rgba(8,23,38,0.55) 45%, rgba(8,23,38,0.92) 100%);
+  background: linear-gradient(180deg, rgba(8,23,38,0.45) 0%, rgba(8,23,38,0.60) 45%, rgba(8,23,38,0.95) 100%);
+}
+.scene-overlay-dark {
+  position:absolute; inset:0; z-index:1;
+  background: rgba(8,23,38,0.62);
 }
 .map-overlay {
   position:absolute; inset:0; z-index:1;
   background: linear-gradient(90deg, rgba(8,23,38,0.97) 0%, rgba(8,23,38,0.85) 45%, rgba(8,23,38,0.35) 100%);
 }
+.myth-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,23,38,0.35) 0%, rgba(8,23,38,0.05) 45%, rgba(8,23,38,0.35) 100%);
+}
 .header {
   position:relative; z-index:3;
   display:flex; justify-content:space-between; align-items:center;
-  padding: 56px 64px 0 64px;
+  padding: 52px 64px 0 64px;
 }
 .header img.logo { height:52px; }
 .eho-badge {
   display:flex; align-items:center; gap:10px;
-  color:#E2E8F0; font-size:18px; font-weight:600; letter-spacing:1px;
+  font-size:18px; font-weight:600; letter-spacing:1px;
+  color:${ehoColor};
 }
 .content {
-  position:absolute; top:190px; bottom:190px; left:0; right:0;
+  position:absolute; top:180px; bottom:160px; left:0; right:0;
   display:flex; flex-direction:column; justify-content:center;
   padding: 0 70px; z-index:3;
 }
 .pill {
   display:inline-block;
-  background:${hexToRgba(accent, 0.14)};
-  border:1px solid ${accent};
-  color:${accent};
-  padding:10px 26px;
-  border-radius:999px;
-  font-size:23px; font-weight:700;
-  letter-spacing:3px; text-transform:uppercase;
-  margin-bottom:34px;
-  width:fit-content;
-}
-.headline {
-  font-family:'Playfair Display', serif;
-  font-weight:900;
-  font-size:64px;
-  line-height:1.18;
-  margin-bottom:34px;
-  max-width:920px;
-}
-.headline em {
-  font-style:italic;
-  color:${post.emColor || accent2};
-}
-.body {
-  font-size:31px;
-  line-height:1.55;
-  color:#CBD5E1;
-  font-weight:400;
-  max-width:880px;
+  background:${hexToRgba(accent, 0.14)}; border:1px solid ${accent}; color:${accent};
+  padding:10px 26px; border-radius:999px;
+  font-size:22px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:30px; width:fit-content;
 }
 .footer {
   position:absolute; bottom:0; left:0; right:0; z-index:3;
-  padding: 30px 64px 36px 64px;
-  border-top:1px solid rgba(255,255,255,0.10);
+  padding: 28px 64px 34px 64px;
+  border-top:1px solid ${footerBorder};
 }
 .cta {
-  font-size:28px;
-  font-weight:600;
-  color:#fff;
-  margin-bottom:14px;
-  line-height:1.4;
-  max-width:950px;
+  font-size:26px; font-weight:600; color:${ctaColor};
+  margin-bottom:12px; line-height:1.4; max-width:950px;
 }
 .meta {
   display:flex; justify-content:space-between; align-items:center;
-  font-size:18px; color:#64748B;
+  font-size:17px; color:${metaColor};
 }
-.meta .handle { color:#1DB89A; font-weight:600; }
+.meta .handle { color:${accent}; font-weight:600; }
 .meta .legal { text-align:right; max-width:620px; }
 ${extraStyle}
 </style>
 </head>
-<body class="${post.bgType === 'light-paper' ? 'light paper' : theme}">
+<body class="${bodyClass}">
   ${bgLayer}
   <div class="gradient-bar"></div>
   <div class="header">
