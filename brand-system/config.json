@@ -1,0 +1,110 @@
+{
+  "brand": {
+    "name": "Derek Smith | Baxter Mortgage",
+    "handle": "@dereklends",
+    "phone": "(207) 468-6998",
+    "email": "derek@baxtermortgage.com",
+    "website": "baxtermortgage.com",
+    "location": "Kennebunk, ME",
+    "nmls": "Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768 | Equal Housing Opportunity",
+    "footer": "Derek Smith NMLS# 2810853. Baxter Mortgage, LLC NMLS# 2752768. 75 Portland Rd, Kennebunk, ME 04043. All loans subject to credit approval and underwriting. Not a commitment to lend. Equal Housing Opportunity."
+  },
+  "colors": {
+    "navy": "#1E3A5F",
+    "deepNavy": "#081726",
+    "teal": "#1DB89A",
+    "green": "#4ADE80",
+    "amber": "#D97706",
+    "red": "#DC2626",
+    "blue": "#2563EB",
+    "slate": "#64748B"
+  },
+  "gradBar": "linear-gradient(90deg,#1DB89A,#4ADE80,#1E3A5F)",
+  "postTypes": {
+    "jab": {
+      "description": "Competitive positioning — bank vs broker contrast without naming competitors",
+      "accentColor": "#DC2626",
+      "gradBar": "linear-gradient(90deg,#DC2626,#1DB89A,#1E3A5F)"
+    },
+    "education": {
+      "description": "Mortgage education — builds trust and saves",
+      "accentColor": "#1DB89A",
+      "gradBar": "linear-gradient(90deg,#1DB89A,#4ADE80,#1E3A5F)"
+    },
+    "local": {
+      "description": "Local Maine market — York County urgency and spotlights",
+      "accentColor": "#2563EB",
+      "gradBar": "linear-gradient(90deg,#2563EB,#1DB89A,#1E3A5F)"
+    },
+    "personal": {
+      "description": "Personal brand — Derek's face, story, trust building",
+      "accentColor": "#1DB89A",
+      "gradBar": "linear-gradient(90deg,#1DB89A,#4ADE80,#1E3A5F)"
+    },
+    "urgency": {
+      "description": "Time-sensitive — market conditions, rate windows, seasonal",
+      "accentColor": "#D97706",
+      "gradBar": "linear-gradient(90deg,#D97706,#1DB89A,#1E3A5F)"
+    }
+  },
+  "schedule": {
+    "postsPerWeek": 5,
+    "days": ["monday","tuesday","wednesday","thursday","friday"],
+    "bestTimes": ["08:00","12:00","17:30","19:00"],
+    "weeklyMix": {
+      "monday": "personal",
+      "tuesday": "education",
+      "wednesday": "local",
+      "thursday": "jab",
+      "friday": "urgency"
+    }
+  },
+  "jabTemplates": [
+    {
+      "myth": "Your bank shows you one rate.",
+      "truth": "I shop 20+ lenders and find the best one for your situation.",
+      "hook": "One rate vs. 20+ options."
+    },
+    {
+      "myth": "Told no by your bank.",
+      "truth": "That was one lender. I have 19 more who might say yes.",
+      "hook": "A bank no is not a final answer."
+    },
+    {
+      "myth": "Banks work for banks.",
+      "truth": "As a broker, I work for you. Your rate. Your terms. Your timeline.",
+      "hook": "Who does your lender actually work for?"
+    },
+    {
+      "myth": "Saving up 20% before buying.",
+      "truth": "You can buy with 3%, 3.5%, or even 0% down depending on your situation.",
+      "hook": "The 20% myth is keeping buyers out of homes."
+    },
+    {
+      "myth": "Your credit isn't good enough.",
+      "truth": "FHA goes to 580. Some programs go lower. Let me actually look at your file.",
+      "hook": "Stop guessing. Let me run your numbers."
+    }
+  ],
+  "localHooks": [
+    "Inventory in Kennebunk is moving in days, not weeks.",
+    "Two offers went in on that Wells listing. The pre-approved buyer won.",
+    "Saco and Biddeford: more home for the money, easy Portland commute.",
+    "Summer in York County means competition. Your pre-approval is your edge.",
+    "Southern Maine market update: here's what I'm seeing on the ground."
+  ],
+  "competitors": [
+    {
+      "handle": "@mainemortgagespecialist",
+      "name": "Kristeen Smith",
+      "company": "Acadia Lending",
+      "location": "South Portland, ME",
+      "notes": "Direct competitor, mortgage broker, same state"
+    },
+    {
+      "handle": "@mamp207",
+      "name": "Maine Association of Mortgage Professionals",
+      "notes": "Industry org, watch for trends they amplify"
+    }
+  ]
+}
