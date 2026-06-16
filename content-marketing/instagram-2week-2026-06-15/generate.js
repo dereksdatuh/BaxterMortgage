@@ -3,8 +3,13 @@ const path = require('path');
 const fs = require('fs');
 
 const BRAND = path.resolve(__dirname, '../../brand');
+// Kit-upload assets live in the main checkout (not the worktree), use absolute path
+const KIT = '/home/user/BaxterMortgage/brand/kit-upload';
 const LOGO_WHITE = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 'Baxter_Logo_White.svg')).toString('base64')}`;
 const LOGO_DARK = `data:image/svg+xml;base64,${fs.readFileSync(path.join(BRAND, 'Baxter_Logo_Dark.svg')).toString('base64')}`;
+const EHO_WHITE = `data:image/png;base64,${fs.readFileSync(path.join(KIT, 'EHO_White_Transparent.png')).toString('base64')}`;
+const EHO_NAVY = `data:image/png;base64,${fs.readFileSync(path.join(KIT, 'EHO_Navy_Transparent.png')).toString('base64')}`;
+const HEADSHOT = `data:image/png;base64,${fs.readFileSync(path.join(KIT, 'Headshot.png')).toString('base64')}`;
 
 const FOOTER_TEXT = 'Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768 | Equal Housing Opportunity';
 
@@ -863,9 +868,495 @@ ${extraStyle}
 </html>`;
 }
 
+// ======================================================================
+// NEW POSTS A-E — use real brand assets (headshot, EHO PNGs, logos)
+// ======================================================================
+
+const GRADIENT_BAR = 'linear-gradient(90deg, #1DB89A, #4ADE80, #1E3A5F)';
+const NMLS_FOOTER = 'Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768 | Equal Housing Opportunity';
+
+// ---------- Post A: Meet the Lender / headshot split ----------
+function htmlA() {
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1080px; overflow:hidden; font-family:'DM Sans',sans-serif; background:#081726; color:#fff; position:relative; }
+.grad-bar { position:absolute; top:0; left:0; right:0; height:5px; background:${GRADIENT_BAR}; z-index:10; }
+/* Left panel: headshot fills left half */
+.headshot-panel {
+  position:absolute; top:0; left:0; width:540px; height:1080px; z-index:1; overflow:hidden;
+}
+.headshot-panel img {
+  width:100%; height:100%; object-fit:cover; object-position:top center;
+}
+/* Right-to-left gradient fade so headshot blends into the right panel */
+.headshot-fade {
+  position:absolute; top:0; left:0; width:540px; height:1080px; z-index:2;
+  background: linear-gradient(to right, rgba(8,23,38,0) 0%, rgba(8,23,38,0.55) 60%, rgba(8,23,38,1) 100%);
+}
+/* Right panel: dark navy with content */
+.right-panel {
+  position:absolute; top:0; right:0; width:560px; height:1080px; z-index:3;
+  background:#081726;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 80px 54px 140px 40px;
+}
+/* Teal radial glow in right panel */
+.right-panel::before {
+  content:''; position:absolute; top:30%; left:-40px; width:400px; height:400px;
+  background: radial-gradient(ellipse, rgba(29,184,154,0.18) 0%, transparent 70%);
+  pointer-events:none;
+}
+/* Thick gradient stripe on right edge */
+.right-stripe {
+  position:absolute; top:0; right:0; width:6px; height:1080px; z-index:4;
+  background: linear-gradient(180deg, #1DB89A 0%, #4ADE80 50%, #1E3A5F 100%);
+}
+.headline {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:82px; line-height:1.0;
+  color:#fff; margin-bottom:32px;
+  letter-spacing:-1.5px;
+}
+.sub-name {
+  font-size:24px; font-weight:500; color:#94A3B8; line-height:1.5; margin-bottom:24px;
+}
+.phone {
+  font-size:32px; font-weight:700; color:#1DB89A; margin-bottom:0; font-family:'DM Sans',sans-serif;
+}
+/* Logo top-right of entire image */
+.logo-wrap {
+  position:absolute; top:28px; right:54px; z-index:10;
+}
+.logo-wrap img { height:46px; }
+/* EHO bottom-right */
+.eho-wrap {
+  position:absolute; bottom:44px; right:54px; z-index:10;
+}
+.eho-wrap img { height:36px; }
+/* NMLS footer */
+.nmls-footer {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  padding:10px 64px; background:rgba(8,23,38,0.85);
+  font-size:11px; color:rgba(255,255,255,0.55); text-align:center;
+  border-top:1px solid rgba(255,255,255,0.10);
+}
+</style>
+</head>
+<body>
+  <div class="grad-bar"></div>
+  <!-- Headshot left -->
+  <div class="headshot-panel">
+    <img src="${HEADSHOT}" alt="Derek Smith" />
+  </div>
+  <div class="headshot-fade"></div>
+  <!-- Right panel -->
+  <div class="right-panel">
+    <div class="right-stripe"></div>
+    <div class="headline">Pick up<br>the phone.<br>I will.</div>
+    <div class="sub-name">Derek Smith &middot; Baxter Mortgage<br>Kennebunk, ME</div>
+    <div class="phone">(207) 468-6998</div>
+  </div>
+  <!-- Logo top-right -->
+  <div class="logo-wrap"><img src="${LOGO_WHITE}" alt="Baxter Mortgage" /></div>
+  <!-- EHO bottom-right -->
+  <div class="eho-wrap"><img src="${EHO_WHITE}" alt="Equal Housing Opportunity" /></div>
+  <!-- NMLS footer -->
+  <div class="nmls-footer">${NMLS_FOOTER}</div>
+</body>
+</html>`;
+}
+
+// ---------- Post B: Myth Buster split-panel ----------
+function htmlB() {
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1080px; overflow:hidden; font-family:'DM Sans',sans-serif; color:#fff; position:relative; }
+.grad-bar { position:absolute; top:0; left:0; right:0; height:5px; background:${GRADIENT_BAR}; z-index:10; }
+/* Top crimson panel */
+.top-panel {
+  position:absolute; top:0; left:0; right:0; height:594px;
+  background:#7f1d1d;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 60px 72px 48px 72px;
+}
+/* subtle texture lines */
+.top-panel::after {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+  pointer-events:none;
+}
+.category-pill {
+  display:inline-block;
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.35); color:#fff;
+  padding:8px 24px; border-radius:999px;
+  font-size:20px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:32px; width:fit-content; position:relative; z-index:1;
+}
+.myth-text {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:76px; line-height:1.1; color:#fff;
+  text-decoration:line-through; text-decoration-color:rgba(255,100,100,0.7);
+  text-decoration-thickness:5px;
+  letter-spacing:-1px; position:relative; z-index:1;
+}
+/* Bottom green panel */
+.bottom-panel {
+  position:absolute; bottom:0; left:0; right:0; height:486px;
+  background:#052e16;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 48px 72px 80px 72px;
+}
+.truth-label {
+  font-size:18px; font-weight:700; letter-spacing:5px; text-transform:uppercase;
+  color:#4ADE80; margin-bottom:22px;
+}
+.bullets {
+  display:flex; flex-direction:column; gap:14px;
+}
+.bullet {
+  font-size:34px; font-weight:500; color:#E2E8F0; line-height:1.2;
+  display:flex; align-items:center; gap:18px;
+}
+.chk { color:#4ADE80; font-size:38px; flex-shrink:0; }
+/* Logo, EHO, footer */
+.logo-wrap { position:absolute; top:22px; left:64px; z-index:10; }
+.logo-wrap img { height:44px; }
+.eho-wrap { position:absolute; bottom:38px; right:64px; z-index:10; }
+.eho-wrap img { height:34px; }
+.nmls-footer {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  padding:8px 64px; background:rgba(5,46,22,0.90);
+  font-size:11px; color:rgba(255,255,255,0.45); text-align:center;
+}
+</style>
+</head>
+<body>
+  <div class="grad-bar"></div>
+  <div class="top-panel">
+    <div class="category-pill">Myth Buster</div>
+    <div class="myth-text">"You need 20%<br>down to buy."</div>
+  </div>
+  <div class="bottom-panel">
+    <div class="truth-label">The Truth</div>
+    <div class="bullets">
+      <div class="bullet"><span class="chk">&#10003;</span> 3% conventional</div>
+      <div class="bullet"><span class="chk">&#10003;</span> 3.5% FHA</div>
+      <div class="bullet"><span class="chk">&#10003;</span> 0% USDA (some areas)</div>
+      <div class="bullet"><span class="chk">&#10003;</span> DPA can stack</div>
+    </div>
+  </div>
+  <div class="logo-wrap"><img src="${LOGO_WHITE}" alt="Baxter Mortgage" /></div>
+  <div class="eho-wrap"><img src="${EHO_WHITE}" alt="Equal Housing Opportunity" /></div>
+  <div class="nmls-footer">${NMLS_FOOTER}</div>
+</body>
+</html>`;
+}
+
+// ---------- Post C: Stat hero ----------
+function htmlC() {
+  // faint network SVG background
+  const cx = 540, cy = 540;
+  let lines = '', nodes = '';
+  const count = 20;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    const r = 260 + (i % 3) * 100;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r * 0.9;
+    lines += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#1DB89A" stroke-opacity="0.08" stroke-width="1.5"/>`;
+    nodes += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i % 3 === 0 ? 7 : 4}" fill="#1DB89A" opacity="0.18"/>`;
+  }
+  const networkBg = `<svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">${lines}${nodes}</svg>`;
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1080px; overflow:hidden; font-family:'DM Sans',sans-serif; background:#081726; color:#fff; position:relative; }
+.grad-bar { position:absolute; top:0; left:0; right:0; height:5px; background:${GRADIENT_BAR}; z-index:10; }
+.content {
+  position:absolute; top:0; bottom:0; left:0; right:0; z-index:2;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 0 84px;
+}
+.big-num {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:320px; line-height:0.82;
+  background:linear-gradient(90deg, #1DB89A, #4ADE80);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  letter-spacing:-10px;
+  margin-bottom:0;
+}
+.lenders-label {
+  font-size:38px; font-weight:300; color:#CBD5E1;
+  letter-spacing:2px; margin-top:8px; margin-bottom:36px;
+}
+.divider {
+  width:220px; height:2px;
+  background:rgba(29,184,154,0.35); margin-bottom:32px;
+}
+.one-broker {
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:68px; color:#fff; line-height:1.0; margin-bottom:6px;
+}
+.dozens {
+  font-family:'Playfair Display',serif; font-weight:700;
+  font-size:68px; color:#1DB89A; line-height:1.0;
+}
+/* Logo top-right */
+.logo-wrap { position:absolute; top:28px; right:64px; z-index:10; }
+.logo-wrap img { height:46px; }
+/* EHO bottom-right */
+.eho-wrap { position:absolute; bottom:44px; right:64px; z-index:10; }
+.eho-wrap img { height:34px; }
+.nmls-footer {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  padding:10px 64px; background:rgba(8,23,38,0.85);
+  font-size:11px; color:rgba(255,255,255,0.50); text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+<body>
+  <div class="grad-bar"></div>
+  ${networkBg}
+  <div class="content">
+    <div class="big-num">20+</div>
+    <div class="lenders-label">wholesale lenders</div>
+    <div class="divider"></div>
+    <div class="one-broker">One broker.</div>
+    <div class="dozens">Dozens of options.</div>
+  </div>
+  <div class="logo-wrap"><img src="${LOGO_WHITE}" alt="Baxter Mortgage" /></div>
+  <div class="eho-wrap"><img src="${EHO_WHITE}" alt="Equal Housing Opportunity" /></div>
+  <div class="nmls-footer">${NMLS_FOOTER}</div>
+</body>
+</html>`;
+}
+
+// ---------- Post D: Local Hero / Maine coast billboard ----------
+function htmlD() {
+  const coastBg = scene('coast');
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1080px; overflow:hidden; font-family:'DM Sans',sans-serif; background:#081726; color:#fff; position:relative; }
+.grad-bar { position:absolute; top:0; left:0; right:0; height:5px; background:${GRADIENT_BAR}; z-index:10; }
+.scene-bg { position:absolute; inset:0; z-index:0; }
+.scene-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,23,38,0.40) 0%, rgba(8,23,38,0.55) 45%, rgba(8,23,38,0.92) 100%);
+}
+.center-wrap {
+  position:absolute; inset:0; z-index:3;
+  display:flex; align-items:center; justify-content:center;
+}
+.glass-card {
+  background:rgba(8,23,38,0.78);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-radius:16px;
+  border:1px solid rgba(29,184,154,0.22);
+  padding:56px 64px 52px 64px;
+  width:820px;
+}
+.town-pill {
+  display:inline-block;
+  background:rgba(29,184,154,0.15); border:1px solid #1DB89A; color:#1DB89A;
+  padding:8px 26px; border-radius:999px;
+  font-size:20px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:28px;
+}
+.headline {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:96px; line-height:1.0; color:#fff;
+  letter-spacing:-2px; margin-bottom:26px;
+  text-shadow:0 4px 28px rgba(8,23,38,0.7);
+}
+.sub {
+  font-size:34px; font-weight:400; color:#94A3B8; line-height:1.3; margin-bottom:36px;
+}
+.cta-pill {
+  display:inline-block;
+  border:2px solid #1DB89A; color:#1DB89A;
+  padding:10px 32px; border-radius:999px;
+  font-size:24px; font-weight:600;
+  background:rgba(29,184,154,0.08);
+}
+/* Logo, EHO */
+.logo-wrap { position:absolute; top:28px; right:64px; z-index:10; }
+.logo-wrap img { height:46px; }
+.eho-wrap { position:absolute; bottom:44px; right:64px; z-index:10; }
+.eho-wrap img { height:34px; }
+.nmls-footer {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  padding:10px 64px; background:rgba(8,23,38,0.88);
+  font-size:11px; color:rgba(255,255,255,0.50); text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+<body>
+  <div class="grad-bar"></div>
+  <div class="scene-bg">${coastBg}</div>
+  <div class="scene-overlay"></div>
+  <div class="center-wrap">
+    <div class="glass-card">
+      <div class="town-pill">York County &middot; Summer 2026</div>
+      <div class="headline">Inventory<br>won't wait.</div>
+      <div class="sub">Get pre-approved before you find the one.</div>
+      <div class="cta-pill">baxtermortgage.com</div>
+    </div>
+  </div>
+  <div class="logo-wrap"><img src="${LOGO_WHITE}" alt="Baxter Mortgage" /></div>
+  <div class="eho-wrap"><img src="${EHO_WHITE}" alt="Equal Housing Opportunity" /></div>
+  <div class="nmls-footer">${NMLS_FOOTER}</div>
+</body>
+</html>`;
+}
+
+// ---------- Post E: Steps / Process timeline ----------
+function htmlE() {
+  const roadBg = roadScene();
+  const steps = ['Application', 'Underwriting', 'Conditional\nApproval', 'Clear to\nClose', 'Closing Day'];
+  const stepNodes = steps.map((s, i) => `
+    <div class="step-item">
+      <div class="step-circle">${i + 1}</div>
+      <div class="step-label">${s.replace('\n', '<br>')}</div>
+    </div>`).join('');
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1080px; height:1080px; overflow:hidden; font-family:'DM Sans',sans-serif; background:#081726; color:#fff; position:relative; }
+.grad-bar { position:absolute; top:0; left:0; right:0; height:5px; background:${GRADIENT_BAR}; z-index:10; }
+.scene-bg { position:absolute; inset:0; z-index:0; }
+.scene-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:rgba(8,23,38,0.62);
+}
+.center-wrap {
+  position:absolute; inset:0; z-index:3;
+  display:flex; align-items:center; justify-content:center;
+}
+.glass-panel {
+  background:rgba(8,23,38,0.80);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-radius:18px;
+  border:1px solid rgba(29,184,154,0.18);
+  padding:60px 64px 56px 64px;
+  width:960px;
+}
+.cat-pill {
+  display:inline-block;
+  background:rgba(29,184,154,0.14); border:1px solid #1DB89A; color:#1DB89A;
+  padding:8px 24px; border-radius:999px;
+  font-size:20px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:28px;
+}
+.title {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:86px; line-height:1.0; color:#fff;
+  letter-spacing:-2px; margin-bottom:52px;
+  text-shadow:0 4px 20px rgba(8,23,38,0.8);
+}
+.steps-row {
+  position:relative;
+  display:flex; justify-content:space-between; align-items:flex-start;
+}
+.steps-line {
+  position:absolute; top:28px; left:28px; right:28px;
+  height:3px; background:rgba(29,184,154,0.30); z-index:0;
+}
+.step-item {
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center;
+  width:162px;
+}
+.step-circle {
+  width:56px; height:56px; border-radius:50%;
+  background:#1DB89A;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:26px; color:#fff;
+  margin-bottom:14px;
+  box-shadow:0 0 20px rgba(29,184,154,0.35);
+}
+.step-label {
+  font-size:22px; text-align:center; color:#CBD5E1;
+  font-weight:600; line-height:1.3;
+}
+/* Logo, EHO */
+.logo-wrap { position:absolute; top:28px; right:64px; z-index:10; }
+.logo-wrap img { height:46px; }
+.eho-wrap { position:absolute; bottom:44px; right:64px; z-index:10; }
+.eho-wrap img { height:34px; }
+.nmls-footer {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  padding:10px 64px; background:rgba(8,23,38,0.88);
+  font-size:11px; color:rgba(255,255,255,0.50); text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+<body>
+  <div class="grad-bar"></div>
+  <div class="scene-bg">${roadBg}</div>
+  <div class="scene-overlay"></div>
+  <div class="center-wrap">
+    <div class="glass-panel">
+      <div class="cat-pill">How It Works</div>
+      <div class="title">5 steps to closing.</div>
+      <div class="steps-row">
+        <div class="steps-line"></div>
+        ${stepNodes}
+      </div>
+    </div>
+  </div>
+  <div class="logo-wrap"><img src="${LOGO_WHITE}" alt="Baxter Mortgage" /></div>
+  <div class="eho-wrap"><img src="${EHO_WHITE}" alt="Equal Housing Opportunity" /></div>
+  <div class="nmls-footer">${NMLS_FOOTER}</div>
+</body>
+</html>`;
+}
+
+// ======================================================================
+// NEW POSTS list (A-E only, rendered separately)
+// ======================================================================
+const newPosts = [
+  { file: 'A-headshot-intro.png', htmlFn: htmlA },
+  { file: 'B-myth-buster.png',    htmlFn: htmlB },
+  { file: 'C-stat-hero.png',      htmlFn: htmlC },
+  { file: 'D-local-hero.png',     htmlFn: htmlD },
+  { file: 'E-steps.png',          htmlFn: htmlE },
+];
+
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1080 } });
+
+  // Render original 10 posts
   for (const post of posts) {
     await page.setContent(html(post), { waitUntil: 'networkidle' });
     await page.waitForTimeout(150);
@@ -873,5 +1364,15 @@ ${extraStyle}
     await page.screenshot({ path: outPath });
     console.log('wrote', outPath);
   }
+
+  // Render 5 new posts A-E
+  for (const p of newPosts) {
+    await page.setContent(p.htmlFn(), { waitUntil: 'networkidle' });
+    await page.waitForTimeout(150);
+    const outPath = path.join(__dirname, p.file);
+    await page.screenshot({ path: outPath });
+    console.log('wrote', outPath);
+  }
+
   await browser.close();
 })();
