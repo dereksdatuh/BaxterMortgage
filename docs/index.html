@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baxter Mortgage | 0-to-20 Growth Playbook</title>
+<style>
+:root {
+  --navy: #1E3A5F;
+  --teal: #1DB89A;
+  --green: #4ADE80;
+  --gold: #D4A843;
+  --light: #F8FAFB;
+  --white: #FFFFFF;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --red: #EF4444;
+  --blue: #3B82F6;
+  --amber: #F59E0B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--gray-900);
+  background: var(--light);
+  line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy);
+  border-bottom: 3px solid var(--teal);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+nav .logo {
+  color: var(--white); font-size: 1.15rem; font-weight: 700; letter-spacing: .5px;
+}
+nav .logo span { color: var(--green); }
+nav ul {
+  list-style: none; display: flex; gap: .25rem; flex-wrap: wrap;
+}
+nav ul li a {
+  color: rgba(255,255,255,.8); text-decoration: none; font-size: .78rem;
+  padding: .35rem .65rem; border-radius: 6px; transition: all .2s;
+  white-space: nowrap;
+}
+nav ul li a:hover, nav ul li a.active {
+  background: rgba(255,255,255,.12); color: var(--white);
+}
+@media (max-width: 900px) {
+  nav ul { display: none; }
+  nav { justify-content: center; }
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #2C4F7C 50%, var(--navy) 100%);
+  color: var(--white);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(transparent, var(--light));
+}
+.hero h1 { font-size: 2.8rem; font-weight: 300; margin-bottom: .5rem; }
+.hero h1 strong { font-weight: 700; color: var(--green); }
+.hero .tagline { font-size: 1.2rem; color: var(--teal); margin-bottom: 1.5rem; font-style: italic; }
+.hero .meta { font-size: .9rem; opacity: .7; }
+.hero .start-date {
+  display: inline-block; margin-top: 1.5rem;
+  background: rgba(29,184,154,.2); border: 1px solid var(--teal);
+  padding: .5rem 1.5rem; border-radius: 30px;
+  font-size: 1rem; font-weight: 600;
+}
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+section { margin-bottom: 3rem; }
+
+h2 {
+  font-size: 1.8rem; color: var(--navy); margin-bottom: 1.5rem;
+  padding-bottom: .5rem; border-bottom: 3px solid var(--teal);
+  display: flex; align-items: center; gap: .5rem;
+}
+h3 { font-size: 1.25rem; color: var(--navy); margin: 1.5rem 0 .75rem; }
+h4 { font-size: 1.05rem; color: var(--teal); margin: 1rem 0 .5rem; }
+
+/* CARDS */
+.card {
+  background: var(--white); border-radius: 12px;
+  padding: 1.5rem; margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  border: 1px solid var(--gray-200);
+}
+.card.highlight {
+  border-left: 4px solid var(--teal);
+}
+.card.navy { background: var(--navy); color: var(--white); }
+.card.navy h3, .card.navy h4 { color: var(--green); }
+
+/* STAT GRID */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; margin-bottom: 2rem;
+}
+.stat-card {
+  background: var(--white); border-radius: 12px; padding: 1.25rem;
+  text-align: center; border: 1px solid var(--gray-200);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.stat-card .number {
+  font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1.2;
+}
+.stat-card .label { font-size: .8rem; color: var(--gray-500); margin-top: .25rem; }
+.stat-card.teal .number { color: var(--teal); }
+.stat-card.green .number { color: var(--green); }
+.stat-card.gold .number { color: var(--gold); }
+
+/* TABLES */
+table {
+  width: 100%; border-collapse: collapse; margin: 1rem 0;
+  font-size: .9rem;
+}
+th {
+  background: var(--navy); color: var(--white);
+  padding: .65rem .75rem; text-align: left; font-weight: 600;
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .5px;
+}
+td {
+  padding: .6rem .75rem; border-bottom: 1px solid var(--gray-200);
+}
+tr:nth-child(even) { background: var(--gray-50); }
+tr:hover { background: rgba(29,184,154,.05); }
+
+/* CHECKLIST */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  padding: .5rem .75rem; border-bottom: 1px solid var(--gray-100);
+  display: flex; align-items: flex-start; gap: .5rem;
+  font-size: .92rem;
+}
+.checklist li::before {
+  content: '\2610'; font-size: 1.1rem; color: var(--teal);
+  flex-shrink: 0; margin-top: .05rem;
+}
+.checklist li.done::before { content: '\2611'; color: var(--green); }
+
+/* TIME BLOCKS */
+.time-block {
+  display: grid; grid-template-columns: 100px 1fr;
+  border-left: 3px solid var(--teal); margin-bottom: .25rem;
+  border-radius: 0 8px 8px 0; overflow: hidden;
+}
+.time-block .time {
+  background: var(--navy); color: var(--white);
+  padding: .5rem .6rem; font-size: .8rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+.time-block .activity {
+  padding: .5rem .75rem; background: var(--white);
+  border: 1px solid var(--gray-200); border-left: none;
+  font-size: .88rem;
+}
+.time-block .activity strong { color: var(--navy); }
+.time-block .activity .tag {
+  display: inline-block; font-size: .7rem; padding: .1rem .4rem;
+  border-radius: 4px; font-weight: 600; margin-left: .25rem;
+}
+.tag.prospect { background: #DBEAFE; color: #1E40AF; }
+.tag.admin { background: #FEF3C7; color: #92400E; }
+.tag.content { background: #D1FAE5; color: #065F46; }
+.tag.network { background: #EDE9FE; color: #5B21B6; }
+.tag.learn { background: #FCE7F3; color: #9D174D; }
+.tag.pipeline { background: #FEE2E2; color: #991B1B; }
+
+/* WEEK PLAN */
+.week-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.day-card {
+  background: var(--white); border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+}
+.day-card .day-header {
+  background: var(--navy); color: var(--white);
+  padding: .6rem 1rem; font-weight: 700; font-size: .95rem;
+}
+.day-card .day-header span { color: var(--green); font-weight: 400; font-size: .8rem; }
+.day-card .day-body { padding: 1rem; }
+.day-card .day-body ul { padding-left: 1.2rem; font-size: .85rem; }
+.day-card .day-body ul li { margin-bottom: .35rem; }
+.day-card .day-body .priority {
+  display: inline-block; background: var(--teal); color: white;
+  font-size: .7rem; padding: .1rem .4rem; border-radius: 3px;
+  font-weight: 600;
+}
+
+/* TEMPLATE BOX */
+.template-box {
+  background: var(--gray-50); border: 1px solid var(--gray-300);
+  border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: .82rem; line-height: 1.7;
+  white-space: pre-wrap; word-wrap: break-word;
+  position: relative;
+}
+.template-box .template-label {
+  position: absolute; top: -.5rem; left: 1rem;
+  background: var(--teal); color: white;
+  padding: .1rem .6rem; border-radius: 4px;
+  font-size: .7rem; font-weight: 700;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* COLLAPSIBLE */
+details {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: 12px; margin-bottom: .75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+details[open] { border-color: var(--teal); }
+summary {
+  padding: 1rem 1.25rem; cursor: pointer;
+  font-weight: 600; color: var(--navy);
+  list-style: none; display: flex; align-items: center; gap: .5rem;
+}
+summary::before { content: '\25B6'; font-size: .7rem; color: var(--teal); transition: transform .2s; }
+details[open] summary::before { transform: rotate(90deg); }
+summary::-webkit-details-marker { display: none; }
+details .detail-body { padding: 0 1.25rem 1.25rem; }
+
+/* PHASE BADGE */
+.phase-badge {
+  display: inline-block; padding: .25rem .75rem;
+  border-radius: 20px; font-size: .75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.phase-1 { background: #DBEAFE; color: #1E40AF; }
+.phase-2 { background: #D1FAE5; color: #065F46; }
+.phase-3 { background: #FEF3C7; color: #92400E; }
+.phase-4 { background: #EDE9FE; color: #5B21B6; }
+
+/* PROGRESS BAR */
+.progress-track {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: .5rem; margin: 1.5rem 0;
+}
+.progress-step {
+  text-align: center; padding: .75rem .5rem;
+  border-radius: 8px; font-size: .8rem;
+}
+.progress-step .step-num {
+  font-size: 1.4rem; font-weight: 700; display: block; margin-bottom: .25rem;
+}
+.progress-step.p1 { background: #DBEAFE; color: #1E40AF; }
+.progress-step.p2 { background: #D1FAE5; color: #065F46; }
+.progress-step.p3 { background: #FEF3C7; color: #92400E; }
+.progress-step.p4 { background: #EDE9FE; color: #5B21B6; }
+
+/* FOOTER */
+footer {
+  background: var(--navy); color: rgba(255,255,255,.7);
+  padding: 2rem; text-align: center; font-size: .8rem;
+  margin-top: 3rem;
+}
+footer strong { color: var(--green); }
+
+/* PILL */
+.pill {
+  display: inline-block; padding: .2rem .6rem;
+  border-radius: 12px; font-size: .75rem; font-weight: 600;
+}
+.pill-teal { background: rgba(29,184,154,.15); color: var(--teal); }
+.pill-navy { background: rgba(30,58,95,.1); color: var(--navy); }
+.pill-green { background: rgba(74,222,128,.15); color: #166534; }
+.pill-red { background: rgba(239,68,68,.1); color: var(--red); }
+.pill-gold { background: rgba(212,168,67,.15); color: #92400E; }
+
+/* TWO COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+.divider { border: none; border-top: 2px solid var(--gray-200); margin: 2rem 0; }
+
+p { margin-bottom: .75rem; }
+ul, ol { margin-bottom: .75rem; padding-left: 1.5rem; }
+li { margin-bottom: .35rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BAXTER <span>mortgage</span></div>
+  <ul>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#revenue">Revenue</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#daily">Daily System</a></li>
+    <li><a href="#week1">Week 1</a></li>
+    <li><a href="#monthly">Monthly</a></li>
+    <li><a href="#referrals">Referrals</a></li>
+    <li><a href="#social">Social</a></li>
+    <li><a href="#templates">Templates</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>0 to <strong>20 Loans/Month</strong></h1>
+  <div class="tagline">We'll Guide You Home</div>
+  <div class="meta">Derek Smith, Loan Officer | NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768<br>75 Portland Rd, Kennebunk, ME 04043</div>
+  <div class="start-date">Launch Date: Monday, June 22, 2026</div>
+</div>
+
+<div class="container">
+
+<!-- PHASE OVERVIEW -->
+<section>
+  <div class="progress-track">
+    <div class="progress-step p1"><span class="step-num">Phase 1</span>Months 1-3<br><strong>2-4 loans/mo</strong><br>Foundation</div>
+    <div class="progress-step p2"><span class="step-num">Phase 2</span>Months 4-6<br><strong>5-8 loans/mo</strong><br>Traction</div>
+    <div class="progress-step p3"><span class="step-num">Phase 3</span>Months 7-12<br><strong>8-15 loans/mo</strong><br>Scale</div>
+    <div class="progress-step p4"><span class="step-num">Phase 4</span>Months 12-18<br><strong>15-20 loans/mo</strong><br>Dominance</div>
+  </div>
+</section>
+
+<!-- MARKET INTEL -->
+<section id="market">
+  <h2>Market Intelligence</h2>
+
+  <h3>York County Housing Market (2025-2026)</h3>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="number">$503K</div><div class="label">Median Sale Price (York County)</div></div>
+    <div class="stat-card teal"><div class="number">+5.3%</div><div class="label">Year-over-Year Price Growth</div></div>
+    <div class="stat-card"><div class="number">41-55</div><div class="label">Avg Days on Market</div></div>
+    <div class="stat-card green"><div class="number">$832,750</div><div class="label">Conforming Loan Limit (2026)</div></div>
+    <div class="stat-card gold"><div class="number">216,731</div><div class="label">York County Population</div></div>
+    <div class="stat-card"><div class="number">77.3%</div><div class="label">Homeownership Rate</div></div>
+    <div class="stat-card teal"><div class="number">$88,333</div><div class="label">Median Household Income</div></div>
+    <div class="stat-card"><div class="number">45.3</div><div class="label">Median Age (years)</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Median Prices by Town</h4>
+      <table>
+        <tr><th>Town</th><th>Median Price</th><th>Buyer Type</th></tr>
+        <tr><td>Kennebunkport</td><td>$1,069,664</td><td>Luxury / Second Home</td></tr>
+        <tr><td>Ogunquit</td><td>$650,000+</td><td>Vacation / Luxury</td></tr>
+        <tr><td>Kennebunk</td><td>$520,000</td><td>Move-up Families</td></tr>
+        <tr><td>Scarborough</td><td>$510,000</td><td>Commuter Families</td></tr>
+        <tr><td>Wells</td><td>$450,000</td><td>Mixed / First-time</td></tr>
+        <tr><td>Arundel</td><td>$420,000</td><td>First-time / Families</td></tr>
+        <tr><td>Saco</td><td>$400,000</td><td>First-time Buyers</td></tr>
+        <tr><td>Biddeford</td><td>$360,000</td><td>First-time / Investment</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Current Rates (May 2026)</h4>
+      <table>
+        <tr><th>Product</th><th>Rate Range</th></tr>
+        <tr><td>30-Year Fixed Conventional</td><td>5.75% - 6.50%</td></tr>
+        <tr><td>15-Year Fixed</td><td>~6.00%</td></tr>
+        <tr><td>FHA 30-Year</td><td>5.50% - 6.25%</td></tr>
+        <tr><td>VA 30-Year</td><td>5.25% - 6.00%</td></tr>
+        <tr><td>USDA 30-Year</td><td>5.50% - 6.00%</td></tr>
+        <tr><td>Jumbo</td><td>6.25% - 7.00%</td></tr>
+        <tr><td>7/1 ARM</td><td>~6.625%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Your 5 Buyer Segments</h4>
+    <table>
+      <tr><th>Segment</th><th>Towns</th><th>Price Range</th><th>Products</th><th>Your Angle</th></tr>
+      <tr><td><strong>First-time buyers</strong></td><td>Biddeford, Saco, Arundel</td><td>$280K-$420K</td><td>FHA, Conv 3% down, USDA</td><td>Down payment education, hand-holding</td></tr>
+      <tr><td><strong>Move-up families</strong></td><td>Kennebunk, Wells, Scarborough</td><td>$450K-$700K</td><td>Conv, VA, bridge loans</td><td>Rate shopping advantage, speed</td></tr>
+      <tr><td><strong>Luxury / Second home</strong></td><td>Kennebunkport, Ogunquit</td><td>$700K-$2M+</td><td>Jumbo, portfolio, ARM</td><td>Lender access banks can't match</td></tr>
+      <tr><td><strong>Vacation rental investors</strong></td><td>All coastal towns</td><td>$350K-$800K</td><td>DSCR, investment conv</td><td>Cash-flow underwriting expertise</td></tr>
+      <tr><td><strong>Retirees downsizing</strong></td><td>Kennebunk, Wells, York</td><td>$300K-$500K</td><td>Conv, reverse mortgage ref</td><td>Equity optimization, patience</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h4>Seasonal Market Calendar</h4>
+    <table>
+      <tr><th>Season</th><th>Months</th><th>Market Activity</th><th>Your Strategy</th></tr>
+      <tr><td><strong>Spring Surge</strong></td><td>Mar - May</td><td>Listings rise, buyers re-enter, multiple offers return</td><td>Pre-approval blitz, agent outreach, "get ready" content</td></tr>
+      <tr><td><strong>Summer Peak</strong></td><td>Jun - Aug</td><td>Highest volume, second-home buyers, tourism overlap</td><td>Vacation/investment marketing, open house presence</td></tr>
+      <tr><td><strong>Fall Window</strong></td><td>Sep - Nov</td><td>Motivated sellers, less competition, steady deals</td><td>"Less competition" messaging, rate-drop content</td></tr>
+      <tr><td><strong>Winter Build</strong></td><td>Dec - Feb</td><td>Lowest volume, serious-only buyers</td><td>Relationship building, agent lunches, planning for spring</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- COMPETITIVE LANDSCAPE -->
+<section id="competitors">
+  <h2>Competitive Landscape</h2>
+
+  <div class="card highlight">
+    <h4>Your Competitive Advantage</h4>
+    <p>76% of homebuyers choose their mortgage provider based on their real estate agent's recommendation (Freddie Mac). <strong>Win the agent, win the loan.</strong></p>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Banks to Position Against (Jab Targets)</h4>
+      <table>
+        <tr><th>Bank</th><th>Their Weakness</th></tr>
+        <tr><td>Kennebunk Savings</td><td>Single product menu, slow underwriting</td></tr>
+        <tr><td>Biddeford Savings</td><td>Limited product range</td></tr>
+        <tr><td>Norway Savings</td><td>Bureaucratic, multiple branches = less personal</td></tr>
+        <tr><td>Camden National</td><td>Not mortgage-specialized</td></tr>
+        <tr><td>Bangor Savings</td><td>Generic service, not local to York County</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Broker/Lender Competitors</h4>
+      <table>
+        <tr><th>Company</th><th>How to Beat Them</th></tr>
+        <tr><td>Fairway Independent</td><td>Match their marketing, beat on service + local</td></tr>
+        <tr><td>Guild Mortgage</td><td>You're local, they rotate LOs</td></tr>
+        <tr><td>CrossCountry Mortgage</td><td>National = impersonal, out-hustle locally</td></tr>
+        <tr><td>East Coast Mortgage</td><td>Auburn-focused, not your market</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card navy">
+    <h4>Your 5-Point Broker Advantage (Memorize This)</h4>
+    <ol>
+      <li><strong>20+ lenders.</strong> Banks offer one menu. You find the best deal.</li>
+      <li><strong>One point of contact.</strong> No call centers. You answer the phone.</li>
+      <li><strong>Local expertise.</strong> You live in Kennebunk. You know the market.</li>
+      <li><strong>Niche products.</strong> Bank statement, DSCR, renovation, jumbo -- products banks won't touch.</li>
+      <li><strong>Speed.</strong> Pre-approval in 24 hours. Clear to close 2-3 days faster.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- REVENUE MODEL -->
+<section id="revenue">
+  <h2>Revenue Model</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card teal"><div class="number">$425K</div><div class="label">Target Avg Loan Amount</div></div>
+    <div class="stat-card"><div class="number">115 bps</div><div class="label">Target Broker Comp (1.15%)</div></div>
+    <div class="stat-card green"><div class="number">$4,888</div><div class="label">Revenue Per Loan</div></div>
+    <div class="stat-card gold"><div class="number">$97,750</div><div class="label">20 Loans/Mo Revenue</div></div>
+  </div>
+
+  <div class="card">
+    <h4>Revenue Scale</h4>
+    <table>
+      <tr><th>Loans/Month</th><th>Monthly Gross</th><th>Annual Gross</th><th>Phase</th></tr>
+      <tr><td>2</td><td>$9,775</td><td>$117,300</td><td><span class="phase-badge phase-1">Phase 1</span></td></tr>
+      <tr><td>5</td><td>$24,438</td><td>$293,250</td><td><span class="phase-badge phase-1">Phase 1-2</span></td></tr>
+      <tr><td>8</td><td>$39,100</td><td>$469,200</td><td><span class="phase-badge phase-2">Phase 2</span></td></tr>
+      <tr><td>12</td><td>$58,650</td><td>$703,800</td><td><span class="phase-badge phase-3">Phase 3</span></td></tr>
+      <tr><td>15</td><td>$73,313</td><td>$879,750</td><td><span class="phase-badge phase-3">Phase 3</span></td></tr>
+      <tr><td><strong>20</strong></td><td><strong>$97,750</strong></td><td><strong>$1,173,000</strong></td><td><span class="phase-badge phase-4">Phase 4</span></td></tr>
+    </table>
+  </div>
+
+  <div class="card highlight">
+    <h4>Pipeline Math (Work Backwards from 20 Closings)</h4>
+    <table>
+      <tr><th>Stage</th><th>Conversion</th><th>Volume Needed</th><th>Per Day</th></tr>
+      <tr><td>Closings</td><td>--</td><td>20/month</td><td>~1/day</td></tr>
+      <tr><td>Applications</td><td>75% close</td><td>27/month</td><td>~1.3/day</td></tr>
+      <tr><td>Pre-approvals</td><td>60% apply</td><td>45/month</td><td>~2.2/day</td></tr>
+      <tr><td>Qualified leads</td><td>40% pre-approve</td><td>113/month</td><td>~5.6/day</td></tr>
+      <tr><td>Total inquiries</td><td>25% qualify</td><td>450/month</td><td>~15/day</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- DAILY SYSTEM -->
+<section id="daily">
+  <h2>Daily Operating System</h2>
+  <p>This is your non-negotiable daily structure. Time block your calendar exactly like this. Adjust specific activities, never the blocks.</p>
+
+  <h3>Ideal Day Schedule (Phase 1-2)</h3>
+
+  <div class="time-block"><div class="time">6:00 AM<br>6:30</div><div class="activity"><strong>Morning Prep</strong> <span class="tag learn">MINDSET</span><br>Review goals, read industry news, check rate sheets, review today's calendar. Coffee + intention setting.</div></div>
+
+  <div class="time-block"><div class="time">6:30 AM<br>7:00</div><div class="activity"><strong>Content Creation</strong> <span class="tag content">CONTENT</span><br>Write and schedule today's Instagram post. Shoot a 30-second Reel if it's a video day. Schedule Stories.</div></div>
+
+  <div class="time-block"><div class="time">7:00 AM<br>7:30</div><div class="activity"><strong>Speed-to-Lead Check</strong> <span class="tag pipeline">PIPELINE</span><br>Check overnight leads from website/Zillow/Facebook. Call or text any new leads within 5 minutes of seeing them. First to call = 3x more likely to close.</div></div>
+
+  <div class="time-block"><div class="time">7:30 AM<br>8:00</div><div class="activity"><strong>Pipeline Review</strong> <span class="tag pipeline">PIPELINE</span><br>Review CRM: Who needs follow-up? Any conditions outstanding? Update file statuses. Send borrower/agent updates.</div></div>
+
+  <div class="time-block"><div class="time">8:00 AM<br>10:00</div><div class="activity"><strong>POWER PROSPECTING BLOCK</strong> <span class="tag prospect">PROSPECT</span><br>This is your money block. No email. No distractions. Phone only.<br>- Call 10 real estate agents (new outreach or relationship nurture)<br>- Call 5 past leads who haven't converted yet<br>- Call 3 past clients for referral ask / check-in<br>- Send 5 personalized agent DMs on Instagram<br>- Drop off coffee/cards at 1 real estate office</div></div>
+
+  <div class="time-block"><div class="time">10:00 AM<br>12:00</div><div class="activity"><strong>Loan Production</strong> <span class="tag admin">PRODUCTION</span><br>Take applications, run DU/LP, pull credit, collect docs, submit to underwriting, clear conditions. This is the work that pays.</div></div>
+
+  <div class="time-block"><div class="time">12:00 PM<br>1:00</div><div class="activity"><strong>Lunch + Networking</strong> <span class="tag network">NETWORK</span><br>2-3 days/week: lunch with a real estate agent, financial planner, or referral partner. Other days: eat and recharge.</div></div>
+
+  <div class="time-block"><div class="time">1:00 PM<br>3:00</div><div class="activity"><strong>Loan Production Block 2</strong> <span class="tag admin">PRODUCTION</span><br>Continue applications, borrower calls, processor coordination, underwriting follow-up, pre-approval letters.</div></div>
+
+  <div class="time-block"><div class="time">3:00 PM<br>4:00</div><div class="activity"><strong>Follow-Up Hour</strong> <span class="tag prospect">PROSPECT</span><br>- Call back everyone you couldn't reach this morning<br>- Text leads who haven't responded<br>- Send "just checking in" emails to warm leads<br>- Update CRM notes on every contact made today</div></div>
+
+  <div class="time-block"><div class="time">4:00 PM<br>4:30</div><div class="activity"><strong>Agent Value Drop</strong> <span class="tag network">NETWORK</span><br>Send 3-5 agents something useful: a rate update, a market stat, a "just closed" celebration post tagging them, or a listing congratulations DM.</div></div>
+
+  <div class="time-block"><div class="time">4:30 PM<br>5:00</div><div class="activity"><strong>End-of-Day Review</strong> <span class="tag admin">ADMIN</span><br>Log all activity in CRM. Review tomorrow's schedule. Set 3 "must-do" items for tomorrow. Update pipeline tracker.</div></div>
+
+  <div class="time-block"><div class="time">5:00 PM<br>7:00</div><div class="activity"><strong>Personal Time</strong><br>Family, exercise, life. Protect this. Check phone once at 6 PM for urgent borrower questions only.</div></div>
+
+  <div class="time-block"><div class="time">7:00 PM<br>7:30</div><div class="activity"><strong>Evening Engagement</strong> <span class="tag content">CONTENT</span><br>15 min: Engage on Instagram (like, comment on agent posts, respond to DMs). 15 min: respond to any evening borrower texts/emails.</div></div>
+
+  <div class="card highlight" style="margin-top:1rem;">
+    <h4>Daily Non-Negotiables (Phase 1)</h4>
+    <ul class="checklist">
+      <li>Make 10+ prospecting calls (agents, leads, past clients)</li>
+      <li>Send 5+ personalized agent DMs or emails</li>
+      <li>Post 1 piece of content on Instagram</li>
+      <li>Post 2-3 Instagram Stories</li>
+      <li>Follow up with every active lead in pipeline</li>
+      <li>Update CRM with every contact and note</li>
+      <li>Review and respond to all new leads within 5 minutes</li>
+      <li>Send at least 1 pre-approval letter or rate quote</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WEEK 1 -->
+<section id="week1">
+  <h2>Week 1: June 22-28, 2026</h2>
+  <p><span class="phase-badge phase-1">Phase 1 Launch</span> Your first week. Foundation building. Every minute counts.</p>
+
+  <div class="week-grid">
+
+    <div class="day-card">
+      <div class="day-header">Monday, June 22 <span>DAY 1</span></div>
+      <div class="day-body">
+        <p class="priority">LAUNCH DAY</p>
+        <h4>Morning (6:00-12:00)</h4>
+        <ul>
+          <li><strong>6:00-7:00</strong> Set up Instagram Business account. Write bio: "Mortgage Broker | Kennebunk, ME | I shop 20+ lenders so you don't have to | NMLS# 2810853"</li>
+          <li><strong>7:00-8:00</strong> Claim Google Business Profile. Add services, photos, hours, description</li>
+          <li><strong>8:00-9:00</strong> Create contact list: Write down every person you know (friends, family, former colleagues, neighbors). Target: 100+ names</li>
+          <li><strong>9:00-10:00</strong> Set up CRM (HubSpot Free or BNTouch trial). Import contact list</li>
+          <li><strong>10:00-12:00</strong> Research top 10 real estate agents in Kennebunk/Wells area. Find their Instagram, email, office. Add to CRM as "Agent Prospect"</li>
+        </ul>
+        <h4>Afternoon (12:00-5:00)</h4>
+        <ul>
+          <li><strong>12:00-1:00</strong> Lunch. Draft your 30-second elevator pitch (see Scripts section)</li>
+          <li><strong>1:00-2:00</strong> Design and order business cards (500 qty). Include QR code to rate quote page</li>
+          <li><strong>2:00-3:00</strong> Write your first 5 Instagram posts using brand system. Schedule for this week</li>
+          <li><strong>3:00-4:00</strong> Send personal text to 20 people from your contact list: "Hey! I just launched my own mortgage brokerage here in Kennebunk. If you or anyone you know is thinking about buying, refinancing, or just has mortgage questions, I'd love to help. I shop 20+ lenders to find the best deal."</li>
+          <li><strong>4:00-5:00</strong> Set up Facebook Business Page. Join 3 local community Facebook groups (Kennebunk Community, York County Buy/Sell, Southern Maine Real Estate)</li>
+        </ul>
+        <h4>Evening (7:00-8:00)</h4>
+        <ul>
+          <li>Follow 25 local real estate agents on Instagram. Like and comment on 2-3 of their recent posts (genuine comments, not spam)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Tuesday, June 23 <span>DAY 2</span></div>
+      <div class="day-body">
+        <p class="priority">AGENT OUTREACH BEGINS</p>
+        <h4>Morning</h4>
+        <ul>
+          <li><strong>6:00-7:00</strong> Post Instagram: Education post ("FHA vs Conventional in 60 seconds"). Post 2 Stories</li>
+          <li><strong>7:00-8:00</strong> Pipeline: Check for any leads from yesterday's texts</li>
+          <li><strong>8:00-10:00</strong> PROSPECTING: Send cold outreach emails to 5 real estate agents (use Template 1). Personalize each one by referencing a specific listing</li>
+          <li><strong>10:00-11:00</strong> Call Kennebunk-Kennebunkport-Arundel Chamber of Commerce. Ask about membership, next mixer event, and sponsorship opportunities</li>
+          <li><strong>11:00-12:00</strong> Research BNI Maine chapters near Kennebunk. Call to schedule a visit. Check if the mortgage seat is open</li>
+        </ul>
+        <h4>Afternoon</h4>
+        <ul>
+          <li><strong>12:00-1:00</strong> Lunch</li>
+          <li><strong>1:00-2:00</strong> Draft your Weekly Rate Update email template (see Templates). Set up in CRM for recurring send every Friday</li>
+          <li><strong>2:00-3:00</strong> Write 3 more Instagram posts. Build content queue to stay 1 week ahead</li>
+          <li><strong>3:00-4:00</strong> Send 10 more personal texts from your contact list</li>
+          <li><strong>4:00-5:00</strong> Study your top 3 lender rate sheets. Know conventional, FHA, VA pricing cold</li>
+        </ul>
+        <h4>Evening</h4>
+        <ul>
+          <li>Engage on Instagram: comment on 5 agent posts, respond to any DMs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Wednesday, June 24 <span>DAY 3</span></div>
+      <div class="day-body">
+        <p class="priority">FIRST OFFICE VISITS</p>
+        <h4>Morning</h4>
+        <ul>
+          <li><strong>6:00-7:00</strong> Post Instagram: Jab ad ("Your bank has one menu. I shop 20+"). Stories</li>
+          <li><strong>7:00-8:00</strong> Speed-to-lead check + pipeline review</li>
+          <li><strong>8:00-8:30</strong> Stop at Dunkin or local coffee shop. Buy a box of coffee and pastries</li>
+          <li><strong>8:30-10:00</strong> WALK INTO Pack Maynard Real Estate office with coffee. Introduce yourself to the front desk and any agents present. Leave 20 business cards. Ask: "Who's your busiest agent? I'd love to buy them a coffee"</li>
+          <li><strong>10:00-11:00</strong> Walk into RE/MAX Realty One Kennebunk. Same approach</li>
+          <li><strong>11:00-12:00</strong> Follow up on yesterday's 5 agent emails. Call anyone who hasn't responded</li>
+        </ul>
+        <h4>Afternoon</h4>
+        <ul>
+          <li><strong>12:00-1:00</strong> Lunch with a personal contact who's in real estate or finance</li>
+          <li><strong>1:00-3:00</strong> Set up your rate quote landing page / personal website if not done</li>
+          <li><strong>3:00-4:00</strong> Send 5 more agent outreach emails (new batch). Target Wells and Ogunquit agents</li>
+          <li><strong>4:00-5:00</strong> CRM cleanup: tag all contacts by type (agent, lead, past client, sphere)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Thursday, June 25 <span>DAY 4</span></div>
+      <div class="day-body">
+        <p class="priority">CONTENT + RELATIONSHIPS</p>
+        <h4>Morning</h4>
+        <ul>
+          <li><strong>6:00-7:00</strong> Shoot a 30-second Instagram Reel: "3 things your bank won't tell you." Post + Stories</li>
+          <li><strong>7:00-8:00</strong> Speed-to-lead + pipeline</li>
+          <li><strong>8:00-10:00</strong> PROSPECTING: Call 10 agents (mix of cold and follow-ups from earlier this week). Book at least 2 coffee meetings for next week</li>
+          <li><strong>10:00-12:00</strong> Loan production: any applications or pre-quals from this week's outreach</li>
+        </ul>
+        <h4>Afternoon</h4>
+        <ul>
+          <li><strong>12:00-1:00</strong> Lunch. Research online: Kennebunk community events, 5Ks, festivals coming up in July/August for sponsorship</li>
+          <li><strong>1:00-2:00</strong> Walk into Lighthouse Real Estate Group or Kennebunk Beach Realty with coffee + cards</li>
+          <li><strong>2:00-3:00</strong> Create a "First-Time Homebuyer Checklist" PDF for agents to co-brand. This is a value drop tool</li>
+          <li><strong>3:00-4:00</strong> Follow up on ALL open outreach from this week. Text anyone you haven't reached</li>
+          <li><strong>4:00-5:00</strong> End of day review. Update CRM. Plan Friday</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Friday, June 26 <span>DAY 5</span></div>
+      <div class="day-body">
+        <p class="priority">RATE UPDATE + REVIEW</p>
+        <h4>Morning</h4>
+        <ul>
+          <li><strong>6:00-7:00</strong> Post Instagram: Testimonial/social proof or local Maine content. Stories</li>
+          <li><strong>7:00-8:00</strong> Speed-to-lead + pipeline</li>
+          <li><strong>8:00-9:00</strong> Send your FIRST Weekly Rate Update email to all agent contacts (even if only 10 agents). This is your "showing up" move. Do this every Friday without fail</li>
+          <li><strong>9:00-10:00</strong> PROSPECTING: 10 calls (agents + sphere contacts)</li>
+          <li><strong>10:00-12:00</strong> Loan production</li>
+        </ul>
+        <h4>Afternoon</h4>
+        <ul>
+          <li><strong>12:00-1:00</strong> Lunch</li>
+          <li><strong>1:00-2:00</strong> Write next week's content: 5 Instagram posts + 1 Reel script</li>
+          <li><strong>2:00-3:00</strong> Post in 2-3 Facebook community groups: something helpful, NOT salesy. Example: "With rates where they are, here are 3 things first-time buyers in Kennebunk should know..."</li>
+          <li><strong>3:00-4:00</strong> WEEKLY REVIEW (see checklist below)</li>
+          <li><strong>4:00-5:00</strong> Plan next week's priorities. Set Monday's "big 3" tasks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Saturday, June 27 <span>LIGHT DAY</span></div>
+      <div class="day-body">
+        <h4>2-3 Hours Max</h4>
+        <ul>
+          <li><strong>Morning</strong> Check for leads/messages. Respond to anything urgent</li>
+          <li><strong>Mid-day</strong> Attend any open houses in your area as a guest. Introduce yourself to the listing agent. Bring cards. "I'm a local mortgage broker, I'd love to help your buyers"</li>
+          <li><strong>Afternoon</strong> Post 1-2 Instagram Stories of your weekend (humanize your brand)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">Sunday, June 28 <span>REST</span></div>
+      <div class="day-body">
+        <h4>Off Day</h4>
+        <ul>
+          <li>Check messages once. Handle only true emergencies</li>
+          <li>Optional: Post 1 casual Instagram Story</li>
+          <li>Recharge for next week</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card highlight" style="margin-top: 1.5rem;">
+    <h4>Week 1 Scorecard</h4>
+    <table>
+      <tr><th>Metric</th><th>Target</th><th>Actual</th></tr>
+      <tr><td>Agent outreach emails sent</td><td>10</td><td>___</td></tr>
+      <tr><td>Agent phone calls made</td><td>20+</td><td>___</td></tr>
+      <tr><td>Office drop-ins</td><td>3-4</td><td>___</td></tr>
+      <tr><td>Coffee meetings booked (for next week)</td><td>2</td><td>___</td></tr>
+      <tr><td>Personal sphere texts sent</td><td>30+</td><td>___</td></tr>
+      <tr><td>Instagram posts published</td><td>5</td><td>___</td></tr>
+      <tr><td>Instagram Stories posted</td><td>10+</td><td>___</td></tr>
+      <tr><td>Agents followed on IG</td><td>25+</td><td>___</td></tr>
+      <tr><td>Google Business Profile live</td><td>Yes</td><td>___</td></tr>
+      <tr><td>CRM set up with contacts</td><td>100+</td><td>___</td></tr>
+      <tr><td>Chamber of Commerce contacted</td><td>Yes</td><td>___</td></tr>
+      <tr><td>BNI chapter visit scheduled</td><td>Yes</td><td>___</td></tr>
+      <tr><td>Leads generated</td><td>1-3</td><td>___</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- WEEKS 2-4 -->
+<section>
+  <h2>Weeks 2-4: June 29 - July 19</h2>
+
+  <details>
+    <summary>Week 2: June 29 - July 5 | First Meetings</summary>
+    <div class="detail-body">
+      <ul class="checklist">
+        <li>Hold 2-3 coffee meetings with agents booked last week</li>
+        <li>Send follow-up emails within 24 hours of each meeting (Template 2)</li>
+        <li>Visit 2 new real estate offices (Coldwell Banker Kennebunk, Aland Realty Ogunquit)</li>
+        <li>Send 10 new agent outreach emails (Biddeford, Saco, Scarborough agents)</li>
+        <li>Make 50+ prospecting calls this week</li>
+        <li>Attend BNI chapter visit</li>
+        <li>Attend Chamber of Commerce mixer if available</li>
+        <li>Post 5 Instagram posts + daily Stories</li>
+        <li>Send Friday Rate Update email #2</li>
+        <li>Set up Facebook ad campaign ($250 budget): "First-time buyer in Maine?" lead form</li>
+        <li>Start building "First-Time Buyer Workshop" presentation</li>
+        <li>Text 20 more sphere contacts</li>
+        <li>Ask 2-3 friends/family to leave Google reviews (get your first reviews)</li>
+      </ul>
+      <p><strong>Goal:</strong> 3-5 warm agent relationships started. First pre-approval if possible.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Week 3: July 6-12 | Pipeline Building</summary>
+    <div class="detail-body">
+      <ul class="checklist">
+        <li>Book 3 more agent coffees. You should have 5-8 agents you've met face-to-face</li>
+        <li>Send "First-Time Buyer Checklist" PDF to all agent contacts as a value drop</li>
+        <li>Make 50+ prospecting calls</li>
+        <li>Visit 2 more offices (expand to York, Kittery area if Kennebunk covered)</li>
+        <li>Shoot 2 Instagram Reels this week</li>
+        <li>Post 5 IG posts + Stories daily</li>
+        <li>Send Friday Rate Update #3</li>
+        <li>Optimize Facebook ad based on Week 2 results</li>
+        <li>Research July 4th weekend community events for networking</li>
+        <li>Start planning first "Homebuyer Happy Hour" for late July</li>
+        <li>Set up automated email drips in CRM for new leads</li>
+        <li>Apply for BNI membership if mortgage seat is open</li>
+      </ul>
+      <p><strong>Goal:</strong> First application taken. 2-3 pre-approvals issued.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Week 4: July 13-19 | First Closings in Sight</summary>
+    <div class="detail-body">
+      <ul class="checklist">
+        <li>Hold 2-3 agent coffees (some may be second meetings with top prospects)</li>
+        <li>Send co-branded open house flyer to your best agent contact</li>
+        <li>Make 50+ prospecting calls</li>
+        <li>Post 5 IG posts + Stories + 1-2 Reels</li>
+        <li>Send Friday Rate Update #4</li>
+        <li>Host or co-host your first Homebuyer Happy Hour (small venue, 5-10 attendees is a win)</li>
+        <li>Send monthly newsletter #1 to full database</li>
+        <li>Follow up with every pre-approved borrower</li>
+        <li>Ask your best agent relationship: "Can I attend your next open house as the on-site lender?"</li>
+        <li>Research local Little League, 5K, or community event to sponsor in August</li>
+        <li>End-of-month review: audit all metrics, adjust strategy</li>
+      </ul>
+      <p><strong>Goal:</strong> 2-4 applications in pipeline. 1-2 agent referral partnerships forming.</p>
+    </div>
+  </details>
+</section>
+
+<!-- MONTHLY CHECKLISTS -->
+<section id="monthly">
+  <h2>Monthly Checklists</h2>
+
+  <details>
+    <summary><span class="phase-badge phase-1">Phase 1</span> Month 1: June 22 - July 21 | Foundation</summary>
+    <div class="detail-body">
+      <h4>Infrastructure</h4>
+      <ul class="checklist">
+        <li>CRM selected and set up with 100+ contacts</li>
+        <li>Google Business Profile live and optimized</li>
+        <li>Instagram Business account live with 20+ posts</li>
+        <li>Facebook Business Page live</li>
+        <li>Personal website or landing page with rate quote tool</li>
+        <li>Business cards ordered and received (500)</li>
+        <li>Referral cards printed ("Know someone buying a home?")</li>
+        <li>Professional headshots taken (10-20 photos for content)</li>
+        <li>Email signature with NMLS, EHO, and logo</li>
+        <li>Voicemail updated with professional greeting</li>
+      </ul>
+      <h4>Prospecting</h4>
+      <ul class="checklist">
+        <li>200+ prospecting calls made</li>
+        <li>20+ agent outreach emails sent</li>
+        <li>6-8 real estate offices visited</li>
+        <li>4-6 agent coffee meetings held</li>
+        <li>50+ sphere contacts texted</li>
+        <li>3+ local Facebook groups joined and posted in</li>
+        <li>25+ agents followed on Instagram with genuine engagement</li>
+      </ul>
+      <h4>Community</h4>
+      <ul class="checklist">
+        <li>Chamber of Commerce membership applied</li>
+        <li>BNI chapter visited (1-2 visits)</li>
+        <li>1 community event attended</li>
+      </ul>
+      <h4>Content</h4>
+      <ul class="checklist">
+        <li>20+ Instagram posts published</li>
+        <li>4+ Reels published</li>
+        <li>Daily Stories (80%+ days)</li>
+        <li>4 Friday Rate Update emails sent</li>
+        <li>1 monthly newsletter sent</li>
+      </ul>
+      <h4>Production</h4>
+      <ul class="checklist">
+        <li>5-10 pre-approvals issued</li>
+        <li>2-4 applications taken</li>
+        <li>1-2 loans closed (stretch goal: 4)</li>
+        <li>First Google review collected</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="phase-badge phase-1">Phase 1</span> Month 2: July 22 - August 21 | Momentum</summary>
+    <div class="detail-body">
+      <h4>Prospecting (double down)</h4>
+      <ul class="checklist">
+        <li>200+ prospecting calls</li>
+        <li>10+ new agent outreach (expand to Scarborough, Old Orchard)</li>
+        <li>3-4 agent coffees per week (12+ this month)</li>
+        <li>Visit 4 new offices</li>
+        <li>Attend 2+ open houses as on-site lender</li>
+        <li>Start calling financial planners and CPAs (3-5 outreach)</li>
+      </ul>
+      <h4>Marketing</h4>
+      <ul class="checklist">
+        <li>Facebook/IG ad budget: $500+ spent, 20+ leads generated</li>
+        <li>20+ Instagram posts, 4+ Reels</li>
+        <li>Daily Stories</li>
+        <li>4 Friday Rate Updates</li>
+        <li>1 monthly newsletter</li>
+        <li>First co-branded marketing piece with an agent partner</li>
+        <li>Host first Homebuyer Happy Hour or workshop</li>
+        <li>Sponsor one community event ($250-$500)</li>
+      </ul>
+      <h4>Production</h4>
+      <ul class="checklist">
+        <li>10-15 pre-approvals issued</li>
+        <li>4-6 applications</li>
+        <li>3-4 closings</li>
+        <li>5+ Google reviews</li>
+        <li>First agent referral received</li>
+      </ul>
+      <h4>Systems</h4>
+      <ul class="checklist">
+        <li>Automated drip campaigns live for: new leads, pre-approved, post-closing</li>
+        <li>Referral reward program launched ($100 gift card)</li>
+        <li>Database: 200+ contacts</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="phase-badge phase-1">Phase 1</span> Month 3: August 22 - September 21 | First Referral Loop</summary>
+    <div class="detail-body">
+      <ul class="checklist">
+        <li>3-5 agents consistently referring (at least 1 lead/month each)</li>
+        <li>200+ prospecting calls</li>
+        <li>Begin Zillow/LendingTree lead test ($300/month budget)</li>
+        <li>First video testimonial from a closed client</li>
+        <li>Host 2nd Homebuyer Workshop (co-hosted with top agent partner)</li>
+        <li>BNI membership secured (if seat available)</li>
+        <li>10+ Google reviews</li>
+        <li>5-8 closings this month</li>
+        <li>Evaluate: Do I need a part-time LOA or processor?</li>
+        <li>Database: 300+ contacts</li>
+        <li>Monthly revenue tracking spreadsheet updated</li>
+        <li>Quarterly business review: what's working, what's not, adjust</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="phase-badge phase-2">Phase 2</span> Month 4-6: September - December | Traction</summary>
+    <div class="detail-body">
+      <h4>Monthly Targets</h4>
+      <table>
+        <tr><th>Metric</th><th>Month 4</th><th>Month 5</th><th>Month 6</th></tr>
+        <tr><td>Closings</td><td>5-6</td><td>6-7</td><td>7-8</td></tr>
+        <tr><td>Active agent partners</td><td>5-7</td><td>7-8</td><td>8-10</td></tr>
+        <tr><td>Pre-approvals/month</td><td>15</td><td>18</td><td>20</td></tr>
+        <tr><td>Google reviews (cumulative)</td><td>15</td><td>20</td><td>25</td></tr>
+        <tr><td>Database size</td><td>350</td><td>400</td><td>500</td></tr>
+        <tr><td>IG followers</td><td>300</td><td>400</td><td>500</td></tr>
+        <tr><td>Monthly ad spend</td><td>$1,000</td><td>$1,200</td><td>$1,500</td></tr>
+      </table>
+      <h4>Key Milestones</h4>
+      <ul class="checklist">
+        <li>Hire part-time LOA or processor</li>
+        <li>Establish 2+ builder/developer relationships</li>
+        <li>Launch referral program formally with printed cards</li>
+        <li>Speak at 1 Rotary or Chamber meeting ("State of the Market")</li>
+        <li>Begin weekly video content (market updates, myth busting)</li>
+        <li>Holiday season strategy: Christmas Prelude sponsorship, client gifts</li>
+        <li>First client appreciation event (holiday party or gift drop)</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="phase-badge phase-3">Phase 3</span> Months 7-12: January - June 2027 | Scale</summary>
+    <div class="detail-body">
+      <h4>Monthly Targets</h4>
+      <table>
+        <tr><th>Metric</th><th>Mo 7-9</th><th>Mo 10-12</th></tr>
+        <tr><td>Closings/month</td><td>8-12</td><td>12-15</td></tr>
+        <tr><td>Active agent partners</td><td>10-12</td><td>12-15</td></tr>
+        <tr><td>Pre-approvals/month</td><td>25-30</td><td>30-40</td></tr>
+        <tr><td>Google reviews</td><td>35</td><td>50+</td></tr>
+        <tr><td>Database</td><td>600</td><td>800+</td></tr>
+        <tr><td>Monthly ad spend</td><td>$1,500-$2,000</td><td>$2,000-$2,500</td></tr>
+      </table>
+      <h4>Key Milestones</h4>
+      <ul class="checklist">
+        <li>Known name in York County real estate community</li>
+        <li>Agents calling YOU (inbound referral flywheel spinning)</li>
+        <li>Explore investor/DSCR loan niche for vacation rental buyers</li>
+        <li>Consider hiring second LO or junior originator</li>
+        <li>Database: 800+ segmented contacts</li>
+        <li>YouTube channel launched with monthly market updates</li>
+        <li>Full-funnel ad strategy: awareness + lead gen + retargeting</li>
+        <li>Revenue run rate: $50K-$70K/month</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="phase-badge phase-4">Phase 4</span> Months 12-18: June - December 2027 | Dominance</summary>
+    <div class="detail-body">
+      <h4>The 20 Loan/Month Machine</h4>
+      <ul class="checklist">
+        <li>15-20 closings per month consistently</li>
+        <li>15+ active referring agents</li>
+        <li>50+ Google reviews, 25+ Zillow reviews</li>
+        <li>1,000+ Instagram followers with consistent engagement</li>
+        <li>1,000+ contact database with segmented campaigns</li>
+        <li>Team: 1-2 LOAs, 1 processor, potentially 1 junior LO</li>
+        <li>Multiple lead channels firing: agents, past clients, organic, paid, BNI, community</li>
+        <li>2-3 builder partnerships for new construction pipeline</li>
+        <li>Monthly community event host or sponsor</li>
+        <li>Revenue: $80K-$100K+/month</li>
+        <li>Marketing runs semi-autonomously (content calendar, ad manager, automated drips)</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- WEEKLY REVIEW -->
+<section>
+  <h2>Weekly Review Checklist (Every Friday 3-4 PM)</h2>
+  <div class="card highlight">
+    <ul class="checklist">
+      <li><strong>Calls made this week:</strong> ___/50 target</li>
+      <li><strong>Agent meetings held:</strong> ___/3 target</li>
+      <li><strong>New leads this week:</strong> ___</li>
+      <li><strong>Pre-approvals issued:</strong> ___</li>
+      <li><strong>Applications taken:</strong> ___</li>
+      <li><strong>Loans closed:</strong> ___</li>
+      <li><strong>Instagram posts:</strong> ___/5</li>
+      <li><strong>Rate Update email sent:</strong> Yes/No</li>
+      <li><strong>Pipeline value:</strong> $___</li>
+      <li><strong>Biggest win this week:</strong> ___</li>
+      <li><strong>Biggest obstacle:</strong> ___</li>
+      <li><strong>Next week's #1 priority:</strong> ___</li>
+    </ul>
+  </div>
+</section>
+
+<!-- REFERRAL PARTNER STRATEGY -->
+<section id="referrals">
+  <h2>Referral Partner System</h2>
+
+  <div class="card navy">
+    <h4>The Golden Rule</h4>
+    <p>76% of homebuyers choose their mortgage provider based on their real estate agent's recommendation. Referrals convert at 3-5x the rate of other leads. Your agent relationships are your business.</p>
+  </div>
+
+  <h3>Target Brokerages</h3>
+  <table>
+    <tr><th>Brokerage</th><th>Location</th><th>Agent Count</th><th>Approach</th></tr>
+    <tr><td><strong>Pack Maynard Real Estate</strong></td><td>Kennebunk</td><td>15-20</td><td>Office drop-in, target their top 3 producers</td></tr>
+    <tr><td><strong>RE/MAX Realty One</strong></td><td>Kennebunk</td><td>10-15</td><td>Office drop-in, luxury + oceanfront specialists</td></tr>
+    <tr><td><strong>Lighthouse Real Estate Group</strong></td><td>Kennebunk</td><td>10+</td><td>Multi-town coverage, good for volume</td></tr>
+    <tr><td><strong>Kennebunk Beach Realty</strong></td><td>Kennebunk</td><td>5-10</td><td>Niche coastal, second-home buyers</td></tr>
+    <tr><td><strong>Anne Erwin Sotheby's</strong></td><td>York/Ogunquit</td><td>10-15</td><td>Luxury/jumbo opportunity, email first</td></tr>
+    <tr><td><strong>The Aland Realty Group</strong></td><td>Ogunquit/Wells</td><td>5-10</td><td>Gail Bergeron = top producer since 2010</td></tr>
+    <tr><td><strong>Coldwell Banker Realty</strong></td><td>Kennebunk</td><td>10+</td><td>Large brand, agents may want a broker alternative to in-house</td></tr>
+    <tr><td><strong>Portside Real Estate Group</strong></td><td>Various</td><td>15+</td><td>Growing firm, hungry agents</td></tr>
+    <tr><td><strong>MaineLand Real Estate</strong></td><td>Various</td><td>10+</td><td>New agents looking for reliable LO partner</td></tr>
+  </table>
+
+  <h3>Agent Relationship Lifecycle</h3>
+  <table>
+    <tr><th>Stage</th><th>Timeline</th><th>Actions</th><th>Goal</th></tr>
+    <tr><td><span class="pill pill-teal">Cold</span></td><td>Week 1</td><td>Email, DM, or office visit. Personalize by referencing their listing</td><td>Get a response</td></tr>
+    <tr><td><span class="pill pill-navy">Warm</span></td><td>Week 2-3</td><td>Coffee meeting. Learn their business. Share your value prop</td><td>Build rapport</td></tr>
+    <tr><td><span class="pill pill-green">Active</span></td><td>Week 4+</td><td>Weekly rate updates. Quick pre-approvals. Co-marketing offer</td><td>Get first referral</td></tr>
+    <tr><td><span class="pill pill-gold">Partner</span></td><td>Month 2+</td><td>Regular referrals flowing both ways. Joint events. Consistent communication</td><td>2+ referrals/month</td></tr>
+  </table>
+
+  <h3>Allied Professional Partners</h3>
+  <table>
+    <tr><th>Partner Type</th><th>Why</th><th>Your Outreach</th><th>Monthly Frequency</th></tr>
+    <tr><td>Financial Planners / CPAs</td><td>Tax season = refi/purchase conversations</td><td>Offer to guest-present at client events</td><td>1 meeting/quarter</td></tr>
+    <tr><td>Real Estate Attorneys</td><td>Every Maine closing needs one</td><td>Refer TO them first. They'll reciprocate</td><td>Monthly check-in</td></tr>
+    <tr><td>Insurance Agents</td><td>Required at every closing</td><td>Cross-referral agreement</td><td>Monthly</td></tr>
+    <tr><td>Home Inspectors</td><td>They see buyers pre-close</td><td>Leave cards, co-marketing</td><td>Quarterly</td></tr>
+    <tr><td>Builders / Contractors</td><td>New construction + renovation loans</td><td>Visit job sites with lunch</td><td>Monthly</td></tr>
+    <tr><td>Divorce Attorneys</td><td>Life events trigger home transactions</td><td>Educational lunch-and-learn</td><td>Quarterly</td></tr>
+  </table>
+
+  <h3>Referral Reward Program</h3>
+  <div class="card">
+    <p><strong>For clients:</strong> $100 gift card (local restaurant or Amazon) for every closed referral. Both the referrer and the new client get one.</p>
+    <p><strong>For agents:</strong> No cash incentives (compliance). Instead: exceptional service, speed, communication, and co-marketing. They refer you because you make them look good.</p>
+    <p><strong>Post-closing system:</strong></p>
+    <ul>
+      <li>Day 1: Thank-you text</li>
+      <li>Day 3: Google Review request email</li>
+      <li>Day 7: Handwritten thank-you card arrives</li>
+      <li>Day 30: "How's the new home?" check-in call</li>
+      <li>Month 6: Referral ask email</li>
+      <li>Annually: Home anniversary card + rate review offer</li>
+      <li>Birthdays: Automated card via CRM</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="social">
+  <h2>Social Media System</h2>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Platform Priority</h4>
+      <table>
+        <tr><th>Platform</th><th>Priority</th><th>Purpose</th></tr>
+        <tr><td><strong>Instagram</strong></td><td><span class="pill pill-green">#1</span></td><td>Brand, Reels, agents</td></tr>
+        <tr><td><strong>Facebook</strong></td><td><span class="pill pill-teal">#2</span></td><td>Groups, ads, 35+</td></tr>
+        <tr><td><strong>Google Business</strong></td><td><span class="pill pill-teal">#3</span></td><td>Reviews, local SEO</td></tr>
+        <tr><td><strong>TikTok</strong></td><td><span class="pill pill-navy">#4</span></td><td>First-time buyers</td></tr>
+        <tr><td><strong>LinkedIn</strong></td><td><span class="pill pill-navy">#5</span></td><td>Agent networking</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Content Mix (80/20 Rule)</h4>
+      <table>
+        <tr><th>Pillar</th><th>%</th><th>Example</th></tr>
+        <tr><td>Education</td><td>25%</td><td>FHA vs Conv, credit tips</td></tr>
+        <tr><td>Jab Ads</td><td>20%</td><td>Broker vs Bank</td></tr>
+        <tr><td>Local Maine</td><td>20%</td><td>Lighthouses, seasons</td></tr>
+        <tr><td>Personal / BTS</td><td>15%</td><td>Day in the life, closings</td></tr>
+        <tr><td>Social Proof</td><td>10%</td><td>Reviews, testimonials</td></tr>
+        <tr><td>CTA / Urgency</td><td>10%</td><td>Rate drops, DM me</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Weekly Posting Schedule</h3>
+  <table>
+    <tr><th>Day</th><th>Post Type</th><th>Format</th><th>Caption Hook Example</th></tr>
+    <tr><td><strong>Monday</strong></td><td>Education / Myth Buster</td><td>Carousel or Reel</td><td>"You do NOT need 20% down. Here's the truth..."</td></tr>
+    <tr><td><strong>Tuesday</strong></td><td>Local Maine Love</td><td>Photo or Reel</td><td>"This is why we live here." + Maine scene</td></tr>
+    <tr><td><strong>Wednesday</strong></td><td>Jab Ad (Broker vs Bank)</td><td>Split image or Reel</td><td>"Your bank has one menu. I have 20+"</td></tr>
+    <tr><td><strong>Thursday</strong></td><td>Personal / Behind Scenes</td><td>Stories + Reel</td><td>"What a day in the life of your local LO looks like"</td></tr>
+    <tr><td><strong>Friday</strong></td><td>Social Proof / Testimonial</td><td>Quote card</td><td>"Don't take my word for it..." + client review</td></tr>
+    <tr><td><strong>Saturday</strong></td><td>Weekend Lifestyle</td><td>Stories</td><td>"Exploring open houses? I can pre-approve you in 24hrs"</td></tr>
+    <tr><td><strong>Sunday</strong></td><td>Engagement</td><td>Story poll/quiz</td><td>"What's stopping you from buying your first home?"</td></tr>
+  </table>
+
+  <h3>30 Ready-to-Use Caption Hooks</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4>Education Hooks</h4>
+      <ol>
+        <li>"You do NOT need 20% down to buy a home. Here's what you actually need..."</li>
+        <li>"FHA vs Conventional in 30 seconds. Save this."</li>
+        <li>"3 things your bank won't tell you about closing costs"</li>
+        <li>"The #1 mistake first-time buyers make (and how to avoid it)"</li>
+        <li>"Credit score myths that are costing you money"</li>
+        <li>"What does 'pre-approved' actually mean? Most people get this wrong"</li>
+        <li>"VA loan benefits most veterans don't know about"</li>
+        <li>"How much home can you ACTUALLY afford? (It's not what Zillow says)"</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Jab Ad Hooks</h4>
+      <ol>
+        <li>"Your bank has one menu. I shop 20+ lenders for the best deal"</li>
+        <li>"Banks work for shareholders. I work for you"</li>
+        <li>"I just saved my client $47,000 over the life of their loan. Their bank couldn't do that"</li>
+        <li>"Why would you take the first offer when I can find you a better one?"</li>
+        <li>"Your bank's 'great rate' might not be so great. Let me run your numbers"</li>
+        <li>"The difference between a bank and a broker, explained in 15 seconds"</li>
+        <li>"One phone call could save you thousands. Seriously"</li>
+        <li>"POV: your mortgage broker actually answers the phone on a Saturday"</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h4>Local Maine Hooks</h4>
+      <ol>
+        <li>"This is why people move to Maine" + stunning coastal shot</li>
+        <li>"Kennebunk at golden hour. Need I say more?"</li>
+        <li>"4 seasons. 1 broker. Welcome to Maine"</li>
+        <li>"What $400K gets you in southern Maine right now"</li>
+        <li>"The best-kept secret towns in York County for homebuyers"</li>
+        <li>"Morning coffee with this view. Life in Kennebunk"</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>CTA / Urgency Hooks</h4>
+      <ol>
+        <li>"Rates just moved. DM me and I'll run your numbers for free"</li>
+        <li>"Spring market is here. Are you pre-approved? Takes 24 hours"</li>
+        <li>"Still renting? Your mortgage payment could be the same or less. Let's find out"</li>
+        <li>"3 buyers just got pre-approved this week. You could be next"</li>
+        <li>"Free pre-approval. No obligation. 24-hour turnaround. DM 'ready'"</li>
+        <li>"The best time to buy was yesterday. The second best time is now"</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>Hashtag Sets (Copy-Paste Ready)</h3>
+  <div class="template-box">
+    <div class="template-label">HASHTAG SET 1: General</div>
+#KennebunkME #MaineRealEstate #MortgageBroker #SouthernMaine
+#YorkCountyME #FirstTimeHomeBuyer #HomeBuyingTips #MortgageTips
+#BaxterMortgage #WellGuideYouHome #MaineLiving #CoastalMaine</div>
+
+  <div class="template-box">
+    <div class="template-label">HASHTAG SET 2: Local Towns</div>
+#KennebunkportMaine #WellsMaine #OgunquitMaine #BiddefordMaine
+#SacoMaine #ArунdelMaine #ScarboroughMaine #YorkMaine
+#KennebunkBeach #MaineCoast #LiveInMaine #MaineLife</div>
+
+  <div class="template-box">
+    <div class="template-label">HASHTAG SET 3: First-Time Buyer</div>
+#FirstTimeHomeBuyer #FHALoan #DownPaymentAssistance #HomeOwnership
+#MortgageEducation #BuyingAHome #HomeBuyerTips #PreApproved
+#DreamHome #NewHomeowner #ClosingDay #KeysInHand</div>
+
+  <h3>Paid Ad Strategy</h3>
+  <table>
+    <tr><th>Phase</th><th>Budget</th><th>Platform</th><th>Campaign Type</th><th>Target Audience</th></tr>
+    <tr><td>Phase 1</td><td>$500/mo</td><td>Facebook/IG</td><td>Lead form: "First-time buyer? Get pre-approved"</td><td>25-45, York County, interests: Zillow, Realtor, homebuying</td></tr>
+    <tr><td>Phase 2</td><td>$1,000/mo</td><td>FB/IG + Google</td><td>Lead gen + Google search ("mortgage broker Kennebunk")</td><td>Expand to 25-55, add Portland metro</td></tr>
+    <tr><td>Phase 3</td><td>$1,500/mo</td><td>FB/IG + Google + Retarget</td><td>Full funnel: awareness Reels + lead forms + retargeting</td><td>Broad + website visitors + lookalikes</td></tr>
+    <tr><td>Phase 4</td><td>$2,000+/mo</td><td>All + Local Service Ads</td><td>Scale winners, add Google LSA</td><td>All segments, geographic expansion</td></tr>
+  </table>
+</section>
+
+<!-- TEMPLATES -->
+<section id="templates">
+  <h2>Templates & Scripts</h2>
+
+  <details>
+    <summary>Email: Agent Cold Outreach (Template 1)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">COPY-PASTE</div>
+Subject: Quick question about your buyers in [Town]
+
+Hi [Agent Name],
+
+I'm Derek Smith with Baxter Mortgage here in Kennebunk. I came
+across your listing on [Street/Property] and really liked how
+you positioned it.
+
+I work with over 20 lenders so I can shop rates and programs for
+your buyers instead of offering a single menu. My pre-approvals
+come back in 24 hours, and I keep you in the loop on every file
+with weekly updates so you never have to chase me down.
+
+Would you be open to a quick coffee this week? I'd love to learn
+more about your business and see if there's a way we could help
+each other.
+
+Best,
+Derek Smith
+Loan Officer | NMLS# 2810853
+Baxter Mortgage, LLC | NMLS# 2752768
+75 Portland Rd, Kennebunk, ME 04043
+[phone] | [email]
+Equal Housing Opportunity</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Email: Post-Coffee Follow-Up (Template 2)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">COPY-PASTE</div>
+Subject: Great meeting you, [Name]
+
+[Name],
+
+Thanks for taking the time today. I really enjoyed learning
+about your focus on [their niche/area].
+
+As promised, here's what I bring to the table for your buyers:
+- Pre-approvals in 24 hours
+- Access to 20+ lenders (conventional, FHA, VA, USDA, jumbo, DSCR)
+- Weekly file updates sent directly to you
+- Co-branded marketing materials whenever you need them
+
+I'll send you my rate sheet this Friday so you can see where
+we're at. And if any of your buyers need a second opinion on
+their financing, I'm always happy to run their numbers with
+no obligation.
+
+Looking forward to working together.
+
+Derek</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Email: Weekly Rate Update (Template 3)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">SEND EVERY FRIDAY</div>
+Subject: This Week's Rate Snapshot | [Date]
+
+Happy Friday, [Name]!
+
+Here's your quick rate rundown for this week:
+
+CONVENTIONAL
+30yr Fixed: [X.XX]% | 15yr Fixed: [X.XX]%
+
+FHA
+30yr Fixed: [X.XX]% (3.5% down, 580+ credit)
+
+VA
+30yr Fixed: [X.XX]% ($0 down for eligible vets)
+
+USDA
+30yr Fixed: [X.XX]% ($0 down, income limits apply)
+
+HOT PROGRAM THIS WEEK:
+[Describe a specific lender program, rate buydown,
+or special -- rotate weekly]
+
+If any of your buyers want me to run their numbers,
+I'm one text away.
+
+Derek Smith | [phone]
+Baxter Mortgage, LLC</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Email: First-Time Buyer Workshop Invite (Template 4)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">COPY-PASTE</div>
+Subject: Free First-Time Homebuyer Workshop in Kennebunk
+
+You're invited to a free workshop:
+
+FIRST-TIME HOMEBUYER 101
+Everything you need to know before buying your
+first home in Maine
+
+Date: [Date]
+Time: [Time]
+Location: [Venue / Virtual Link]
+Cost: Free
+
+What you'll learn:
+- How much home you can actually afford
+- Down payment options (including $0 down programs)
+- The difference between pre-qualification and pre-approval
+- How to compete in southern Maine's market
+- Common mistakes to avoid
+
+Hosted by Derek Smith, Loan Officer at Baxter Mortgage
+[Co-hosted with: Agent Name, Brokerage]
+
+RSVP: [link/email/phone]
+
+Light refreshments provided. Bring your questions!
+
+Derek Smith NMLS# 2810853. Baxter Mortgage, LLC
+NMLS# 2752768. 75 Portland Rd, Kennebunk, ME 04043.
+All loans subject to credit approval and underwriting.
+Not a commitment to lend. Equal Housing Opportunity.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Email: Post-Closing Referral Ask (Template 5)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">COPY-PASTE</div>
+Subject: Congrats again on [Property Address]!
+
+Hi [Client Name],
+
+It's been about [X] weeks since you closed on your new home.
+I hope you're settling in and loving the place!
+
+Working with you was a great experience, and I'm glad we
+could find you a rate and program that worked. If you know
+anyone else looking to buy, refinance, or just explore their
+options, I'd be honored if you'd send them my way.
+
+No pressure at all. Just know that referrals are the biggest
+compliment I can receive, and I'll take the same care of them
+as I did with you.
+
+Enjoy the new home!
+
+Derek</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Email: Financial Planner/CPA Partnership (Template 6)</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">COPY-PASTE</div>
+Subject: Potential partnership opportunity
+
+Hi [Name],
+
+I'm Derek Smith, a mortgage broker at Baxter Mortgage here in
+Kennebunk. I specialize in helping homebuyers across southern
+Maine find the right loan from 20+ lenders.
+
+I often work with clients who could benefit from financial
+planning guidance, and I'd love to explore a referral
+relationship where we can send business to each other.
+
+Many of my clients are:
+- First-time buyers who need budgeting guidance
+- Investors looking at vacation rental properties
+- Homeowners considering a refi who could use tax advice
+
+Would you be open to a 15-minute call or coffee?
+
+Best,
+Derek Smith
+Loan Officer | NMLS# 2810853
+Baxter Mortgage, LLC | NMLS# 2752768</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Phone Script: Agent Cold Call</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">PHONE SCRIPT</div>
+"Hi [Name], this is Derek Smith with Baxter Mortgage in
+Kennebunk. I know you're busy so I'll be quick.
+
+I'm a local mortgage broker who shops over 20 lenders for
+my clients, and I've been connecting with top agents in
+[their area] to see how we could help each other.
+
+The main thing I hear from agents is they want a lender who
+communicates, closes on time, and doesn't blow up their deals.
+That's exactly what I focus on.
+
+Could I buy you a coffee this week and learn about your
+business? 15 minutes, no pitch, just want to see if
+we're a good fit."
+
+IF THEY SAY YES:
+"Awesome. How about [Day] at [Time]? I'll come to you.
+What coffee shop is closest to your office?"
+
+IF THEY SAY "I ALREADY HAVE A LENDER":
+"Totally get it. Most agents I work with had an existing
+relationship too. I'm not trying to replace anyone. Just
+offering a second option for when you need a different
+product or a faster turnaround. Can I send you my rate
+sheet on Fridays? No pressure, just good info to have."
+
+IF THEY SAY NOT NOW:
+"No problem. Can I add you to my Friday rate update?
+It's a quick snapshot of where rates are that week.
+No spam, just useful info."</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Phone Script: Pre-Approval Call with Lead</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">PHONE SCRIPT</div>
+"Hi [Name], thanks for reaching out. I'm Derek with
+Baxter Mortgage here in Kennebunk.
+
+Before we dive in, let me tell you how I work: I'm a broker,
+which means I don't work for one bank. I shop your loan across
+20+ lenders to find you the best rate and program. Think of me
+as your mortgage comparison shopper.
+
+To get you pre-approved, I just need about 10 minutes. Ready?
+
+1. What are you looking to do? Buy, refinance, or investment?
+2. What's your target price range or area?
+3. Is this your first home?
+4. Do you have a down payment saved? Roughly how much?
+5. Any VA or military eligibility?
+6. How would you describe your credit? Excellent, good, fair?
+7. Are you working with a real estate agent yet?
+
+Great. Based on what you've told me, here are your options...
+
+[Present 2-3 loan scenarios with monthly payments]
+
+Here's what happens next: I'll send you a secure link to
+complete a quick application. Once I pull credit and run it
+through our system, I'll have your pre-approval letter ready
+within 24 hours. Sound good?"</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Text Message Templates</summary>
+    <div class="detail-body">
+      <div class="template-box">
+        <div class="template-label">NEW LEAD (speed to lead)</div>
+Hi [Name]! This is Derek from Baxter Mortgage. I just got your
+inquiry. I'd love to help you explore your options. When's a
+good time for a quick 10-min call today?</div>
+
+      <div class="template-box">
+        <div class="template-label">LEAD FOLLOW-UP (no response)</div>
+Hey [Name], just checking in! I know buying a home is a big
+decision. Happy to answer any questions, no pressure. Just
+text back when you're ready.</div>
+
+      <div class="template-box">
+        <div class="template-label">AGENT VALUE DROP</div>
+Hey [Name]! Rates moved this week. Wanted to make sure you
+saw my Friday update. If any of your buyers need a quick
+pre-approval, I turn them around in 24 hrs. Have a great weekend!</div>
+
+      <div class="template-box">
+        <div class="template-label">POST-CLOSING REVIEW ASK</div>
+[Name]! Congrats again on the new home! If you had a good
+experience working with me, would you mind leaving a quick
+Google review? Here's the link: [link]. It means the world.
+Thank you!</div>
+
+      <div class="template-box">
+        <div class="template-label">SPHERE ANNOUNCEMENT</div>
+Hey! Big news. I just launched my own mortgage brokerage here
+in Kennebunk. If you or anyone you know is thinking about
+buying, refinancing, or just has mortgage questions, I'd love
+to help. I shop 20+ lenders to find the best deal.</div>
+    </div>
+  </details>
+</section>
+
+<!-- COMMUNITY -->
+<section>
+  <h2>Community & Networking</h2>
+  <table>
+    <tr><th>Organization</th><th>Location</th><th>Investment</th><th>Action</th></tr>
+    <tr><td><strong>Kennebunk-Kennebunkport-Arundel Chamber</strong></td><td>Kennebunk</td><td>$200-$500/yr</td><td>Join Month 1. Attend every mixer. Volunteer for a committee</td></tr>
+    <tr><td><strong>Wells Chamber of Commerce</strong></td><td>Wells</td><td>$200-$400/yr</td><td>Join Month 2. Adjacent market, high volume</td></tr>
+    <tr><td><strong>Biddeford-Saco Chamber</strong></td><td>Biddeford</td><td>$200-$400/yr</td><td>Join Month 3. First-time buyer market</td></tr>
+    <tr><td><strong>BNI Maine (nearest chapter)</strong></td><td>Saco/Biddeford area</td><td>$700-$1,200/yr</td><td>Visit Week 2. Apply for mortgage seat. Expect 3-8 referrals/month once established</td></tr>
+    <tr><td><strong>Rotary Club (Kennebunk)</strong></td><td>Kennebunk</td><td>$300-$600/yr</td><td>Join Month 3-4. Professional network, speaking opportunities</td></tr>
+    <tr><td><strong>Christmas Prelude</strong></td><td>Kennebunkport</td><td>$500-$1,000</td><td>Sponsor December event. Peak local visibility</td></tr>
+    <tr><td><strong>Local 5K/Fun Runs</strong></td><td>Various</td><td>$250-$500</td><td>Sponsor 1-2 per year. Name on t-shirts, banners</td></tr>
+    <tr><td><strong>Youth Sports</strong></td><td>Kennebunk</td><td>$300-$500</td><td>Sponsor a Little League or youth soccer team. Parent demographic</td></tr>
+  </table>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <h2>Budget Breakdown</h2>
+  <table>
+    <tr><th>Category</th><th>Phase 1<br>(Mo 1-3)</th><th>Phase 2<br>(Mo 4-6)</th><th>Phase 3<br>(Mo 7-12)</th><th>Phase 4<br>(Mo 12-18)</th></tr>
+    <tr><td>CRM / Tech</td><td>$150</td><td>$150</td><td>$200</td><td>$250</td></tr>
+    <tr><td>Paid Ads (FB/Google)</td><td>$500</td><td>$1,000</td><td>$1,500</td><td>$2,000</td></tr>
+    <tr><td>Lead Purchases</td><td>$0</td><td>$300</td><td>$500</td><td>$500</td></tr>
+    <tr><td>Networking (BNI, Chambers)</td><td>$150</td><td>$200</td><td>$200</td><td>$200</td></tr>
+    <tr><td>Agent Marketing (lunches, coffee)</td><td>$200</td><td>$400</td><td>$500</td><td>$600</td></tr>
+    <tr><td>Community Sponsorships</td><td>$0</td><td>$200</td><td>$400</td><td>$500</td></tr>
+    <tr><td>Print (cards, flyers)</td><td>$200</td><td>$100</td><td>$200</td><td>$300</td></tr>
+    <tr><td>Referral Rewards</td><td>$0</td><td>$200</td><td>$500</td><td>$1,000</td></tr>
+    <tr><td>Content / Design Tools</td><td>$50</td><td>$100</td><td>$100</td><td>$150</td></tr>
+    <tr><td>Higgsfield AI (content gen)</td><td>$30</td><td>$30</td><td>$50</td><td>$50</td></tr>
+    <tr><td><strong>TOTAL / MONTH</strong></td><td><strong>$1,280</strong></td><td><strong>$2,680</strong></td><td><strong>$4,150</strong></td><td><strong>$5,550</strong></td></tr>
+  </table>
+
+  <div class="stat-grid" style="margin-top: 1.5rem;">
+    <div class="stat-card green"><div class="number">17.6x</div><div class="label">Marketing ROI at 20 Loans/Mo</div></div>
+    <div class="stat-card"><div class="number">5.7%</div><div class="label">Marketing as % of Revenue</div></div>
+    <div class="stat-card teal"><div class="number">$97,750</div><div class="label">Monthly Revenue at 20 Loans</div></div>
+    <div class="stat-card gold"><div class="number">$1.17M</div><div class="label">Annual Revenue Target</div></div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section id="kpis">
+  <h2>KPI Dashboard</h2>
+
+  <h3>Weekly Metrics</h3>
+  <table>
+    <tr><th>Metric</th><th>Phase 1</th><th>Phase 2</th><th>Phase 3</th><th>Phase 4</th></tr>
+    <tr><td>Prospecting calls</td><td>50/week</td><td>50/week</td><td>40/week</td><td>30/week</td></tr>
+    <tr><td>Agent meetings</td><td>2-3</td><td>3-4</td><td>2-3</td><td>2</td></tr>
+    <tr><td>New leads</td><td>10</td><td>20</td><td>35</td><td>50</td></tr>
+    <tr><td>Pre-approvals</td><td>2</td><td>5</td><td>8</td><td>12</td></tr>
+    <tr><td>Applications</td><td>1</td><td>3</td><td>5</td><td>7</td></tr>
+    <tr><td>Closings</td><td>1</td><td>2</td><td>3</td><td>5</td></tr>
+    <tr><td>IG posts</td><td>4-5</td><td>5</td><td>5</td><td>5</td></tr>
+    <tr><td>Rate Update sent</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+  </table>
+
+  <h3>Monthly Metrics</h3>
+  <table>
+    <tr><th>Metric</th><th>Target</th><th>How to Track</th></tr>
+    <tr><td>Closed loans</td><td>Per phase</td><td>LOS report</td></tr>
+    <tr><td>Average loan amount</td><td>$400K+</td><td>LOS report</td></tr>
+    <tr><td>Revenue per loan</td><td>$4,500+</td><td>Commission statements</td></tr>
+    <tr><td>Pipeline value</td><td>3x monthly target</td><td>CRM pipeline report</td></tr>
+    <tr><td>Google reviews (cumulative)</td><td>+3-5/month</td><td>Google dashboard</td></tr>
+    <tr><td>Instagram followers</td><td>+50-100/month</td><td>IG insights</td></tr>
+    <tr><td>Active referral partners</td><td>+1-2/month</td><td>CRM tags</td></tr>
+    <tr><td>Lead-to-close rate</td><td>15%+</td><td>CRM conversion report</td></tr>
+    <tr><td>Agent referral %</td><td>50%+ of total</td><td>CRM source tracking</td></tr>
+    <tr><td>Marketing spend / revenue</td><td>Under 10%</td><td>Expense tracking</td></tr>
+  </table>
+
+  <h3>Quarterly Review Questions</h3>
+  <div class="card highlight">
+    <ol>
+      <li>Which lead sources convert best? Double down on those.</li>
+      <li>Which agents send the most referrals? Deepen those relationships.</li>
+      <li>Which content gets the most engagement? Create more of it.</li>
+      <li>What's my average application-to-close time? How can I speed it up?</li>
+      <li>What loan products am I closing most? Where are the gaps?</li>
+      <li>Am I on track for my phase target? What's the bottleneck?</li>
+      <li>Is my marketing spend generating positive ROI? Where can I cut or increase?</li>
+      <li>Do I need to hire? Am I spending too much time on admin vs. prospecting?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section>
+  <h2>Compliance Checklist</h2>
+  <div class="card highlight">
+    <h4>Every consumer-facing piece must include:</h4>
+    <ul class="checklist">
+      <li>Derek Smith NMLS# 2810853</li>
+      <li>Baxter Mortgage, LLC NMLS# 2752768</li>
+      <li>75 Portland Rd, Kennebunk, ME 04043</li>
+      <li>"All loans subject to credit approval and underwriting"</li>
+      <li>"Not a commitment to lend"</li>
+      <li>"Equal Housing Opportunity" + EHO logo</li>
+      <li>NO specific interest rates quoted in marketing</li>
+      <li>NO guaranteed savings amounts or outcomes</li>
+      <li>Use "could," "may," "I will run your numbers"</li>
+      <li>NO em dashes in any copy</li>
+      <li>NO MaineHousing references (not affiliated)</li>
+      <li>NO competitor names in jab ads</li>
+    </ul>
+  </div>
+
+  <div class="template-box">
+    <div class="template-label">LEGAL FOOTER (copy-paste for everything)</div>
+Derek Smith NMLS# 2810853. Baxter Mortgage, LLC NMLS# 2752768.
+75 Portland Rd, Kennebunk, ME 04043. All loans subject to credit
+approval and underwriting. Not a commitment to lend.
+Equal Housing Opportunity.</div>
+</section>
+
+</div>
+
+<footer>
+  <strong>BAXTER mortgage</strong><br><br>
+  Derek Smith NMLS# 2810853 | Baxter Mortgage, LLC NMLS# 2752768<br>
+  75 Portland Rd, Kennebunk, ME 04043<br><br>
+  All loans subject to credit approval and underwriting. Not a commitment to lend. Equal Housing Opportunity.<br><br>
+  <em>"We'll Guide You Home"</em>
+</footer>
+
+</body>
+</html>
