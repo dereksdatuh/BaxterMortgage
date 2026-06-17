@@ -303,6 +303,102 @@ footer strong { color: var(--green); }
 p { margin-bottom: .75rem; }
 ul, ol { margin-bottom: .75rem; padding-left: 1.5rem; }
 li { margin-bottom: .35rem; }
+
+/* NOTES */
+.note-area {
+  margin: 1rem 0; background: var(--white);
+  border: 2px dashed var(--gray-300); border-radius: 10px;
+  padding: 0; overflow: hidden;
+}
+.note-area .note-header {
+  background: linear-gradient(90deg, var(--navy), #2C4F7C);
+  color: var(--white); padding: .5rem 1rem;
+  font-size: .8rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.note-area .note-header .save-status {
+  font-size: .7rem; font-weight: 400; opacity: .7;
+}
+.note-area textarea {
+  width: 100%; border: none; outline: none;
+  padding: .75rem 1rem; font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: .88rem; line-height: 1.6; resize: vertical;
+  min-height: 80px; background: #FEFEFE;
+  color: var(--gray-900);
+}
+.note-area textarea::placeholder { color: var(--gray-300); font-style: italic; }
+.note-area textarea:focus { background: #FFFFF5; }
+
+/* INTERACTIVE CHECKBOXES */
+.checklist li { cursor: pointer; user-select: none; transition: all .15s; }
+.checklist li:hover { background: rgba(29,184,154,.05); }
+.checklist li.checked { opacity: .5; text-decoration: line-through; }
+.checklist li.checked::before { content: '\2611'; color: var(--green); }
+
+/* EDITABLE SCORECARD */
+.editable-field {
+  background: rgba(29,184,154,.08); border: 1px dashed var(--teal);
+  border-radius: 4px; padding: .15rem .4rem; min-width: 50px;
+  display: inline-block; font-weight: 600; color: var(--navy);
+  outline: none;
+}
+.editable-field:focus { background: #FFFFF5; border-color: var(--navy); }
+.editable-field:empty::before {
+  content: attr(data-placeholder); color: var(--gray-300);
+  font-weight: 400; font-style: italic;
+}
+
+/* FLOATING ACTION BAR */
+.fab-bar {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  display: flex; gap: .5rem; z-index: 200;
+}
+.fab-btn {
+  background: var(--navy); color: var(--white);
+  border: none; border-radius: 30px; padding: .6rem 1.2rem;
+  font-size: .8rem; font-weight: 600; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  transition: all .2s; display: flex; align-items: center; gap: .4rem;
+}
+.fab-btn:hover { background: var(--teal); transform: translateY(-2px); }
+.fab-btn.danger { background: var(--red); }
+.fab-btn.danger:hover { background: #DC2626; }
+
+/* PRINT STYLES */
+@media print {
+  nav, .fab-bar { display: none !important; }
+  .hero { padding: 2rem 1rem; break-after: avoid; }
+  body { background: white; font-size: 10pt; }
+  .container { max-width: 100%; padding: 0 1rem; }
+  section { break-inside: avoid; }
+  .card, .stat-card, details, .time-block { break-inside: avoid; }
+  details { border: 1px solid #ccc; }
+  details[open] summary ~ * { display: block !important; }
+  .note-area { border: 1px solid #999; break-inside: avoid; }
+  .note-area .note-header { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .note-area textarea {
+    border: none; min-height: 60px; white-space: pre-wrap;
+    font-size: 9pt; overflow: visible;
+  }
+  .note-area textarea:empty::after { content: ''; display: block; height: 60px; border-bottom: 1px dotted #ccc; }
+  .checklist li.checked { text-decoration: line-through; opacity: .6; }
+  .two-col { grid-template-columns: 1fr 1fr; }
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+  th { background: #333 !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .card.navy { background: #333 !important; color: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .progress-step, .phase-badge, .tag, .pill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { margin: 1cm; }
+}
+
+/* NOTE PRINT LINES (blank lines for handwriting) */
+.print-lines { display: none; }
+@media print {
+  .print-lines {
+    display: block; margin: .5rem 0;
+    border-bottom: 1px dotted #999;
+    height: 1.5em;
+  }
+}
 </style>
 </head>
 <body>
@@ -347,6 +443,7 @@ li { margin-bottom: .35rem; }
 <!-- MARKET INTEL -->
 <section id="market">
   <h2>Market Intelligence</h2>
+  <div class="note-area"><div class="note-header">My Market Notes <span class="save-status" id="status-market">Auto-saved</span></div><textarea id="note-market" placeholder="Your observations on the local market, trends you're seeing, agents mentioning specific neighborhoods..."></textarea></div>
 
   <h3>York County Housing Market (2025-2026)</h3>
   <div class="stat-grid">
@@ -417,6 +514,7 @@ li { margin-bottom: .35rem; }
 <!-- COMPETITIVE LANDSCAPE -->
 <section id="competitors">
   <h2>Competitive Landscape</h2>
+  <div class="note-area"><div class="note-header">Competitor Intel <span class="save-status" id="status-competitors">Auto-saved</span></div><textarea id="note-competitors" placeholder="What you're hearing about competitors, their weaknesses, agents who are unhappy with their current lender..."></textarea></div>
 
   <div class="card highlight">
     <h4>Your Competitive Advantage</h4>
@@ -462,6 +560,7 @@ li { margin-bottom: .35rem; }
 <!-- REVENUE MODEL -->
 <section id="revenue">
   <h2>Revenue Model</h2>
+  <div class="note-area"><div class="note-header">Revenue Tracking Notes <span class="save-status" id="status-revenue">Auto-saved</span></div><textarea id="note-revenue" placeholder="Actual loan amounts, comp rates by lender, revenue tracking, deals in pipeline..."></textarea></div>
 
   <div class="stat-grid">
     <div class="stat-card teal"><div class="number">$425K</div><div class="label">Target Avg Loan Amount</div></div>
@@ -499,6 +598,7 @@ li { margin-bottom: .35rem; }
 <!-- DAILY SYSTEM -->
 <section id="daily">
   <h2>Daily Operating System</h2>
+  <div class="note-area"><div class="note-header">Schedule Adjustments <span class="save-status" id="status-daily">Auto-saved</span></div><textarea id="note-daily" placeholder="Adjustments to your schedule, what time blocks are working, what needs to change..."></textarea></div>
   <p>This is your non-negotiable daily structure. Time block your calendar exactly like this. Adjust specific activities, never the blocks.</p>
 
   <h3>Ideal Day Schedule (Phase 1-2)</h3>
@@ -547,6 +647,7 @@ li { margin-bottom: .35rem; }
 <!-- WEEK 1 -->
 <section id="week1">
   <h2>Week 1: June 22-28, 2026</h2>
+  <div class="note-area"><div class="note-header">Week 1 Journal <span class="save-status" id="status-week1">Auto-saved</span></div><textarea id="note-week1" placeholder="Daily wins, obstacles, people you met, leads generated, what worked, what didn't..."></textarea></div>
   <p><span class="phase-badge phase-1">Phase 1 Launch</span> Your first week. Foundation building. Every minute counts.</p>
 
   <div class="week-grid">
@@ -723,6 +824,7 @@ li { margin-bottom: .35rem; }
 <!-- WEEKS 2-4 -->
 <section>
   <h2>Weeks 2-4: June 29 - July 19</h2>
+  <div class="note-area"><div class="note-header">Weeks 2-4 Journal <span class="save-status" id="status-weeks24">Auto-saved</span></div><textarea id="note-weeks24" placeholder="Weekly reflections, agent meetings held, pipeline updates, lessons learned..."></textarea></div>
 
   <details>
     <summary>Week 2: June 29 - July 5 | First Meetings</summary>
@@ -791,6 +893,7 @@ li { margin-bottom: .35rem; }
 <!-- MONTHLY CHECKLISTS -->
 <section id="monthly">
   <h2>Monthly Checklists</h2>
+  <div class="note-area"><div class="note-header">Monthly Reflection Notes <span class="save-status" id="status-monthly">Auto-saved</span></div><textarea id="note-monthly" placeholder="End-of-month reflections, what phase you're in, what's ahead, blockers to address..."></textarea></div>
 
   <details>
     <summary><span class="phase-badge phase-1">Phase 1</span> Month 1: June 22 - July 21 | Foundation</summary>
@@ -980,6 +1083,7 @@ li { margin-bottom: .35rem; }
 <!-- WEEKLY REVIEW -->
 <section>
   <h2>Weekly Review Checklist (Every Friday 3-4 PM)</h2>
+  <div class="note-area"><div class="note-header">This Week's Review <span class="save-status" id="status-weekly">Auto-saved</span></div><textarea id="note-weekly" placeholder="Biggest win, biggest obstacle, what to do differently next week, pipeline status..."></textarea></div>
   <div class="card highlight">
     <ul class="checklist">
       <li><strong>Calls made this week:</strong> ___/50 target</li>
@@ -1001,6 +1105,7 @@ li { margin-bottom: .35rem; }
 <!-- REFERRAL PARTNER STRATEGY -->
 <section id="referrals">
   <h2>Referral Partner System</h2>
+  <div class="note-area"><div class="note-header">Agent & Partner Contacts <span class="save-status" id="status-referrals">Auto-saved</span></div><textarea id="note-referrals" placeholder="Agent names, phone numbers, office visited, meeting dates, referral status, who's warm, who's cold..."></textarea></div>
 
   <div class="card navy">
     <h4>The Golden Rule</h4>
@@ -1061,6 +1166,7 @@ li { margin-bottom: .35rem; }
 <!-- SOCIAL MEDIA -->
 <section id="social">
   <h2>Social Media System</h2>
+  <div class="note-area"><div class="note-header">Content Ideas & Performance <span class="save-status" id="status-social">Auto-saved</span></div><textarea id="note-social" placeholder="Post ideas, what's getting engagement, Reel concepts, trending audio, caption drafts..."></textarea></div>
 
   <div class="two-col">
     <div class="card">
@@ -1187,6 +1293,7 @@ li { margin-bottom: .35rem; }
 <!-- TEMPLATES -->
 <section id="templates">
   <h2>Templates & Scripts</h2>
+  <div class="note-area"><div class="note-header">Template Customizations <span class="save-status" id="status-templates">Auto-saved</span></div><textarea id="note-templates" placeholder="Your customized versions, what response rates you're getting, tweaks that work better..."></textarea></div>
 
   <details>
     <summary>Email: Agent Cold Outreach (Template 1)</summary>
@@ -1494,6 +1601,7 @@ to help. I shop 20+ lenders to find the best deal.</div>
 <!-- COMMUNITY -->
 <section>
   <h2>Community & Networking</h2>
+  <div class="note-area"><div class="note-header">Networking Log <span class="save-status" id="status-community">Auto-saved</span></div><textarea id="note-community" placeholder="Events attended, people met, follow-ups needed, membership status, sponsorship deals..."></textarea></div>
   <table>
     <tr><th>Organization</th><th>Location</th><th>Investment</th><th>Action</th></tr>
     <tr><td><strong>Kennebunk-Kennebunkport-Arundel Chamber</strong></td><td>Kennebunk</td><td>$200-$500/yr</td><td>Join Month 1. Attend every mixer. Volunteer for a committee</td></tr>
@@ -1510,6 +1618,7 @@ to help. I shop 20+ lenders to find the best deal.</div>
 <!-- BUDGET -->
 <section id="budget">
   <h2>Budget Breakdown</h2>
+  <div class="note-area"><div class="note-header">Actual Spending Log <span class="save-status" id="status-budget">Auto-saved</span></div><textarea id="note-budget" placeholder="Track actual spend vs budget: ads $__, coffee meetings $__, print $__, sponsorships $__..."></textarea></div>
   <table>
     <tr><th>Category</th><th>Phase 1<br>(Mo 1-3)</th><th>Phase 2<br>(Mo 4-6)</th><th>Phase 3<br>(Mo 7-12)</th><th>Phase 4<br>(Mo 12-18)</th></tr>
     <tr><td>CRM / Tech</td><td>$150</td><td>$150</td><td>$200</td><td>$250</td></tr>
@@ -1536,6 +1645,7 @@ to help. I shop 20+ lenders to find the best deal.</div>
 <!-- KPIs -->
 <section id="kpis">
   <h2>KPI Dashboard</h2>
+  <div class="note-area"><div class="note-header">Actual KPI Tracking <span class="save-status" id="status-kpis">Auto-saved</span></div><textarea id="note-kpis" placeholder="This week: calls ___, meetings ___, leads ___, pre-approvals ___, apps ___, closings ___"></textarea></div>
 
   <h3>Weekly Metrics</h3>
   <table>
@@ -1583,6 +1693,7 @@ to help. I shop 20+ lenders to find the best deal.</div>
 <!-- COMPLIANCE -->
 <section>
   <h2>Compliance Checklist</h2>
+  <div class="note-area"><div class="note-header">Compliance Notes <span class="save-status" id="status-compliance">Auto-saved</span></div><textarea id="note-compliance" placeholder="Lender-specific compliance requirements, state regulation updates, materials that need review..."></textarea></div>
   <div class="card highlight">
     <h4>Every consumer-facing piece must include:</h4>
     <ul class="checklist">
@@ -1618,6 +1729,130 @@ Equal Housing Opportunity.</div>
   All loans subject to credit approval and underwriting. Not a commitment to lend. Equal Housing Opportunity.<br><br>
   <em>"We'll Guide You Home"</em>
 </footer>
+
+<!-- FLOATING ACTION BAR -->
+<div class="fab-bar">
+  <button class="fab-btn" onclick="window.print()" title="Print this playbook">Print</button>
+  <button class="fab-btn" onclick="exportNotes()" title="Copy all notes to clipboard">Export Notes</button>
+  <button class="fab-btn danger" onclick="clearAllNotes()" title="Clear all saved notes">Clear Notes</button>
+</div>
+
+<script>
+(function() {
+  var noteIds = [
+    'note-market','note-competitors','note-revenue','note-daily',
+    'note-week1','note-weeks24','note-monthly','note-weekly',
+    'note-referrals','note-social','note-templates','note-community',
+    'note-budget','note-kpis','note-compliance'
+  ];
+
+  noteIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var saved = localStorage.getItem('baxter_' + id);
+    if (saved) el.value = saved;
+
+    var timer;
+    el.addEventListener('input', function() {
+      clearTimeout(timer);
+      var statusEl = document.getElementById('status-' + id.replace('note-',''));
+      if (statusEl) statusEl.textContent = 'Saving...';
+      timer = setTimeout(function() {
+        localStorage.setItem('baxter_' + id, el.value);
+        if (statusEl) statusEl.textContent = 'Saved!';
+        setTimeout(function() { if (statusEl) statusEl.textContent = 'Auto-saved'; }, 1500);
+      }, 500);
+    });
+  });
+
+  document.querySelectorAll('.checklist li').forEach(function(li, i) {
+    var key = 'baxter_check_' + i;
+    if (localStorage.getItem(key) === 'true') li.classList.add('checked');
+
+    li.addEventListener('click', function() {
+      li.classList.toggle('checked');
+      localStorage.setItem(key, li.classList.contains('checked'));
+    });
+  });
+
+  document.querySelectorAll('td').forEach(function(td) {
+    if (td.textContent.trim() === '___') {
+      var idx = Array.from(document.querySelectorAll('td')).indexOf(td);
+      var span = document.createElement('span');
+      span.className = 'editable-field';
+      span.contentEditable = 'true';
+      span.setAttribute('data-placeholder', 'fill in');
+      var saved = localStorage.getItem('baxter_field_' + idx);
+      if (saved) span.textContent = saved;
+      span.addEventListener('blur', function() {
+        localStorage.setItem('baxter_field_' + idx, span.textContent);
+      });
+      td.textContent = '';
+      td.appendChild(span);
+    }
+  });
+})();
+
+function exportNotes() {
+  var lines = [];
+  lines.push('BAXTER MORTGAGE - PLAYBOOK NOTES');
+  lines.push('Exported: ' + new Date().toLocaleString());
+  lines.push('================================\n');
+
+  var noteIds = [
+    {id:'note-market', label:'MARKET NOTES'},
+    {id:'note-competitors', label:'COMPETITOR INTEL'},
+    {id:'note-revenue', label:'REVENUE TRACKING'},
+    {id:'note-daily', label:'SCHEDULE ADJUSTMENTS'},
+    {id:'note-week1', label:'WEEK 1 JOURNAL'},
+    {id:'note-weeks24', label:'WEEKS 2-4 JOURNAL'},
+    {id:'note-monthly', label:'MONTHLY REFLECTIONS'},
+    {id:'note-weekly', label:'WEEKLY REVIEW'},
+    {id:'note-referrals', label:'AGENT & PARTNER CONTACTS'},
+    {id:'note-social', label:'CONTENT IDEAS & PERFORMANCE'},
+    {id:'note-templates', label:'TEMPLATE CUSTOMIZATIONS'},
+    {id:'note-community', label:'NETWORKING LOG'},
+    {id:'note-budget', label:'ACTUAL SPENDING'},
+    {id:'note-kpis', label:'KPI TRACKING'},
+    {id:'note-compliance', label:'COMPLIANCE NOTES'}
+  ];
+
+  noteIds.forEach(function(n) {
+    var el = document.getElementById(n.id);
+    if (el && el.value.trim()) {
+      lines.push('## ' + n.label);
+      lines.push(el.value.trim());
+      lines.push('');
+    }
+  });
+
+  var checked = [];
+  document.querySelectorAll('.checklist li.checked').forEach(function(li) {
+    checked.push('  [x] ' + li.textContent.trim());
+  });
+  if (checked.length) {
+    lines.push('## COMPLETED CHECKLIST ITEMS (' + checked.length + ')');
+    lines.push(checked.join('\n'));
+  }
+
+  var text = lines.join('\n');
+  navigator.clipboard.writeText(text).then(function() {
+    alert('All notes copied to clipboard! Paste into a doc to save.');
+  }).catch(function() {
+    var w = window.open('', '_blank');
+    w.document.write('<pre>' + text.replace(/</g,'&lt;') + '</pre>');
+  });
+}
+
+function clearAllNotes() {
+  if (!confirm('This will delete ALL saved notes, checked items, and filled-in fields. Are you sure?')) return;
+  if (!confirm('REALLY sure? This cannot be undone.')) return;
+  Object.keys(localStorage).forEach(function(k) {
+    if (k.startsWith('baxter_')) localStorage.removeItem(k);
+  });
+  location.reload();
+}
+</script>
 
 </body>
 </html>
