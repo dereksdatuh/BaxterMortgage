@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSCR Loans | Baxter Mortgage</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #E5E7EB;
+  color: #111827;
+}
+.download-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: #1E3A5F;
+  padding: .6rem 2rem;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+}
+.download-bar span { color: white; font-size: .85rem; }
+.download-bar button {
+  padding: .45rem 1.25rem; background: #1DB89A; color: white;
+  border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+}
+.page {
+  width: 8.5in; margin: 1rem auto; background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12);
+}
+@media print {
+  body { background: white; }
+  .download-bar { display: none !important; }
+  .page { width: 100%; margin: 0; box-shadow: none; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+@media screen and (max-width: 900px) {
+  .page { width: 100%; margin: 0; box-shadow: none; }
+  body { background: white; }
+}
+
+/* Header */
+.header {
+  background: #1E3A5F;
+  color: white;
+  padding: .5in .6in .35in;
+}
+.header h1 { font-size: 26pt; font-weight: 800; line-height: 1.15; }
+.header h1 span { color: #1DB89A; }
+.header p { color: #1DB89A; font-size: 12pt; margin-top: 4pt; }
+
+/* Body */
+.body { padding: .35in .6in .4in; }
+
+.section-title {
+  font-size: 11pt; font-weight: 700; color: #1E3A5F;
+  text-transform: uppercase; letter-spacing: .5px;
+  border-bottom: 2pt solid #1DB89A;
+  padding-bottom: 3pt; margin: 16pt 0 8pt;
+}
+.section-title:first-child { margin-top: 0; }
+
+p { font-size: 10.5pt; line-height: 1.5; margin-bottom: 6pt; }
+
+/* Big value props */
+.props {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10pt; margin: 10pt 0 14pt;
+}
+.prop {
+  background: #F8FAFB; border: 1.5pt solid #E5E7EB;
+  border-radius: 8pt; padding: 12pt; text-align: center;
+}
+.prop .icon { font-size: 22pt; margin-bottom: 4pt; }
+.prop .label { font-size: 10pt; font-weight: 700; color: #1E3A5F; margin-bottom: 2pt; }
+.prop .desc { font-size: 8.5pt; color: #6B7280; }
+
+/* Formula */
+.formula-bar {
+  background: #F8FAFB; border: 2pt solid #1DB89A;
+  border-radius: 8pt; padding: 14pt 18pt;
+  text-align: center; margin: 10pt 0;
+}
+.formula-bar .eq {
+  font-size: 15pt; font-weight: 800; color: #1E3A5F;
+}
+.formula-bar .eq .op { color: #1DB89A; margin: 0 8pt; }
+.formula-bar .sub { font-size: 8.5pt; color: #6B7280; margin-top: 3pt; }
+
+/* Quick specs */
+.specs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10pt; margin: 10pt 0;
+}
+.spec-card {
+  background: #1E3A5F; color: white;
+  border-radius: 8pt; padding: 12pt 14pt;
+}
+.spec-card h4 { color: #1DB89A; font-size: 10pt; margin-bottom: 6pt; text-transform: uppercase; }
+.spec-card ul { list-style: none; font-size: 9.5pt; }
+.spec-card li { padding: 2pt 0; border-bottom: .5pt solid rgba(255,255,255,.15); }
+.spec-card li:last-child { border-bottom: none; }
+.spec-card li span { color: #1DB89A; font-weight: 600; }
+
+/* Who */
+.who-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8pt; margin: 8pt 0;
+}
+.who-item {
+  background: #D1FAE5; border-radius: 6pt;
+  padding: 8pt 10pt; font-size: 9.5pt; font-weight: 500; color: #065F46;
+}
+
+/* CTA */
+.cta {
+  background: #1DB89A; color: white;
+  border-radius: 8pt; padding: 16pt;
+  text-align: center; margin: 14pt 0 10pt;
+}
+.cta h3 { font-size: 14pt; margin-bottom: 4pt; }
+.cta p { font-size: 10pt; margin-bottom: 1pt; }
+.cta .big { font-size: 13pt; font-weight: 800; margin-top: 6pt; }
+
+/* Footer */
+.footer {
+  background: #1E3A5F; color: rgba(255,255,255,.6);
+  padding: .2in .6in; font-size: 7pt; line-height: 1.4;
+}
+.footer strong { color: white; }
+</style>
+</head>
+<body>
+
+<div class="download-bar">
+  <span>DSCR Loan Handout</span>
+  <button onclick="window.print()">Download / Print</button>
+</div>
+
+<div class="page">
+  <div class="header">
+    <h1>DSCR <span>INVESTOR LOANS</span></h1>
+    <p>Qualify Using the Property's Income, Not Yours</p>
+  </div>
+
+  <div class="body">
+
+    <div class="section-title">The Big Idea</div>
+    <p>A <strong>DSCR loan</strong> lets real estate investors qualify based on the <strong>rental income of the property</strong> rather than personal income. No tax returns. No W-2s. No pay stubs. If the property's rent covers the payment, you could qualify.</p>
+
+    <div class="props">
+      <div class="prop">
+        <div class="icon">&#128196;</div>
+        <div class="label">No Tax Returns</div>
+        <div class="desc">No W-2s, no pay stubs, no personal income verification</div>
+      </div>
+      <div class="prop">
+        <div class="icon">&#127968;</div>
+        <div class="label">Up to 20 Properties</div>
+        <div class="desc">Scale your portfolio beyond traditional lending limits</div>
+      </div>
+      <div class="prop">
+        <div class="icon">&#128197;</div>
+        <div class="label">Airbnb / VRBO OK</div>
+        <div class="desc">Short-term vacation rental income accepted on select programs</div>
+      </div>
+    </div>
+
+    <div class="section-title">How It Works</div>
+    <div class="formula-bar">
+      <div class="eq">Monthly Rent <span class="op">&divide;</span> Monthly Payment <span class="op">=</span> DSCR</div>
+      <div class="sub">If your DSCR is 1.00 or above, the property's income covers the mortgage. Some programs go as low as 0.80.</div>
+    </div>
+
+    <div class="section-title">Quick Specs</div>
+    <div class="specs">
+      <div class="spec-card">
+        <h4>Minimums</h4>
+        <ul>
+          <li>Credit Score: <span>as low as 640</span></li>
+          <li>Down Payment: <span>as low as 20%</span></li>
+          <li>DSCR Ratio: <span>as low as 0.80</span> (some programs have no minimum)</li>
+          <li>Reserves: <span>3-6 months</span></li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Options</h4>
+        <ul>
+          <li>Term: <span>30-year and 40-year fixed</span></li>
+          <li>Interest Only: <span>available</span></li>
+          <li>Max Loan: <span>up to $2M+</span></li>
+          <li>Short-Term Rentals: <span>yes, select programs</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">Who Is This For?</div>
+    <div class="who-grid">
+      <div class="who-item">Buying your first or next rental property</div>
+      <div class="who-item">Self-employed with complex tax returns</div>
+      <div class="who-item">Scaling beyond 10 financed properties</div>
+      <div class="who-item">Purchasing an Airbnb or VRBO property</div>
+      <div class="who-item">Investors who write off too much to qualify traditionally</div>
+      <div class="who-item">Buying vacant property to rent out</div>
+    </div>
+
+    <div class="cta">
+      <h3>Want to See If You Qualify?</h3>
+      <p><strong>Derek Smith</strong>, Mortgage Broker</p>
+      <p>Baxter Mortgage, LLC</p>
+      <p>75 Portland Rd, Kennebunk, ME 04043</p>
+      <p>Instagram: @BaxterMortgage</p>
+      <div class="big">DM "OPTIONS" or call to get started</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p><strong>Derek Smith</strong> NMLS# 2810853 | <strong>Baxter Mortgage, LLC</strong> NMLS# 2752768 | 75 Portland Rd, Kennebunk, ME 04043</p>
+    <p>All loans subject to credit approval and underwriting. Not a commitment to lend. Rates not quoted in this document. Contact Derek Smith for current rates, fees, and personalized qualification. Program guidelines, terms, eligibility requirements, and product availability are subject to change without notice. Investment properties only. Not available for owner-occupied residences. Equal Housing Opportunity.</p>
+  </div>
+</div>
+
+</body>
+</html>
