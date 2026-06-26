@@ -9,447 +9,508 @@
   --navy: #1E3A5F;
   --teal: #1DB89A;
   --green: #4ADE80;
-  --light: #F8FAFB;
   --white: #FFFFFF;
+  --light: #F8FAFB;
   --gray-100: #F3F4F6;
   --gray-200: #E5E7EB;
   --gray-500: #6B7280;
   --gray-700: #374151;
   --gray-900: #111827;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #E5E7EB;
   color: var(--gray-900);
-  background: var(--white);
-  line-height: 1.5;
-  max-width: 850px;
-  margin: 0 auto;
 }
 
-@media print {
-  body { max-width: 100%; font-size: 11pt; }
-  .no-print { display: none !important; }
-  .page-break { page-break-before: always; }
-  section { page-break-inside: avoid; }
-  .header-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .navy-bg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .teal-bg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .highlight-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-}
-
-.header-bar {
+/* Download bar */
+.download-bar {
+  position: sticky; top: 0; z-index: 100;
   background: var(--navy);
-  color: var(--white);
-  padding: 1.5rem 2rem;
-  text-align: center;
-}
-.header-bar h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: .25rem; }
-.header-bar .subtitle { color: var(--teal); font-size: 1.1rem; }
-
-.print-btn {
-  display: block;
-  margin: 1rem auto;
   padding: .75rem 2rem;
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.download-bar span { color: white; font-size: .9rem; }
+.download-btn {
+  padding: .5rem 1.5rem;
   background: var(--teal);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: .9rem;
   font-weight: 600;
   cursor: pointer;
 }
-.print-btn:hover { background: var(--navy); }
+.download-btn:hover { background: #17a085; }
 
-.content { padding: 1.5rem 2rem; }
-
-h2 {
-  font-size: 1.3rem;
-  color: var(--navy);
-  margin: 1.75rem 0 .75rem;
-  padding-bottom: .4rem;
-  border-bottom: 2px solid var(--teal);
-}
-
-h3 { font-size: 1.05rem; color: var(--navy); margin: 1.25rem 0 .5rem; }
-
-p { margin-bottom: .65rem; }
-ul, ol { margin-bottom: .65rem; padding-left: 1.5rem; }
-li { margin-bottom: .3rem; }
-
-.highlight-box {
-  background: var(--navy);
-  color: var(--white);
-  padding: 1.25rem 1.5rem;
-  border-radius: 10px;
-  margin: 1rem 0;
-}
-.highlight-box strong { color: var(--teal); }
-
-.formula-box {
-  background: var(--gray-100);
-  border: 2px solid var(--teal);
-  border-radius: 10px;
-  padding: 1.5rem;
-  text-align: center;
-  margin: 1rem 0;
-}
-.formula {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: .5rem;
-}
-.formula .divider { color: var(--teal); margin: 0 .5rem; }
-.formula-label { font-size: .85rem; color: var(--gray-500); }
-
-.result-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: .75rem;
-  margin: 1rem 0;
-}
-.result-card {
-  padding: .75rem;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 600;
-  font-size: .9rem;
-}
-.result-strong { background: #D1FAE5; color: #065F46; }
-.result-solid { background: #DBEAFE; color: #1E40AF; }
-.result-possible { background: #FEF3C7; color: #92400E; }
-
-@media (max-width: 600px) {
-  .result-grid { grid-template-columns: 1fr; }
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: .75rem 0;
-  font-size: .9rem;
-}
-th {
-  background: var(--navy);
-  color: var(--white);
-  padding: .6rem .75rem;
-  text-align: left;
-  font-weight: 600;
-}
-td {
-  padding: .5rem .75rem;
-  border-bottom: 1px solid var(--gray-200);
-}
-tr:nth-child(even) { background: var(--gray-100); }
-
-.tier-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-@media (max-width: 600px) { .tier-grid { grid-template-columns: 1fr; } }
-
-.tier-card {
-  border: 2px solid var(--gray-200);
-  border-radius: 10px;
+/* Page container - simulates paper */
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  margin: 1rem auto;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  padding: 0;
   overflow: hidden;
 }
-.tier-header {
-  padding: .6rem 1rem;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--white);
-}
-.tier-yellow .tier-header { background: #EAB308; }
-.tier-orange .tier-header { background: #F97316; }
-.tier-pink .tier-header { background: #EC4899; }
-.tier-blue .tier-header { background: #3B82F6; }
-.tier-body { padding: .75rem 1rem; font-size: .88rem; }
-.tier-body .row { display: flex; justify-content: space-between; padding: .2rem 0; border-bottom: 1px solid var(--gray-100); }
-.tier-body .row:last-child { border-bottom: none; }
-.tier-body .label { color: var(--gray-500); }
-.tier-body .value { font-weight: 600; color: var(--navy); }
-.tier-best { font-size: .8rem; color: var(--gray-500); font-style: italic; margin-top: .5rem; }
 
+/* Print styles */
+@media print {
+  body { background: white; }
+  .download-bar { display: none !important; }
+  .page {
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+@media screen and (max-width: 900px) {
+  .page { width: 100%; margin: 0; box-shadow: none; }
+  body { background: white; }
+}
+
+/* Header */
+.doc-header {
+  background: var(--navy);
+  color: white;
+  padding: .6in .6in .4in;
+  position: relative;
+}
+.doc-header h1 {
+  font-size: 22pt;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 4pt;
+}
+.doc-header h1 span { color: var(--teal); }
+.doc-header .sub {
+  font-size: 11pt;
+  color: var(--teal);
+  font-weight: 400;
+}
+.doc-header .logo-area {
+  position: absolute;
+  top: .6in;
+  right: .6in;
+}
+.doc-header .logo-area img { height: 40px; }
+
+/* Content area */
+.doc-body { padding: .4in .6in; font-size: 9.5pt; line-height: 1.45; }
+
+h2 {
+  font-size: 12pt;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border-bottom: 2pt solid var(--teal);
+  padding-bottom: 3pt;
+  margin: 14pt 0 8pt;
+}
+h2:first-child { margin-top: 0; }
+h3 { font-size: 10pt; color: var(--navy); margin: 10pt 0 4pt; }
+
+p { margin-bottom: 5pt; }
+ul { margin: 4pt 0 8pt 14pt; }
+li { margin-bottom: 2pt; }
+
+/* Formula box */
+.formula-section {
+  background: var(--light);
+  border: 1.5pt solid var(--teal);
+  border-radius: 6pt;
+  padding: 12pt 16pt;
+  margin: 10pt 0;
+  text-align: center;
+}
+.formula-eq {
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2pt;
+}
+.formula-eq .op { color: var(--teal); margin: 0 6pt; }
+.formula-sub { font-size: 8pt; color: var(--gray-500); }
+
+/* Result badges */
+.results-row {
+  display: flex;
+  gap: 8pt;
+  margin: 8pt 0 12pt;
+}
+.result-badge {
+  flex: 1;
+  padding: 6pt 8pt;
+  border-radius: 5pt;
+  text-align: center;
+  font-size: 8.5pt;
+  font-weight: 600;
+}
+.rb-green { background: #D1FAE5; color: #065F46; }
+.rb-blue { background: #DBEAFE; color: #1E40AF; }
+.rb-amber { background: #FEF3C7; color: #92400E; }
+
+/* Example */
 .example-box {
   background: var(--gray-100);
-  border-left: 4px solid var(--teal);
-  padding: 1rem 1.25rem;
-  border-radius: 0 8px 8px 0;
-  margin: 1rem 0;
+  border-left: 3pt solid var(--teal);
+  padding: 8pt 12pt;
+  margin: 8pt 0;
+  border-radius: 0 5pt 5pt 0;
 }
+.example-box p { margin-bottom: 3pt; }
 
-.compare-table td:first-child { font-weight: 600; }
-
-.vs-grid {
+/* Comparison grid */
+.vs-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  margin: 1rem 0;
-  border-radius: 10px;
+  margin: 8pt 0;
+  border-radius: 6pt;
   overflow: hidden;
-  border: 2px solid var(--gray-200);
+  border: 1pt solid var(--gray-200);
 }
-.vs-col { padding: 1rem; }
+.vs-col { padding: 8pt 12pt; font-size: 8.5pt; }
+.vs-col h4 { font-size: 9pt; margin-bottom: 4pt; }
+.vs-col ul { margin: 0 0 0 12pt; }
 .vs-trad { background: var(--gray-100); }
 .vs-dscr { background: #D1FAE5; }
-.vs-col h4 { margin-bottom: .5rem; font-size: .95rem; }
-.vs-col li { font-size: .85rem; margin-bottom: .25rem; }
 
-.cta-box {
-  background: var(--teal);
-  color: var(--white);
-  padding: 1.5rem;
-  border-radius: 10px;
+/* Tier cards */
+.tier-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 6pt;
+  margin: 8pt 0;
+}
+.tier {
+  border: 1pt solid var(--gray-200);
+  border-radius: 5pt;
+  overflow: hidden;
+  font-size: 8pt;
+}
+.tier-head {
+  color: white;
+  padding: 4pt 6pt;
+  font-weight: 700;
+  font-size: 9pt;
   text-align: center;
-  margin: 1.5rem 0;
 }
-.cta-box h3 { color: var(--white); margin-bottom: .5rem; font-size: 1.2rem; }
-.cta-box p { margin-bottom: .25rem; }
+.ty .tier-head { background: #EAB308; }
+.to .tier-head { background: #F97316; }
+.tp .tier-head { background: #EC4899; }
+.tb .tier-head { background: #3B82F6; }
+.tier-info { padding: 5pt 6pt; }
+.tier-info .r { display: flex; justify-content: space-between; padding: 1.5pt 0; border-bottom: .5pt solid var(--gray-100); }
+.tier-info .r:last-child { border-bottom: none; }
+.tier-info .l { color: var(--gray-500); }
+.tier-info .v { font-weight: 600; color: var(--navy); text-align: right; }
 
-.agent-fill {
-  border: 2px dashed var(--gray-200);
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+/* Down payment table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 10pt;
+  font-size: 8.5pt;
 }
-.agent-fill .fill-line {
-  border-bottom: 1px solid var(--gray-500);
-  height: 1.5rem;
-  margin-bottom: .5rem;
-}
-.agent-fill label { font-size: .8rem; color: var(--gray-500); }
-
-.navy-bg {
+th {
   background: var(--navy);
-  color: var(--white);
-  padding: 1.25rem 2rem;
-  margin-top: 2rem;
+  color: white;
+  padding: 4pt 8pt;
+  text-align: left;
+  font-size: 8pt;
+  font-weight: 600;
 }
-.navy-bg p { font-size: .75rem; color: rgba(255,255,255,.7); margin-bottom: .3rem; }
+td {
+  padding: 3.5pt 8pt;
+  border-bottom: .5pt solid var(--gray-200);
+}
+tr:nth-child(even) { background: var(--gray-100); }
 
-.footer-logos {
+/* Forty year row */
+.forty-table { margin: 6pt 0; }
+
+/* Property list */
+.prop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6pt;
+  margin: 6pt 0;
+}
+.prop-col {
+  padding: 8pt;
+  border-radius: 5pt;
+  font-size: 8.5pt;
+}
+.prop-yes { background: #D1FAE5; }
+.prop-no { background: #FEE2E2; }
+.prop-col h4 { font-size: 8.5pt; margin-bottom: 4pt; }
+.prop-col ul { margin: 0 0 0 12pt; }
+
+/* Maine section */
+.maine-box {
+  background: var(--navy);
+  color: white;
+  padding: 10pt 14pt;
+  border-radius: 6pt;
+  margin: 10pt 0;
+  font-size: 8.5pt;
+}
+.maine-box strong { color: var(--teal); }
+.maine-box ul { margin: 4pt 0 0 14pt; }
+
+/* CTA */
+.cta-section {
+  background: var(--teal);
+  color: white;
+  padding: 14pt 18pt;
+  border-radius: 6pt;
+  text-align: center;
+  margin: 12pt 0 8pt;
+}
+.cta-section h3 { color: white; font-size: 13pt; margin-bottom: 6pt; }
+.cta-section p { font-size: 9.5pt; margin-bottom: 2pt; }
+.cta-section .dm { font-size: 12pt; font-weight: 800; margin-top: 6pt; }
+
+/* Agent co-brand */
+.agent-box {
+  border: 1.5pt dashed var(--gray-200);
+  border-radius: 6pt;
+  padding: 10pt 14pt;
+  margin: 8pt 0;
+}
+.agent-box p { font-size: 9pt; font-weight: 600; color: var(--navy); margin-bottom: 6pt; }
+.fill { border-bottom: 1pt solid var(--gray-500); height: 16pt; margin-bottom: 4pt; }
+.fill-label { font-size: 7.5pt; color: var(--gray-500); margin-bottom: 6pt; }
+
+/* Footer */
+.doc-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,.65);
+  padding: .3in .6in;
+  font-size: 6.5pt;
+  line-height: 1.4;
+}
+.doc-footer strong { color: white; }
+.doc-footer .logos {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: .75rem;
+  gap: 12pt;
+  margin-top: 6pt;
 }
-.footer-logos img { height: 40px; }
+.doc-footer .logos img { height: 28px; }
 </style>
 </head>
 <body>
 
-<div class="header-bar">
-  <h1>INVESTING IN RENTAL PROPERTY?</h1>
-  <div class="subtitle">How DSCR Loans Let You Qualify Using Rental Income, Not Yours</div>
+<div class="download-bar">
+  <span>DSCR Investor Loan Guide</span>
+  <button class="download-btn" onclick="window.print()">Download as PDF</button>
 </div>
 
-<button class="print-btn no-print" onclick="window.print()">Print This Guide</button>
-
-<div class="content">
-
-<h2>What Is a DSCR Loan?</h2>
-<p>DSCR stands for <strong>Debt Service Coverage Ratio</strong>. Instead of proving your personal income with tax returns, pay stubs, and W-2s, a DSCR loan looks at whether the <strong>property's rental income</strong> covers the mortgage payment.</p>
-<p>If the property pays for itself, you could qualify. It is that simple.</p>
-
-<div class="highlight-box">
-  <strong>This is designed for:</strong>
-  <ul style="margin-top:.5rem;">
-    <li>Real estate investors (new or experienced)</li>
-    <li>Landlords buying their next rental property</li>
-    <li>Airbnb and VRBO vacation rental buyers</li>
-    <li>Self-employed investors whose tax returns do not reflect their true earning power</li>
-    <li>Anyone scaling a rental portfolio (up to 20 financed properties)</li>
-  </ul>
-</div>
-
-<h2>How to Calculate Your DSCR Ratio</h2>
-
-<div class="formula-box">
-  <div class="formula">
-    Gross Monthly Rental Income
-    <span class="divider">&divide;</span>
-    Monthly Housing Payment (PITI)
-  </div>
-  <div class="formula-label">PITI = Principal + Interest + Taxes + Insurance</div>
-</div>
-
-<div class="result-grid">
-  <div class="result-card result-strong">1.00 or higher<br><small>Property covers the payment</small></div>
-  <div class="result-card result-solid">0.80 - 0.99<br><small>May qualify with reserves</small></div>
-  <div class="result-card result-possible">Below 0.80<br><small>Some programs still work</small></div>
-</div>
-
-<div class="example-box">
-  <h3 style="margin-top:0;">Example</h3>
-  <p>A property rents for <strong>$2,500/month</strong>.<br>
-  The mortgage payment (PITI) is <strong>$2,000/month</strong>.</p>
-  <p style="font-size:1.1rem;"><strong>$2,500 &divide; $2,000 = 1.25 DSCR</strong></p>
-  <p>This property <strong>qualifies</strong>. The rental income covers the payment with room to spare.</p>
-  <p style="font-size:.8rem;color:var(--gray-500);">For purchases, market rent from the appraisal is typically used. For refinances, the lesser of lease amount or market rent may apply depending on the program.</p>
-</div>
-
-<h2>Traditional Investment Loan vs. DSCR</h2>
-
-<div class="vs-grid">
-  <div class="vs-col vs-trad">
-    <h4>Traditional Loan</h4>
-    <ul>
-      <li>Tax returns required</li>
-      <li>W-2s and pay stubs needed</li>
-      <li>DTI ratio matters</li>
-      <li>Complex for self-employed</li>
-      <li>Limited to 10 financed properties</li>
-      <li>Airbnb income hard to document</li>
-    </ul>
-  </div>
-  <div class="vs-col vs-dscr">
-    <h4>DSCR Loan</h4>
-    <ul>
-      <li>No tax returns</li>
-      <li>No W-2s needed</li>
-      <li>DTI not calculated</li>
-      <li>Self-employed friendly</li>
-      <li>Up to 20 financed properties</li>
-      <li>Airbnb/VRBO income accepted</li>
-    </ul>
-  </div>
-</div>
-
-<div class="page-break"></div>
-
-<h2>Program Tiers at a Glance</h2>
-
-<div class="tier-grid">
-  <div class="tier-card tier-yellow">
-    <div class="tier-header">YELLOW - 30-Year Fixed</div>
-    <div class="tier-body">
-      <div class="row"><span class="label">Min Credit Score</span><span class="value">660</span></div>
-      <div class="row"><span class="label">Min Down Payment</span><span class="value">20%</span></div>
-      <div class="row"><span class="label">Max LTV</span><span class="value">80%</span></div>
-      <div class="row"><span class="label">Min DSCR</span><span class="value">0.80</span></div>
-      <div class="row"><span class="label">Reserves</span><span class="value">3 months</span></div>
-      <div class="row"><span class="label">Short-Term Rentals</span><span class="value">No</span></div>
-      <div class="tier-best">Best for: Experienced investors with strong cash-flowing properties.</div>
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="doc-header">
+    <h1>INVESTING IN <span>RENTAL PROPERTY?</span></h1>
+    <div class="sub">How DSCR Loans Let You Qualify Using Rental Income, Not Yours</div>
+    <div class="logo-area">
+      <img src="logo-white.svg" alt="Baxter Mortgage">
     </div>
   </div>
 
-  <div class="tier-card tier-orange">
-    <div class="tier-header">ORANGE - 30-Year Fixed</div>
-    <div class="tier-body">
-      <div class="row"><span class="label">Min Credit Score</span><span class="value">660</span></div>
-      <div class="row"><span class="label">Min Down Payment</span><span class="value">20% (30% for STR)</span></div>
-      <div class="row"><span class="label">Max LTV</span><span class="value">80% (70% for STR)</span></div>
-      <div class="row"><span class="label">Min DSCR</span><span class="value">None (1.00 for STR)</span></div>
-      <div class="row"><span class="label">Reserves</span><span class="value">3 months</span></div>
-      <div class="row"><span class="label">Short-Term Rentals</span><span class="value">Yes</span></div>
-      <div class="tier-best">Best for: Lower cash-flow properties or first-time investors (700 FICO, 1.00 DSCR, max $2M for first-timers).</div>
+  <div class="doc-body">
+
+    <h2>What Is a DSCR Loan?</h2>
+    <p><strong>DSCR</strong> stands for Debt Service Coverage Ratio. Instead of proving your personal income with tax returns, pay stubs, and W-2s, a DSCR loan looks at whether the <strong>property's rental income</strong> covers the mortgage payment. If the property pays for itself, you could qualify.</p>
+
+    <p><strong>This is designed for:</strong> real estate investors (new or experienced), landlords buying their next rental, Airbnb and VRBO buyers, self-employed investors whose tax returns do not reflect their earning power, and anyone scaling a portfolio (up to 20 financed properties).</p>
+
+    <h2>How to Calculate Your DSCR Ratio</h2>
+
+    <div class="formula-section">
+      <div class="formula-eq">Gross Monthly Rental Income <span class="op">&divide;</span> Monthly Payment (PITI)</div>
+      <div class="formula-sub">PITI = Principal + Interest + Taxes + Insurance</div>
     </div>
+
+    <div class="results-row">
+      <div class="result-badge rb-green">1.00 or higher<br>Property covers the payment</div>
+      <div class="result-badge rb-blue">0.80 - 0.99<br>May qualify with reserves</div>
+      <div class="result-badge rb-amber">Below 0.80<br>Some programs still work</div>
+    </div>
+
+    <div class="example-box">
+      <p><strong>Example:</strong> A property rents for <strong>$2,500/month</strong>. The mortgage payment (PITI) is <strong>$2,000/month</strong>.</p>
+      <p><strong>$2,500 &divide; $2,000 = 1.25 DSCR</strong> &mdash; This property <strong>qualifies</strong>. The rental income covers the payment with room to spare.</p>
+      <p style="font-size:7.5pt;color:var(--gray-500);">For purchases, market rent from the appraisal is typically used. For refinances, the lesser of lease amount or market rent may apply.</p>
+    </div>
+
+    <h2>Traditional Investment Loan vs. DSCR</h2>
+    <div class="vs-row">
+      <div class="vs-col vs-trad">
+        <h4>Traditional Loan</h4>
+        <ul>
+          <li>Tax returns required</li>
+          <li>W-2s and pay stubs needed</li>
+          <li>DTI ratio matters</li>
+          <li>Complex for self-employed</li>
+          <li>Limited to 10 financed properties</li>
+          <li>Airbnb income hard to document</li>
+        </ul>
+      </div>
+      <div class="vs-col vs-dscr">
+        <h4>DSCR Loan</h4>
+        <ul>
+          <li>No tax returns</li>
+          <li>No W-2s needed</li>
+          <li>DTI not calculated</li>
+          <li>Self-employed friendly</li>
+          <li>Up to 20 financed properties</li>
+          <li>Airbnb/VRBO income accepted</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Program Tiers</h2>
+    <div class="tier-row">
+      <div class="tier ty">
+        <div class="tier-head">YELLOW</div>
+        <div class="tier-info">
+          <div class="r"><span class="l">FICO</span><span class="v">660</span></div>
+          <div class="r"><span class="l">Down</span><span class="v">20%</span></div>
+          <div class="r"><span class="l">Max LTV</span><span class="v">80%</span></div>
+          <div class="r"><span class="l">Min DSCR</span><span class="v">0.80</span></div>
+          <div class="r"><span class="l">Reserves</span><span class="v">3 mo</span></div>
+          <div class="r"><span class="l">STR</span><span class="v">No</span></div>
+        </div>
+      </div>
+      <div class="tier to">
+        <div class="tier-head">ORANGE</div>
+        <div class="tier-info">
+          <div class="r"><span class="l">FICO</span><span class="v">660</span></div>
+          <div class="r"><span class="l">Down</span><span class="v">20%</span></div>
+          <div class="r"><span class="l">Max LTV</span><span class="v">80%</span></div>
+          <div class="r"><span class="l">Min DSCR</span><span class="v">None</span></div>
+          <div class="r"><span class="l">Reserves</span><span class="v">3 mo</span></div>
+          <div class="r"><span class="l">STR</span><span class="v">Yes*</span></div>
+        </div>
+      </div>
+      <div class="tier tp">
+        <div class="tier-head">PINK</div>
+        <div class="tier-info">
+          <div class="r"><span class="l">FICO</span><span class="v">640</span></div>
+          <div class="r"><span class="l">Down</span><span class="v">20-30%</span></div>
+          <div class="r"><span class="l">Max LTV</span><span class="v">70-80%</span></div>
+          <div class="r"><span class="l">Reserves</span><span class="v">6 mo</span></div>
+          <div class="r"><span class="l">Max Loan</span><span class="v">$2M</span></div>
+          <div class="r"><span class="l">STR</span><span class="v">Yes</span></div>
+        </div>
+      </div>
+      <div class="tier tb">
+        <div class="tier-head">BLUE</div>
+        <div class="tier-info">
+          <div class="r"><span class="l">Down</span><span class="v">20%</span></div>
+          <div class="r"><span class="l">Max LTV</span><span class="v">80%</span></div>
+          <div class="r"><span class="l">STR</span><span class="v">Yes</span></div>
+          <div class="r"><span class="l">Docs</span><span class="v">Flexible</span></div>
+          <div class="r"><span class="l">STR Docs</span><span class="v">12-mo hx</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:7.5pt;color:var(--gray-500);">*Orange STR: 30% down, 70% max LTV, 1.00 min DSCR. Pink: 20% down leased, 30% down vacant. First-time investors (Orange): 700 FICO, 1.00 DSCR, max $2M.</p>
+
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="doc-body">
+
+    <h2>Down Payment Quick Reference</h2>
+    <table>
+      <tr><th>Program</th><th>Min Down</th><th>Max LTV</th><th>Scenario</th></tr>
+      <tr><td><strong>Yellow</strong></td><td>20%</td><td>80%</td><td>Standard long-term rental</td></tr>
+      <tr><td><strong>Orange</strong></td><td>20%</td><td>80%</td><td>Standard long-term rental</td></tr>
+      <tr><td><strong>Orange (STR)</strong></td><td>30%</td><td>70%</td><td>Short-term rental (Airbnb/VRBO)</td></tr>
+      <tr><td><strong>Pink (leased)</strong></td><td>20%</td><td>80%</td><td>Property with active lease</td></tr>
+      <tr><td><strong>Pink (vacant)</strong></td><td>30%</td><td>70%</td><td>Unleased, intended for rental</td></tr>
+      <tr><td><strong>Blue</strong></td><td>20%</td><td>80%</td><td>Standard or short-term rental</td></tr>
+    </table>
+
+    <h3>40-Year Options</h3>
+    <table class="forty-table">
+      <tr><th>Program</th><th>Min Down</th><th>Max LTV</th><th>Min FICO</th><th>Min DSCR</th></tr>
+      <tr><td><strong>40-Year Fixed</strong></td><td>25%</td><td>75%</td><td>660</td><td>0.80</td></tr>
+      <tr><td><strong>40-Year Interest Only</strong></td><td>30-35%</td><td>65-70%</td><td>700</td><td>0.80</td></tr>
+    </table>
+    <p style="font-size:7.5pt;color:var(--gray-500);">Your exact down payment depends on the property's appraised value and the program tier you qualify for. Your Approval Letter will show the specific amount required. A larger down payment could improve your terms.</p>
+
+    <h2>Eligible Properties</h2>
+    <div class="prop-grid">
+      <div class="prop-col prop-yes">
+        <h4>Eligible</h4>
+        <ul>
+          <li>Single-family homes</li>
+          <li>2-4 unit properties</li>
+          <li>Condos and townhomes</li>
+          <li>Long-term leased properties</li>
+          <li>Vacant (intended rental)</li>
+          <li>Short-term: Airbnb, VRBO (select programs)</li>
+        </ul>
+      </div>
+      <div class="prop-col prop-no">
+        <h4>Not Eligible</h4>
+        <ul>
+          <li>Manufactured homes</li>
+          <li>Agricultural zoning</li>
+          <li>Properties over 20 acres</li>
+          <li>Owner-occupied</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Southern Maine Investor Opportunity</h2>
+    <div class="maine-box">
+      <p>York County is one of New England's strongest rental markets:</p>
+      <ul>
+        <li><strong>Coastal vacation rentals</strong> in Kennebunkport, Wells, Ogunquit, and Old Orchard Beach command premium nightly rates</li>
+        <li><strong>Year-round demand</strong> from remote workers relocating to Maine</li>
+        <li><strong>Strong long-term rental demand</strong> in Biddeford, Saco, and Arundel</li>
+        <li><strong>Limited housing inventory</strong> supports property values and rental rates</li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to Run Your Numbers?</h3>
+      <p>Derek will calculate your DSCR ratio, identify the right program, and give you a straight answer.</p>
+      <p style="margin-top:6pt;"><strong>Derek Smith, Mortgage Broker</strong></p>
+      <p>Baxter Mortgage, LLC | 75 Portland Rd, Kennebunk, ME 04043</p>
+      <p>Instagram: @BaxterMortgage</p>
+      <div class="dm">DM "OPTIONS" to get started</div>
+    </div>
+
+    <div class="agent-box">
+      <p>Provided by your real estate agent:</p>
+      <div class="fill"></div><div class="fill-label">Agent Name</div>
+      <div class="fill"></div><div class="fill-label">Phone / Email</div>
+      <div class="fill"></div><div class="fill-label">Brokerage</div>
+    </div>
+
   </div>
 
-  <div class="tier-card tier-pink">
-    <div class="tier-header">PINK - 30-Year Fixed</div>
-    <div class="tier-body">
-      <div class="row"><span class="label">Min Credit Score</span><span class="value">640</span></div>
-      <div class="row"><span class="label">Min Down Payment</span><span class="value">20% leased / 30% vacant</span></div>
-      <div class="row"><span class="label">Max LTV</span><span class="value">80% leased / 70% vacant</span></div>
-      <div class="row"><span class="label">Reserves</span><span class="value">6 months</span></div>
-      <div class="row"><span class="label">Max Loan</span><span class="value">$2,000,000</span></div>
-      <div class="row"><span class="label">Short-Term Rentals</span><span class="value">Yes (Airbnb/VRBO)</span></div>
-      <div class="tier-best">Best for: Lowest credit threshold. Works for all rental types including vacant and short-term.</div>
+  <div class="doc-footer">
+    <p><strong>Derek Smith</strong> NMLS# 2810853 | <strong>Baxter Mortgage, LLC</strong> NMLS# 2752768 | 75 Portland Rd, Kennebunk, ME 04043</p>
+    <p>All loans subject to credit approval and underwriting. Not a commitment to lend. Rates not quoted in this document. Contact Derek Smith for current rates, fees, and personalized qualification. Program guidelines, terms, eligibility requirements, and product availability are subject to change without notice. Investment properties only. Not available for owner-occupied residences. Minimum and maximum loan amounts apply. LTV reductions may apply in declining markets. DSCR calculations shown are illustrative examples only and do not represent a specific loan offer or commitment. Down payment requirements shown are minimums; actual requirements depend on appraised value and program tier. Equal Housing Opportunity.</p>
+    <div class="logos">
+      <img src="logo-fullcolor.svg" alt="Baxter Mortgage">
+      <img src="eho-white.png" alt="Equal Housing Opportunity" style="height:22px;">
     </div>
-  </div>
-
-  <div class="tier-card tier-blue">
-    <div class="tier-header">BLUE - 30-Year Fixed</div>
-    <div class="tier-body">
-      <div class="row"><span class="label">Min Down Payment</span><span class="value">20%</span></div>
-      <div class="row"><span class="label">Max LTV</span><span class="value">80%</span></div>
-      <div class="row"><span class="label">Short-Term Rentals</span><span class="value">Yes</span></div>
-      <div class="row"><span class="label">Documentation</span><span class="value">Flexible</span></div>
-      <div class="row"><span class="label">STR Docs</span><span class="value">12-mo history or alt methods</span></div>
-      <div class="tier-best">Best for: Short-term rental specialists needing flexible documentation options.</div>
-    </div>
-  </div>
-</div>
-
-<h3>40-Year Options</h3>
-<table>
-  <tr><th>Program</th><th>Min Down</th><th>Max LTV</th><th>Min FICO</th><th>Min DSCR</th></tr>
-  <tr><td><strong>40-Year Fixed</strong></td><td>25%</td><td>75%</td><td>660</td><td>0.80</td></tr>
-  <tr><td><strong>40-Year Interest Only</strong></td><td>30-35%</td><td>65-70%</td><td>700</td><td>0.80</td></tr>
-</table>
-
-<h2>Down Payment Quick Reference</h2>
-<table>
-  <tr><th>Program</th><th>Min Down Payment</th><th>Scenario</th></tr>
-  <tr><td>Yellow</td><td>20%</td><td>Standard long-term rental</td></tr>
-  <tr><td>Orange</td><td>20%</td><td>Standard long-term rental</td></tr>
-  <tr><td>Orange (STR)</td><td>30%</td><td>Short-term rental (Airbnb/VRBO)</td></tr>
-  <tr><td>Pink (leased)</td><td>20%</td><td>Property with active lease</td></tr>
-  <tr><td>Pink (vacant)</td><td>30%</td><td>Unleased, intended for rental</td></tr>
-  <tr><td>Blue</td><td>20%</td><td>Standard or short-term rental</td></tr>
-  <tr><td>40-Year Fixed</td><td>25%</td><td>Lower monthly payment option</td></tr>
-  <tr><td>40-Year IO</td><td>30-35%</td><td>Interest-only period</td></tr>
-</table>
-<p style="font-size:.8rem;color:var(--gray-500);">Your exact down payment depends on the property's appraised value and the program tier you qualify for. Your Approval Letter will show the specific amount required. A larger down payment could improve your terms.</p>
-
-<h2>Eligible Property Types</h2>
-<table>
-  <tr><th>Eligible</th><th>Not Eligible</th></tr>
-  <tr><td>Single-family rental homes</td><td>Manufactured homes</td></tr>
-  <tr><td>2-4 unit properties</td><td>Agricultural zoning</td></tr>
-  <tr><td>Condos and townhomes</td><td>Properties over 20 acres</td></tr>
-  <tr><td>Long-term leased properties</td><td>Owner-occupied residences</td></tr>
-  <tr><td>Vacant properties (intended rental)</td><td></td></tr>
-  <tr><td>Short-term rentals: Airbnb, VRBO (select programs)</td><td></td></tr>
-</table>
-
-<h2>Southern Maine Investor Opportunity</h2>
-<p>York County is one of New England's strongest rental markets:</p>
-<ul>
-  <li><strong>Coastal vacation rentals</strong> in Kennebunkport, Wells, Ogunquit, and Old Orchard Beach command premium nightly rates</li>
-  <li><strong>Year-round demand</strong> from remote workers relocating to Maine</li>
-  <li><strong>Strong long-term rental demand</strong> in Biddeford, Saco, and Arundel</li>
-  <li><strong>Limited housing inventory</strong> supports property values and rental rates</li>
-</ul>
-<p>Whether you are buying your first rental or adding to a growing portfolio, a DSCR loan could be the tool that gets you there.</p>
-
-<div class="cta-box">
-  <h3>Ready to Run Your Numbers?</h3>
-  <p>Contact Derek. He will calculate your DSCR ratio,</p>
-  <p>identify the right program, and give you a straight answer.</p>
-  <p style="margin-top:.75rem;font-weight:700;">Derek Smith, Mortgage Broker</p>
-  <p>Baxter Mortgage, LLC</p>
-  <p>75 Portland Rd, Kennebunk, ME 04043</p>
-  <p>Instagram: @BaxterMortgage</p>
-  <p style="margin-top:.5rem;">DM the word <strong>"OPTIONS"</strong> to get started</p>
-</div>
-
-<div class="agent-fill">
-  <p style="font-weight:600;color:var(--navy);margin-bottom:.75rem;">Provided by your real estate agent:</p>
-  <label>Agent Name</label>
-  <div class="fill-line"></div>
-  <label>Phone</label>
-  <div class="fill-line"></div>
-  <label>Brokerage</label>
-  <div class="fill-line"></div>
-</div>
-
-</div>
-
-<div class="navy-bg">
-  <p><strong>Derek Smith</strong> NMLS# 2810853 | <strong>Baxter Mortgage, LLC</strong> NMLS# 2752768</p>
-  <p>75 Portland Rd, Kennebunk, ME 04043</p>
-  <p style="margin-top:.5rem;">All loans subject to credit approval and underwriting. Not a commitment to lend. Rates not quoted in this document. Contact Derek Smith for current rates, fees, and personalized qualification. Program guidelines, terms, eligibility requirements, and product availability are subject to change without notice. Investment properties only. Not available for owner-occupied residences. Minimum and maximum loan amounts apply. LTV reductions may apply in declining markets. DSCR calculations shown are illustrative examples only and do not represent a specific loan offer or commitment. Down payment requirements shown are minimums; actual requirements depend on appraised value and program tier. Equal Housing Opportunity.</p>
-  <div class="footer-logos">
-    <img src="logo-fullcolor.svg" alt="Baxter Mortgage">
-    <img src="eho-white.png" alt="Equal Housing Opportunity" style="height:30px;">
   </div>
 </div>
 
