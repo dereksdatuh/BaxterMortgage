@@ -13,7 +13,18 @@ show.
 - [ ] **HOA / condo fee** (if any)
 - [ ] **Open house date + time**
 - [ ] **Realtor's name + brokerage** (goes on the flyer as the listing agent)
-- [ ] **A photo** (optional — a link or attached image makes the flyer pop)
+- [ ] **Realtor's phone + email** (shown in the co-branded footer)
+- [ ] **A property photo** (optional — a link or attached image makes the flyer pop)
+
+## 1b. Co-Branding Photos (both flyers show YOU + the agent)
+Every flyer has a co-branded footer bar: your headshot/name/info on the left,
+the listing agent's on the right. To fill it:
+- [ ] **Your headshot** — save it once to `branding/assets/derek-headshot.jpg`
+      and Claude will reuse it on every flyer automatically. (Until it's there,
+      the flyer shows your initials "DS" in a circle.)
+- [ ] **The agent's headshot** — paste a link/attach it, or Claude uses their
+      initials as a placeholder. Agents' headshots are usually on their
+      brokerage profile; you can grab one from there.
 
 ## 2. The Market Data (from realtor.com → search the ZIP → "Housing Market" tab)
 Grab whatever's shown for that ZIP:

@@ -52,12 +52,23 @@
     padding:12px 14px;border-radius:6px;margin:14px 0;font-size:13px;color:var(--navy)}
   .callout b{color:var(--teal)}
   .assump{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
-  .cta{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
-    padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
-  .cta .who{font-size:18px;font-weight:800}
-  .cta .who small{display:block;font-weight:500;font-size:12px;color:var(--green)}
-  .cta .contact{text-align:right;font-size:13px;line-height:1.5}
-  .cta .contact b{font-size:16px;color:var(--green)}
+  /* Co-branded footer: Derek (lender) + the listing agent, side by side.
+     Swap DS / SW with <img src="..."> for real
+     headshots, or leave the initials placeholder. */
+  .cobrand{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
+    padding:14px 18px;display:flex;align-items:center;gap:16px}
+  .person{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;
+    background:#2c4f73;border:2px solid var(--green);overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:800;color:var(--green);text-align:center;line-height:1.05}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .pname{font-size:17px;font-weight:800;line-height:1.1}
+  .ptitle{font-size:12px;color:#cfe3d8}
+  .pnmls{font-size:11px;color:var(--green);font-weight:700}
+  .pcontact{font-size:11.5px;color:#eaf2ee;margin-top:2px;overflow-wrap:anywhere}
+  .cbdivider{width:1px;align-self:stretch;background:#3c5d7e;margin:2px 0}
+  .cbtag{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
   footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:10px;
     display:flex;gap:12px;align-items:center}
   .eho{width:42px;height:42px;flex:0 0 42px;border:2px solid var(--navy);
@@ -144,9 +155,26 @@
     commitment to lend, and will change with market rates and your qualification.
   </div>
 
-  <div class="cta">
-    <div class="who">Derek Smith<small>Loan Officer · Baxter Mortgage · NMLS# 2810853</small></div>
-    <div class="contact"><b>(207) 468-6998</b><br>derek@baxtermortgage.com<br>baxtermortgage.com</div>
+  <div class="cobrand">
+    <div class="person">
+      <div class="avatar">DS</div>
+      <div>
+        <div class="cbtag">Your Loan Officer</div>
+        <div class="pname">Derek Smith</div>
+        <div class="ptitle">Baxter Mortgage · NMLS# 2810853</div>
+        <div class="pcontact">(207) 468-6998 · derek@baxtermortgage.com</div>
+      </div>
+    </div>
+    <div class="cbdivider"></div>
+    <div class="person">
+      <div class="avatar">SW</div>
+      <div>
+        <div class="cbtag">Your Listing Agent</div>
+        <div class="pname">Sarah Whitfield</div>
+        <div class="ptitle">Portside Real Estate Group</div>
+        <div class="pcontact">(207) 555-0142 · sarah@portsidere.com</div>
+      </div>
+    </div>
   </div>
 
   <footer>

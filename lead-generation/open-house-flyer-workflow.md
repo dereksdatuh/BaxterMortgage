@@ -68,6 +68,23 @@ Open `market-snapshot-flyer.html`, replace every `{{field}}`, and write to
 - Source line: "Market data via realtor.com, <ZIP>, as of <date>."
 - Keep the disclosure footer + Equal Housing logo.
 
+## Step 4b — Fill the co-branded footer (both flyers)
+Both flyers end in a co-brand bar: **Derek (loan officer) on the left, the
+listing agent on the right**, each with a headshot circle + name + info.
+- `{{derek_photo}}`: if `branding/assets/derek-headshot.jpg` exists, insert
+  `<img src="../../branding/assets/derek-headshot.jpg" alt="Derek Smith">`;
+  otherwise leave his initials ("DS") as the placeholder.
+- `{{agent_photo}}`: if Derek gave a headshot link/file, insert an `<img>`
+  pointing at it; otherwise use the agent's initials.
+- `{{listing_agent}}`, `{{brokerage}}`, `{{agent_phone}}`, `{{agent_email}}`:
+  from the intake. If agent phone/email weren't provided, drop that line rather
+  than inventing contact info.
+- **Compliance note:** co-branding a flyer with the listing agent (their
+  listing, their photo, on a piece you produce and give for free) is normal
+  listing-flyer practice. Do **not** let it become a recurring shared-cost or
+  Marketing Services Agreement arrangement without compliance review — see
+  RESPA notes in `compliance/compliance-checklist.md`.
+
 ## Step 5 — Render to shareable files
 The `.html` files are print-ready at 8.5×11. Offer Derek finished output:
 - These HTML files open and print straight from a browser (Cmd/Ctrl+P →
