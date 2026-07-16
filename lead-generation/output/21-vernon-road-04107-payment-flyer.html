@@ -75,11 +75,27 @@
     border-radius:4px;display:flex;align-items:center;justify-content:center;
     font-size:9px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
   .disc{font-size:9.5px;color:#888;line-height:1.45}
+  /* Reg Z: APR + rate rows carry the required trigger-term disclosures. */
+  .rows .rate,.rows .apr{border-bottom:1px solid #d8e2db}
+  .rows .apr .v{color:var(--navy);font-weight:800}
+  .rows .apr .k{color:var(--navy);font-weight:700}
+  /* Compliance gate: DRAFT banner + watermark stay until compliance approves.
+     Claude blanks <div class="draftbar">⚠ DRAFT — PENDING COMPLIANCE REVIEW · Not for distribution until real rate/APR are entered and Baxter Mortgage compliance has approved.</div> and <div class="watermark"><span>Draft · Pending Compliance</span></div> only after a real
+     rate/APR is entered AND Baxter compliance has signed off. */
+  .draftbar{background:#5a4a00;color:#fff;font-size:12px;font-weight:700;
+    text-align:center;padding:8px 12px;border-radius:8px;margin-bottom:12px;
+    letter-spacing:.3px;line-height:1.35}
+  .watermark{position:fixed;inset:0;pointer-events:none;z-index:99;
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .watermark span{font-size:70px;font-weight:800;color:rgba(90,74,0,0.10);
+    transform:rotate(-32deg);white-space:nowrap;letter-spacing:4px;text-transform:uppercase}
   @media print{ body{background:#fff} .page{margin:0;box-shadow:none} }
 </style>
 </head>
 <body>
+<div class="watermark"><span>Draft · Pending Compliance</span></div>
 <div class="page">
+  <div class="draftbar">⚠ DRAFT — PENDING COMPLIANCE REVIEW · Not for distribution until real rate/APR are entered and Baxter Mortgage compliance has approved.</div>
   <header>
     <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
     <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
@@ -97,8 +113,10 @@
     <div class="card">
       <h2>Conventional</h2>
       <div class="down">5% down</div>
-      <div class="hero"><div class="amt">$5,182</div><div class="per">est. / month</div></div>
+      <div class="hero"><div class="amt">$5,182</div><div class="per">est. total / month</div></div>
       <div class="rows">
+        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">6.75%* example</span></div>
+        <div class="apr"><span class="k">APR</span><span class="v">6.94%* est.</span></div>
         <div><span class="k">Down payment</span><span class="v">$33,950</span></div>
         <div><span class="k">Loan amount</span><span class="v">$645,050</span></div>
         <div><span class="k">Principal & interest</span><span class="v">$4,184</span></div>
@@ -112,8 +130,10 @@
     <div class="card">
       <h2>FHA</h2>
       <div class="down">3.5% down</div>
-      <div class="hero"><div class="amt">$5,279</div><div class="per">est. / month</div></div>
+      <div class="hero"><div class="amt">$5,279</div><div class="per">est. total / month</div></div>
       <div class="rows">
+        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">6.50%* example</span></div>
+        <div class="apr"><span class="k">APR</span><span class="v">7.35%* est.</span></div>
         <div><span class="k">Down payment</span><span class="v">$23,765</span></div>
         <div><span class="k">Loan amount</span><span class="v">$655,235</span></div>
         <div><span class="k">Principal & interest</span><span class="v">$4,250</span></div>
@@ -127,8 +147,10 @@
     <div class="card">
       <h2>VA</h2>
       <div class="down">0% down</div>
-      <div class="hero"><div class="amt">$5,133</div><div class="per">est. / month</div></div>
+      <div class="hero"><div class="amt">$5,133</div><div class="per">est. total / month</div></div>
       <div class="rows">
+        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">6.375%* example</span></div>
+        <div class="apr"><span class="k">APR</span><span class="v">6.62%* est.</span></div>
         <div><span class="k">Down payment</span><span class="v">$0</span></div>
         <div><span class="k">Loan amount</span><span class="v">$679,000</span></div>
         <div><span class="k">Principal & interest</span><span class="v">$4,404</span></div>
@@ -148,11 +170,19 @@
   </div>
 
   <div class="assump">
-    Assumes an example rate of 6.75% on a 30-year fixed
-    loan. Estimated property taxes $6,347 (2024)/yr and homeowners insurance
-    ~$2,400/yr. PMI/MIP estimated where applicable. Figures are
-    <b>estimates for illustration only</b>, not a rate quote, offer, or
-    commitment to lend, and will change with market rates and your qualification.
+    <b>Repayment terms:</b> each scenario assumes a fixed interest rate repaid in
+    360 equal monthly principal &amp; interest payments over
+    30 years. The monthly figure shown is an <b>estimated total
+    payment</b> that also includes estimated property taxes ($6,347 (2024)/yr),
+    homeowners insurance (~$2,400/yr), and any mortgage insurance / HOA —
+    these escrow items are estimates and are not part of the finance charge.
+    <b>APR</b> reflects the cost of credit as a yearly rate and assumes
+    typical estimated points and closing costs financed into the loan. Figures are <b>estimates for illustration only</b>,
+    based on a $679,000 sales price and the assumptions above — they are
+    <b>not an offer or commitment to lend, not a rate lock, and not a Loan
+    Estimate</b>. Your actual rate, APR, and payment depend on your credit,
+    down payment, loan amount, and program, and are subject to change. Rate/APR
+    accurate as of the example date shown — REPLACE with your actual rate-sheet date.
   </div>
 
   <div class="cobrand">
@@ -180,12 +210,18 @@
   <footer>
     <div class="eho">EQUAL HOUSING</div>
     <div class="disc">
-      Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853.
-      Equal Housing Opportunity / Equal Housing Lender. All loans subject to
-      credit approval, income verification, and property appraisal. Rates and
-      programs subject to change without notice. This is not an offer to extend
-      credit or a commitment to lend. Terms and conditions apply. Listing shown
-      courtesy of Monica Dambach, Waypoint Brokers Collective.
+      This is an advertisement. Baxter Mortgage (NMLS# 2752768) | Derek Smith,
+      Loan Officer, NMLS# 2810853. Equal Housing Opportunity / Equal Housing
+      Lender. All loans subject to credit approval, income verification, and
+      property appraisal. Interest rates and Annual Percentage Rates (APR) shown
+      are examples for illustration, are not guaranteed, and are subject to
+      change without notice; your actual rate and APR may differ. Payment
+      amounts, down payments, and terms shown are estimates and do not include
+      all applicable fees. This is not an offer to extend credit, a commitment to
+      lend, a preapproval, or a rate lock. Not affiliated with or endorsed by any
+      government agency. Listing shown courtesy of Monica Dambach, Waypoint Brokers Collective;
+      Baxter Mortgage is not the listing broker. NMLS Consumer Access:
+      nmlsconsumeraccess.org.
     </div>
   </footer>
 </div>

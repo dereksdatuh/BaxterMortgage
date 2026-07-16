@@ -37,9 +37,17 @@ Grab whatever's shown for that ZIP:
 - [ ] **Buyer's / seller's / neutral market** label (if realtor.com states it)
 - [ ] **The ZIP + town name** (for the flyer header)
 
-## 3. Optional Extras (make it better, not required)
-- [ ] Current ballpark rate you want to illustrate (else Claude uses a clearly
-      labeled placeholder like "example rate" and tells you to confirm the day-of)
+## 3. Rate + APR (required before a flyer can actually be sent)
+The payment flyer is a Reg Z advertisement, so it must show a real **interest
+rate AND APR** per program before it leaves DRAFT (see
+`COMPLIANCE-FLYER-REVIEW.md`). Give me:
+- [ ] **Interest rate + APR** for each program you want shown, from your rate
+      sheet / LOS, with the date they're accurate as of. (No APR yet? I'll build
+      it with clearly-labeled *example* rate/APR and keep it in DRAFT — it can't
+      be distributed until you swap in the real figures and compliance approves.)
+- [ ] What the APR assumes (points/fees basis), if you have it.
+
+## 4. Optional Extras (make it better, not required)
 - [ ] Which loan programs to feature (default: Conventional 5% down, FHA 3.5%
       down, VA 0% down — swap per the buyer pool you expect)
 - [ ] Any first-time-buyer / MaineHousing angle worth calling out for this town

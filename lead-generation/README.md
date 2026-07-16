@@ -54,6 +54,7 @@ give email — all with the required NMLS + Equal Housing disclosures baked in.
 
 | File | What it's for |
 |---|---|
+| `COMPLIANCE-FLYER-REVIEW.md` | **Read first.** Reg Z trigger-term rules + the mandatory pre-distribution sign-off gate |
 | `open-house-flyer-workflow.md` | The step-by-step SOP Claude follows on every request |
 | `payment-breakdown-flyer.html` | Print-ready template for the payment flyer (Claude fills the `{{fields}}`) |
 | `market-snapshot-flyer.html` | Print-ready template for the market snapshot flyer |
@@ -61,11 +62,24 @@ give email — all with the required NMLS + Equal Housing disclosures baked in.
 | `intake-checklist.md` | Exactly what to collect so a flyer set is complete |
 | `examples/` | A fully worked example (Portland listing) so you can see the finished product |
 
-## The One Compliance Rule That Matters Here
+## Compliance — Read This (it's the whole ballgame on the payment flyer)
 
-The payment flyer quotes numbers, so it *must* carry the full disclosures and
-label all figures as **estimates for illustration only** — never a rate quote,
-never a commitment to lend. The templates already bake this in. Don't delete
-the footer, and follow `compliance/compliance-checklist.md`. When in doubt on a
-specific rate, keep the flyer to "example scenarios" and drive the buyer to a
-1:1 call with you.
+The payment flyer quotes payments, so under **Regulation Z / Truth in Lending
+Act** it is an **advertisement with "triggering terms"** — which legally forces
+it to also show a labeled **APR**, the **interest rate**, and the **repayment
+terms**, plus "this is an advertisement / not a commitment to lend" language.
+The template bakes all of this in. Because of that:
+
+- Every generated payment flyer ships with a **"DRAFT — PENDING COMPLIANCE
+  REVIEW"** banner + watermark that stay on until **both** (a) real rate + APR
+  from an actual pricing scenario are entered, and (b) **Baxter Mortgage
+  compliance has approved** it.
+- Claude never removes that gate on its own and never certifies the piece as
+  "compliant" — it builds to the rules and flags what you + compliance must
+  verify. Final sign-off is yours.
+- Full rules + the per-flyer sign-off checklist live in
+  **`COMPLIANCE-FLYER-REVIEW.md`** (start there), alongside
+  `compliance/compliance-checklist.md`.
+
+The market-snapshot flyer has no credit terms and is low-risk — just keep its
+"not an appraisal / not a guarantee of value" line and no Fair Housing steering.
