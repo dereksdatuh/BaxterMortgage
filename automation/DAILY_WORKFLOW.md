@@ -76,6 +76,11 @@ Claude will:
 
 ## As-Needed: Specific Asks
 
+- **"Build me the open-house flyer set"** — paste a listing + the
+  realtor.com market data for its ZIP, and Claude produces a payment-breakdown
+  flyer, a market-snapshot flyer, and the no-strings "give" email to the
+  listing agent (see `lead-generation/`). This is the core give-give-give
+  lead-gen play — do it for every open house you hear about.
 - **"Draft a thank-you email to [Realtor] for the referral"** — Claude
   pulls their info from `partner-tracker.csv` and the right template
 - **"Create a graphic for this week's USDA post"** — Canva, on-brand,

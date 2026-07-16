@@ -30,6 +30,7 @@ all driven from the data files below.
 | `referral-partners/` | Scripts, emails, and a tracker for building relationships with Realtors, attorneys, financial planners, builders, CPAs |
 | `content-marketing/` | Social media calendar + post templates, email newsletters, blog topic bank |
 | `client-pipeline/` | Lead/client CRM tracker, follow-up sequences from inquiry to closing to repeat/referral |
+| `lead-generation/` | The "give, give, give" flyer engine — paste a listing + realtor.com ZIP data, get back a payment-breakdown flyer, a market-snapshot flyer, and a no-strings give email to the Realtor |
 | `events-community/` | Local event, sponsorship, and community-visibility ideas across Maine |
 | `compliance/` | NMLS, Fair Housing, CAN-SPAM/TCPA checklist for everything you send |
 | `automation/` | Lead gen automation blueprint (Zapier), content batching SOP (Canva/Higgsfield), and recommended tool stack |

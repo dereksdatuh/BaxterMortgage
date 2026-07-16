@@ -1,0 +1,112 @@
+<!--
+  MARKET SNAPSHOT FLYER — Baxter Mortgage / Derek Smith
+  Claude fills every {{field}} per open-house-flyer-workflow.md using the
+  realtor.com data Derek pasted, then writes the result to
+  lead-generation/output/<zip>-market-snapshot.html.
+  Print at 8.5x11. DO NOT remove the disclosure footer or Equal Housing block.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Market Snapshot — Portland 04102</title>
+<style>
+  :root{
+    --navy:#1B3A5C; --green:#7AC97A; --teal:#1E9B6E;
+    --charcoal:#333333; --paper:#FFFFFF; --mist:#F4F7F5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#e9edf0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--charcoal);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:8.5in;min-height:11in;margin:0 auto;background:var(--paper);
+    padding:0.55in 0.6in;display:flex;flex-direction:column}
+  header{border-bottom:4px solid var(--teal);padding-bottom:14px;
+    display:flex;justify-content:space-between;align-items:flex-end}
+  .brand{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:1px}
+  .brand .x{color:var(--teal)}
+  .brand small{display:block;font-size:13px;font-weight:600;color:var(--teal);
+    font-style:italic;letter-spacing:0}
+  .tagline{text-align:right;font-size:12px;color:var(--navy);font-weight:600}
+  .sub{color:var(--teal);font-weight:700;font-size:15px;margin-top:22px;letter-spacing:1px}
+  h1{color:var(--navy);font-size:32px;margin:2px 0 2px;line-height:1.05}
+  .asof{font-size:13px;color:#777}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 6px}
+  .tile{border:1.5px solid #dfe6e2;border-radius:10px;padding:16px 14px;text-align:center;
+    background:var(--mist)}
+  .tile .n{font-size:28px;font-weight:800;color:var(--navy);line-height:1}
+  .tile .l{font-size:12px;color:#666;margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  .tile .t{font-size:11px;color:var(--teal);font-weight:700;margin-top:4px}
+  .marketband{display:flex;align-items:center;gap:12px;margin:18px 0 4px;
+    background:var(--navy);color:#fff;border-radius:10px;padding:14px 18px}
+  .marketband .big{font-size:18px;font-weight:800;color:var(--green)}
+  .marketband .txt{font-size:13px;line-height:1.4}
+  .read{background:var(--mist);border-left:4px solid var(--green);
+    padding:14px 16px;border-radius:6px;margin:16px 0;font-size:13.5px;color:var(--navy);line-height:1.5}
+  .read h3{color:var(--teal);font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+  .source{font-size:11px;color:#999;margin-top:2px}
+  .cta{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
+    padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
+  .cta .who{font-size:18px;font-weight:800}
+  .cta .who small{display:block;font-weight:500;font-size:12px;color:var(--green)}
+  .cta .contact{text-align:right;font-size:13px;line-height:1.5}
+  .cta .contact b{font-size:16px;color:var(--green)}
+  footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:10px;
+    display:flex;gap:12px;align-items:center}
+  .eho{width:42px;height:42px;flex:0 0 42px;border:2px solid var(--navy);
+    border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
+  .disc{font-size:9.5px;color:#888;line-height:1.45}
+  @media print{ body{background:#fff} .page{margin:0;box-shadow:none} }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
+    <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
+  </header>
+
+  <div class="sub">LOCAL MARKET SNAPSHOT</div>
+  <h1>Portland, ME · 04102</h1>
+  <div class="asof">As of July 2026</div>
+
+  <div class="grid">
+    <div class="tile"><div class="n">$549K</div><div class="l">Median Price</div><div class="t">▲ 4.2% YoY</div></div>
+    <div class="tile"><div class="n">21</div><div class="l">Median Days on Market</div><div class="t">moving fast</div></div>
+    <div class="tile"><div class="n">$312</div><div class="l">Median $ / Sq Ft</div><div class="t">per sq ft</div></div>
+    <div class="tile"><div class="n">38</div><div class="l">Active Listings</div><div class="t">tight supply</div></div>
+    <div class="tile"><div class="n">100.5%</div><div class="l">Sale-to-List Ratio</div><div class="t">at/over asking</div></div>
+    <div class="tile"><div class="n">$535K</div><div class="l">Median Sold Price</div><div class="t">last 30 days</div></div>
+  </div>
+
+  <div class="marketband">
+    <div class="big">SELLER'S MARKET</div>
+    <div class="txt">Low inventory, quick sales, and homes closing at or above list price — conditions favor sellers in 04102 right now.</div>
+  </div>
+
+  <div class="read">
+    <h3>What this means for sellers</h3>
+    Homes in 04102 are moving in about three weeks and closing right around asking. With only 38 active listings, well-prepared homes are seeing strong buyer interest — pricing sharply and being ready for pre-approved buyers is what turns that interest into offers. Every buyer who walks your open house should know what the monthly payment looks like; that's what the companion payment flyer is for.
+  </div>
+
+  <div class="source">Market data via realtor.com for ZIP 04102, as of July 2026. Figures are point-in-time and subject to change.</div>
+
+  <div class="cta">
+    <div class="who">Derek Smith<small>Loan Officer · Baxter Mortgage · NMLS# 2810853</small></div>
+    <div class="contact"><b>(207) 468-6998</b><br>derek@baxtermortgage.com<br>baxtermortgage.com</div>
+  </div>
+
+  <footer>
+    <div class="eho">EQUAL HOUSING</div>
+    <div class="disc">
+      Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853.
+      Equal Housing Opportunity / Equal Housing Lender. Market data compiled from
+      realtor.com and believed reliable but not guaranteed; not an appraisal or a
+      guarantee of value. This is not an offer to extend credit or a commitment to
+      lend. Rates and programs subject to change without notice.
+    </div>
+  </footer>
+</div>
+</body>
+</html>
