@@ -1,0 +1,193 @@
+<!--
+  PAYMENT BREAKDOWN FLYER — Baxter Mortgage / Derek Smith
+  Claude fills every {{field}} per open-house-flyer-workflow.md, then writes
+  the result to lead-generation/output/<address-slug>-payment-flyer.html.
+  Print at 8.5x11 (browser: Cmd/Ctrl+P -> Save as PDF). DO NOT remove the
+  disclosure footer or the Equal Housing block.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Payment Breakdown — 21 Vernon Road</title>
+<style>
+  :root{
+    --navy:#1B3A5C; --green:#7AC97A; --teal:#1E9B6E;
+    --charcoal:#333333; --paper:#FFFFFF; --mist:#F4F7F5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#e9edf0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--charcoal);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:8.5in;min-height:11in;margin:0 auto;background:var(--paper);
+    padding:0.55in 0.6in;display:flex;flex-direction:column}
+  header{border-bottom:4px solid var(--teal);padding-bottom:14px;
+    display:flex;justify-content:space-between;align-items:flex-end}
+  .brand{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:1px}
+  .brand .x{color:var(--teal)}
+  .brand small{display:block;font-size:13px;font-weight:600;color:var(--teal);
+    font-style:italic;letter-spacing:0}
+  .tagline{text-align:right;font-size:12px;color:var(--navy);font-weight:600}
+  h1{color:var(--navy);font-size:30px;margin:22px 0 4px;line-height:1.1}
+  .sub{color:var(--teal);font-weight:700;font-size:16px;margin-bottom:2px}
+  .listmeta{font-size:14px;color:var(--charcoal);margin-top:6px}
+  .listmeta b{color:var(--navy)}
+  .scenarios{display:flex;gap:14px;margin:24px 0 8px}
+  .card{flex:1;border:1.5px solid #dfe6e2;border-radius:10px;overflow:hidden;
+    display:flex;flex-direction:column}
+  .card h2{background:var(--navy);color:#fff;font-size:15px;padding:10px 12px;
+    text-align:center;font-weight:700}
+  .card .down{background:var(--mist);color:var(--teal);font-weight:700;
+    font-size:12px;text-align:center;padding:6px}
+  .hero{text-align:center;padding:14px 8px 4px}
+  .hero .amt{font-size:34px;font-weight:800;color:var(--navy);line-height:1}
+  .hero .per{font-size:12px;color:#777}
+  .rows{padding:10px 12px 14px;font-size:12.5px}
+  .rows div{display:flex;justify-content:space-between;padding:3px 0;
+    border-bottom:1px dotted #e2e2e2}
+  .rows div:last-child{border-bottom:none}
+  .rows .k{color:#666}
+  .rows .v{color:var(--charcoal);font-weight:600}
+  .callout{background:var(--mist);border-left:4px solid var(--green);
+    padding:12px 14px;border-radius:6px;margin:14px 0;font-size:13px;color:var(--navy)}
+  .callout b{color:var(--teal)}
+  .assump{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
+  /* Co-branded footer: Derek (lender) + the listing agent, side by side.
+     Swap DS / MD with <img src="..."> for real
+     headshots, or leave the initials placeholder. */
+  .cobrand{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
+    padding:14px 18px;display:flex;align-items:center;gap:16px}
+  .person{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;
+    background:#2c4f73;border:2px solid var(--green);overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:800;color:var(--green);text-align:center;line-height:1.05}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .pname{font-size:17px;font-weight:800;line-height:1.1}
+  .ptitle{font-size:12px;color:#cfe3d8}
+  .pnmls{font-size:11px;color:var(--green);font-weight:700}
+  .pcontact{font-size:11.5px;color:#eaf2ee;margin-top:2px;overflow-wrap:anywhere}
+  .cbdivider{width:1px;align-self:stretch;background:#3c5d7e;margin:2px 0}
+  .cbtag{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:10px;
+    display:flex;gap:12px;align-items:center}
+  .eho{width:42px;height:42px;flex:0 0 42px;border:2px solid var(--navy);
+    border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:9px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
+  .disc{font-size:9.5px;color:#888;line-height:1.45}
+  @media print{ body{background:#fff} .page{margin:0;box-shadow:none} }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
+    <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
+  </header>
+
+  <div class="sub">OPEN HOUSE · Sun July 19 · 1:00–2:30pm</div>
+  <h1>What Would It Cost To Own<br>21 Vernon Road?</h1>
+  <div class="listmeta">
+    <b>3</b> bd · <b>2</b> ba · <b>1,092</b> sqft ·
+    Listed at <b>$679,000</b> · Cape Elizabeth, ME 04107
+  </div>
+
+  <div class="scenarios">
+    <!-- SCENARIO 1 -->
+    <div class="card">
+      <h2>Conventional</h2>
+      <div class="down">5% down</div>
+      <div class="hero"><div class="amt">$5,182</div><div class="per">est. / month</div></div>
+      <div class="rows">
+        <div><span class="k">Down payment</span><span class="v">$33,950</span></div>
+        <div><span class="k">Loan amount</span><span class="v">$645,050</span></div>
+        <div><span class="k">Principal & interest</span><span class="v">$4,184</span></div>
+        <div><span class="k">Taxes (est.)</span><span class="v">$529</span></div>
+        <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
+        <div><span class="k">Mortgage insurance</span><span class="v">$269 (PMI)</span></div>
+        <div><span class="k">HOA / condo</span><span class="v">None</span></div>
+      </div>
+    </div>
+    <!-- SCENARIO 2 -->
+    <div class="card">
+      <h2>FHA</h2>
+      <div class="down">3.5% down</div>
+      <div class="hero"><div class="amt">$5,279</div><div class="per">est. / month</div></div>
+      <div class="rows">
+        <div><span class="k">Down payment</span><span class="v">$23,765</span></div>
+        <div><span class="k">Loan amount</span><span class="v">$655,235</span></div>
+        <div><span class="k">Principal & interest</span><span class="v">$4,250</span></div>
+        <div><span class="k">Taxes (est.)</span><span class="v">$529</span></div>
+        <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
+        <div><span class="k">Mortgage insurance</span><span class="v">$300 (MIP)</span></div>
+        <div><span class="k">HOA / condo</span><span class="v">None</span></div>
+      </div>
+    </div>
+    <!-- SCENARIO 3 -->
+    <div class="card">
+      <h2>VA</h2>
+      <div class="down">0% down</div>
+      <div class="hero"><div class="amt">$5,133</div><div class="per">est. / month</div></div>
+      <div class="rows">
+        <div><span class="k">Down payment</span><span class="v">$0</span></div>
+        <div><span class="k">Loan amount</span><span class="v">$679,000</span></div>
+        <div><span class="k">Principal & interest</span><span class="v">$4,404</span></div>
+        <div><span class="k">Taxes (est.)</span><span class="v">$529</span></div>
+        <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
+        <div><span class="k">Mortgage insurance</span><span class="v">$0</span></div>
+        <div><span class="k">HOA / condo</span><span class="v">None</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Curious what YOU would qualify for?</b> These are example scenarios — your
+    real payment depends on your rate, credit, and down payment. I'll run your
+    exact numbers in about 15 minutes, no cost and no obligation. First-time
+    buyer in Maine? Ask me about MaineHousing + down-payment assistance.
+  </div>
+
+  <div class="assump">
+    Assumes an example rate of 6.75% on a 30-year fixed
+    loan. Estimated property taxes $6,347 (2024)/yr and homeowners insurance
+    ~$2,400/yr. PMI/MIP estimated where applicable. Figures are
+    <b>estimates for illustration only</b>, not a rate quote, offer, or
+    commitment to lend, and will change with market rates and your qualification.
+  </div>
+
+  <div class="cobrand">
+    <div class="person">
+      <div class="avatar">DS</div>
+      <div>
+        <div class="cbtag">Your Loan Officer</div>
+        <div class="pname">Derek Smith</div>
+        <div class="ptitle">Baxter Mortgage · NMLS# 2810853</div>
+        <div class="pcontact">(207) 468-6998 · derek@baxtermortgage.com</div>
+      </div>
+    </div>
+    <div class="cbdivider"></div>
+    <div class="person">
+      <div class="avatar">MD</div>
+      <div>
+        <div class="cbtag">Your Listing Agent</div>
+        <div class="pname">Monica Dambach</div>
+        <div class="ptitle">Waypoint Brokers Collective</div>
+        <div class="pcontact">(207) 804-2012</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="eho">EQUAL HOUSING</div>
+    <div class="disc">
+      Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853.
+      Equal Housing Opportunity / Equal Housing Lender. All loans subject to
+      credit approval, income verification, and property appraisal. Rates and
+      programs subject to change without notice. This is not an offer to extend
+      credit or a commitment to lend. Terms and conditions apply. Listing shown
+      courtesy of Monica Dambach, Waypoint Brokers Collective.
+    </div>
+  </footer>
+</div>
+</body>
+</html>
