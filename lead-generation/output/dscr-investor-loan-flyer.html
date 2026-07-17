@@ -1,10 +1,11 @@
 <!--
   DSCR / INVESTOR LOAN FLYER (borrower-facing, educational) — Baxter Mortgage.
-  Consumer-facing product education. Quotes NO rates or payments, so it is not a
-  Reg Z triggering-term ad. Tiers are illustrated generically by color + how each
-  counts rental income — NO wholesale-lender name and NO proprietary program
-  ("Investor Flex") name, per compliance. Keep the disclosure footer + Equal
-  Housing block. Claude fills {{fields}} then writes to lead-generation/output/.
+  Consumer-facing product education with a 4-tier comparison table. Quotes NO
+  rates/payments/APR (not a Reg Z triggering-term ad). Tiers kept generic by
+  color — NO wholesale-lender name and NO proprietary program ("Investor Flex")
+  name. All parameters labeled illustrative / subject to program guidelines.
+  Keep the disclosure footer + Equal Housing block.  is left
+  empty for a finished piece, or set to the DRAFT banner while pending review.
   Print at 8.5x11.
 -->
 <!doctype html>
@@ -16,7 +17,7 @@
   :root{
     --navy:#1B3A5C; --green:#7AC97A; --teal:#1E9B6E;
     --charcoal:#333333; --paper:#FFFFFF; --mist:#F4F7F5;
-    --t-blue:#2f6fb0; --t-orange:#c9862f; --t-pink:#c05b83; --t-yellow:#c9a92f;
+    --t-blue:#2f6fb0; --t-orange:#c9862f; --t-pink:#c05b83; --t-yellow:#b8971f;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#e9edf0}
@@ -35,31 +36,29 @@
   h1{color:var(--navy);font-size:29px;margin:2px 0 6px;line-height:1.08}
   .lede{font-size:13.5px;color:var(--charcoal);line-height:1.5}
   .lede b{color:var(--navy)}
-  .dscrbox{display:flex;gap:14px;margin:14px 0 4px;align-items:stretch}
-  .formula{flex:1.15;background:var(--navy);color:#fff;border-radius:10px;padding:14px 16px}
+  .band{display:flex;gap:14px;margin:14px 0 6px;align-items:stretch}
+  .formula{flex:1.1;background:var(--navy);color:#fff;border-radius:10px;padding:13px 16px}
   .formula .lab{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--green);font-weight:700}
-  .formula .eq{font-size:18px;font-weight:800;margin:5px 0 7px;line-height:1.25}
-  .formula .ex{font-size:12px;color:#dbe7df;line-height:1.5}
+  .formula .eq{font-size:17px;font-weight:800;margin:5px 0 6px;line-height:1.25}
+  .formula .ex{font-size:11.5px;color:#dbe7df;line-height:1.5}
   .formula .ex b{color:#fff}
   .whobox{flex:1;background:var(--mist);border-left:4px solid var(--green);
     border-radius:8px;padding:12px 14px}
   .whobox h3{color:var(--teal);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
-  .whobox ul{list-style:none;font-size:12px;color:var(--navy);line-height:1.5}
+  .whobox ul{list-style:none;font-size:11.5px;color:var(--navy);line-height:1.5}
   .whobox li{padding-left:15px;position:relative}
   .whobox li:before{content:"▸";position:absolute;left:0;color:var(--teal);font-weight:700}
-  .tiers-h{color:var(--navy);font-size:15px;font-weight:800;margin:14px 0 3px}
-  .tiers-sub{font-size:12px;color:#666;margin-bottom:8px}
-  .tiers{display:flex;gap:10px}
-  .tier{flex:1;border:1.5px solid #e0e6e2;border-top:5px solid var(--tc);border-radius:9px;
-    padding:10px 11px;background:#fff}
-  .tier .name{font-size:14px;font-weight:800;color:var(--navy)}
-  .tier .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--tc);margin-right:5px}
-  .tier .desc{font-size:11px;color:#555;line-height:1.45;margin-top:5px}
-  .tier.blue{--tc:var(--t-blue)} .tier.orange{--tc:var(--t-orange)}
-  .tier.pink{--tc:var(--t-pink)} .tier.yellow{--tc:var(--t-yellow)}
-  .facts{display:flex;gap:8px;margin:12px 0 4px;font-size:11.5px}
-  .fact{flex:1;background:var(--mist);border-radius:7px;padding:8px 10px;color:var(--navy);text-align:center}
-  .fact b{display:block;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
+  .tiers-h{color:var(--navy);font-size:16px;font-weight:800;margin:12px 0 2px}
+  .tiers-sub{font-size:11.5px;color:#666;margin-bottom:7px}
+  table.tt{width:100%;border-collapse:collapse;font-size:11.5px}
+  table.tt th,table.tt td{padding:7px 6px;text-align:center;border:1px solid #e4e9e6}
+  table.tt thead th{color:#fff;font-size:13px;font-weight:800}
+  table.tt thead th.blank{background:var(--navy);text-align:left}
+  th.blue{background:var(--t-blue)} th.orange{background:var(--t-orange)}
+  th.pink{background:var(--t-pink)} th.yellow{background:var(--t-yellow)}
+  table.tt td.rl{text-align:left;font-weight:700;color:var(--navy);background:var(--mist);white-space:nowrap}
+  table.tt tbody tr:nth-child(even) td{background:#fafcfb}
+  table.tt td.bf{font-size:10.5px;color:#555;line-height:1.35}
   .cta{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
     padding:15px 18px;display:flex;align-items:center;gap:16px}
   .cta .avatar{width:60px;height:60px;flex:0 0 60px;border-radius:50%;
@@ -75,7 +74,7 @@
   .cta .contact b{font-size:17px;color:var(--green)}
   .draftbar{background:#5a4a00;color:#fff;font-size:12px;font-weight:700;
     text-align:center;padding:7px 12px;border-radius:8px;margin-bottom:10px;line-height:1.35}
-  footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:9px;
+  footer{margin-top:11px;border-top:1.5px solid #e2e2e2;padding-top:9px;
     display:flex;gap:12px;align-items:center}
   .eho{width:40px;height:40px;flex:0 0 40px;border:2px solid var(--navy);
     border-radius:4px;display:flex;align-items:center;justify-content:center;
@@ -86,7 +85,7 @@
 </head>
 <body>
 <div class="page">
-  <div class="draftbar">⚠ DRAFT — REVIEW WITH BAXTER COMPLIANCE BEFORE DISTRIBUTION</div>
+  
   <header>
     <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
     <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
@@ -97,63 +96,68 @@
   <div class="lede">
     A <b>DSCR (Debt Service Coverage Ratio)</b> loan qualifies an investment
     property on <b>the rent it brings in</b> — not your personal income, tax
-    returns, or debt-to-income ratio. It's the go-to financing for real estate
-    investors, and it can close deals a conventional loan can't.
+    returns, or debt-to-income ratio. There are four flexible tiers, so there's
+    usually a fit for your credit, cash flow, and down payment.
   </div>
 
-  <div class="dscrbox">
+  <div class="band">
     <div class="formula">
       <div class="lab">How it works</div>
       <div class="eq">DSCR = Monthly Rent ÷<br>Monthly Payment (PITIA)</div>
       <div class="ex">
         <b>Illustrative example:</b> $2,000 rent ÷ $1,600 payment = <b>1.25</b>.
-        A ratio of 1.00 means the rent covers the payment; higher is stronger.
-        Some scenarios allow ratios below 1.00. (Example only — not a quote.)
+        1.00 means the rent covers the payment; higher is stronger. (Example
+        only — not a quote.)
       </div>
     </div>
     <div class="whobox">
       <h3>You might be a fit if…</h3>
       <ul>
         <li>You're building a rental portfolio</li>
-        <li>You're self-employed &amp; write-offs hide your real income</li>
+        <li>Self-employed &amp; write-offs hide your income</li>
         <li>You've maxed out conventional financing</li>
-        <li>You're buying a short-term rental (Airbnb / VRBO)</li>
+        <li>You're buying a short-term rental (Airbnb/VRBO)</li>
         <li>You're purchasing in an LLC</li>
       </ul>
     </div>
   </div>
 
-  <div class="tiers-h">Four flexible tiers — ask which one fits your file</div>
-  <div class="tiers-sub">Tiers differ mainly in <b>how your rental income is counted and documented</b>. Illustrative — features and availability are set by current program guidelines and subject to change.</div>
-  <div class="tiers">
-    <div class="tier blue">
-      <div class="name"><span class="dot"></span>Blue</div>
-      <div class="desc">Most flexible on income sources. Counts short-term rental history, and uses the lower of your lease or market rent. Factors in property-management costs.</div>
-    </div>
-    <div class="tier orange">
-      <div class="name"><span class="dot"></span>Orange</div>
-      <div class="desc">Uses market rent for purchases. Supports long-term leased, vacant-but-rentable, and short-term rental properties.</div>
-    </div>
-    <div class="tier pink">
-      <div class="name"><span class="dot"></span>Pink</div>
-      <div class="desc">Qualifies on rent ÷ your full payment (PITIA). A strong fit for refinances, including short-term rentals with history.</div>
-    </div>
-    <div class="tier yellow">
-      <div class="name"><span class="dot"></span>Yellow</div>
-      <div class="desc">Leans on appraised market rent. On a refinance, may use up to 120% of market rent with two months of rent receipts.</div>
-    </div>
-  </div>
-
-  <div class="facts">
-    <div class="fact"><b>Works on</b>Single-family · 2–4 units · condos · STR &amp; LTR</div>
-    <div class="fact"><b>Buy or refi</b>Purchase or cash-out to fund the next deal</div>
-    <div class="fact"><b>Lighter docs</b>No tax returns or W-2s to prove income</div>
-  </div>
+  <div class="tiers-h">The four tiers at a glance</div>
+  <div class="tiers-sub">Illustrative snapshot of program guidelines — not all-inclusive. Actual DSCR minimums, LTV, FICO, reserves, and terms are set by current guidelines and subject to change.</div>
+  <table class="tt">
+    <thead>
+      <tr>
+        <th class="blank">Tier</th>
+        <th class="blue">Blue</th>
+        <th class="orange">Orange</th>
+        <th class="pink">Pink</th>
+        <th class="yellow">Yellow</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="rl">Min DSCR</td><td>0.80</td><td>Flexible*</td><td>1.00</td><td>Flexible*</td></tr>
+      <tr><td class="rl">Reserves</td><td>12 mo</td><td>3 mo</td><td>3 mo</td><td>6 mo</td></tr>
+      <tr><td class="rl">Min FICO</td><td>660</td><td>660</td><td>660</td><td>640</td></tr>
+      <tr><td class="rl">Max LTV</td><td>80%</td><td>80%</td><td>80%</td><td>80%</td></tr>
+      <tr><td class="rl">Min loan</td><td>$100k</td><td>$100k</td><td>$50k</td><td>None set</td></tr>
+      <tr><td class="rl">Rent counted</td>
+        <td class="bf">Lesser of lease or market; ~75% on many short-term</td>
+        <td class="bf">Market rent on purchases</td>
+        <td class="bf">Rent ÷ full payment (PITIA)</td>
+        <td class="bf">Market rent; up to 120% on refi w/ 2 mo receipts</td></tr>
+      <tr><td class="rl">Best when</td>
+        <td class="bf">You want max flexibility &amp; have more liquidity</td>
+        <td class="bf">Flexible DSCR with lighter reserves</td>
+        <td class="bf">Smaller, strong-cash-flow purchases</td>
+        <td class="bf">Credit is tighter &amp; you can document rent</td></tr>
+    </tbody>
+  </table>
+  <div class="tiers-sub" style="margin-top:6px">*Flexible = no set minimum shown in the tier comparison. All tiers can close in an LLC and work for purchase or cash-out refinance.</div>
 
   <div class="cta">
     <div class="avatar">DS</div>
     <div class="msg">
-      <div class="big">Thinking about an investment property? <span>Let's see if DSCR works for you.</span></div>
+      <div class="big">Thinking about an investment property? <span>Let's find the tier that fits.</span></div>
       <div class="who">Derek Smith · Loan Officer · Baxter Mortgage · NMLS# 2810853 — free, no obligation</div>
     </div>
     <div class="contact"><b>(207) 468-6998</b><br>derek@baxtermortgage.com<br>baxtermortgage.com</div>
@@ -166,12 +170,12 @@
       loans on non-owner-occupied property — not for primary residences. Baxter
       Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853. Equal
       Housing Opportunity / Equal Housing Lender. This is not a commitment to
-      lend. Program tiers, features, and availability are illustrative and set by
-      current program guidelines, which are subject to change without notice. All
-      loans subject to credit approval, property and rental qualification,
-      appraisal, and reserve requirements. The DSCR figure shown is an
-      illustrative example, not a quote or offer. NMLS Consumer Access:
-      nmlsconsumeraccess.org.
+      lend. Program tiers, parameters, features, and availability are an
+      illustrative summary, not all-inclusive, and are set by current program
+      guidelines that are subject to change without notice. All loans subject to
+      credit approval, property and rental qualification, appraisal, and reserve
+      requirements. The DSCR figure shown is an illustrative example, not a quote
+      or offer. NMLS Consumer Access: nmlsconsumeraccess.org.
     </div>
   </footer>
 </div>
