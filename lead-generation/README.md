@@ -57,6 +57,7 @@ give email — all with the required NMLS + Equal Housing disclosures baked in.
 | `COMPLIANCE-FLYER-REVIEW.md` | **Read first.** Reg Z trigger-term rules + the mandatory pre-distribution sign-off gate |
 | `open-house-flyer-workflow.md` | The step-by-step SOP Claude follows on every request |
 | `payment-breakdown-flyer.html` | Print-ready template for the payment flyer (Claude fills the `{{fields}}`) |
+| `dscr-investor-loan-flyer.html` | Educational give for realtors with investor clients — "qualify on the rent, not your income." No rates/payments, so low Reg Z risk |
 | `market-snapshot-flyer.html` | Print-ready template for the market snapshot flyer |
 | `realtor-give-templates.md` | The no-strings email + text you send with the flyers |
 | `intake-checklist.md` | Exactly what to collect so a flyer set is complete |
