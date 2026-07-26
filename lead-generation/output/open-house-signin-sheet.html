@@ -1,0 +1,133 @@
+<!--
+  OPEN HOUSE SIGN-IN SHEET (evergreen give) — Baxter Mortgage / Derek Smith.
+  Zero numbers → not a Reg Z ad. Reusable for ANY open house: print a stack,
+  the host writes in the property/date/agent by hand. Keep the disclosure
+  footer + Equal Housing block. Print at 8.5x11.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Open House Sign-In — Baxter Mortgage</title>
+<style>
+  :root{--navy:#1B3A5C;--green:#7AC97A;--teal:#1E9B6E;--charcoal:#333;--mist:#F4F7F5;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#e9edf0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--charcoal);
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:8.5in;min-height:11in;margin:0 auto;background:#fff;padding:0.5in 0.6in;display:flex;flex-direction:column}
+  header{border-bottom:4px solid var(--teal);padding-bottom:12px;display:flex;justify-content:space-between;align-items:flex-end}
+  .brand{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:1px}
+  .brand .x{color:var(--teal)}
+  .brand small{display:block;font-size:13px;font-weight:600;color:var(--teal);font-style:italic;letter-spacing:0}
+  .tagline{text-align:right;font-size:12px;color:var(--navy);font-weight:600}
+  h1{color:var(--navy);font-size:32px;margin:16px 0 4px;line-height:1.05}
+  .welcome{font-size:13.5px;color:var(--charcoal);line-height:1.5;margin-bottom:12px}
+  .welcome b{color:var(--navy)}
+  .meta{display:flex;gap:10px;margin:6px 0 14px;font-size:13px;color:var(--navy)}
+  .meta .f{flex:1;border-bottom:2px solid var(--navy);padding:2px 4px}
+  .meta .f span{font-size:10px;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.5px;display:block}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{background:var(--navy);color:#fff;padding:9px 6px;text-align:left;font-size:11.5px;font-weight:700}
+  th.c,td.c{text-align:center}
+  td{border:1px solid #d7ddda;height:34px;padding:4px 6px}
+  tbody tr:nth-child(even) td{background:var(--mist)}
+  .cols-note{font-size:10px;color:#999;margin-top:4px}
+  .ask{background:var(--mist);border-left:4px solid var(--green);border-radius:6px;
+    padding:12px 15px;margin:14px 0 8px;font-size:13px;color:var(--navy);line-height:1.5}
+  .ask b{color:var(--teal)}
+  .cobrand{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;padding:14px 18px;
+    display:flex;align-items:center;gap:16px}
+  .person{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .avatar{width:56px;height:56px;flex:0 0 56px;border-radius:50%;background:#2c4f73;border:2px solid var(--green);
+    overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:var(--green)}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .cbtag{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .pname{font-size:17px;font-weight:800;line-height:1.1}
+  .ptitle{font-size:12px;color:#cfe3d8}
+  .pcontact{font-size:11.5px;color:#eaf2ee;margin-top:2px}
+  .hosted{flex:0 0 34%;border-left:1px solid #3c5d7e;padding-left:16px}
+  .hosted .cbtag{margin-bottom:14px}
+  .hosted .line{border-bottom:1px solid #6f8aa6;height:18px;margin-bottom:4px}
+  .hosted .ll{font-size:10px;color:#9fb3c8}
+  footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:9px;display:flex;gap:12px;align-items:center}
+  .eho{width:40px;height:40px;flex:0 0 40px;border:2px solid var(--navy);border-radius:4px;display:flex;
+    align-items:center;justify-content:center;font-size:8.5px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
+  .disc{font-size:9.5px;color:#888;line-height:1.45}
+  @media print{body{background:#fff}.page{margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
+    <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
+  </header>
+
+  <h1>Welcome! Please Sign In</h1>
+  <div class="welcome">Thanks for visiting today. Sign in so the host agent can share updates on this home and answer any questions.</div>
+
+  <div class="meta">
+    <div class="f"><span>Property Address</span>&nbsp;</div>
+    <div class="f" style="flex:.5"><span>Date</span>&nbsp;</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Name</th>
+        <th style="width:18%">Phone</th>
+        <th style="width:26%">Email</th>
+        <th class="c" style="width:17%">Working with<br>an agent?</th>
+        <th class="c" style="width:17%">Pre-approved<br>for financing?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+      <tr><td></td><td></td><td></td><td class="c">Y / N</td><td class="c">Y / N</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ask">
+    <b>Curious what this home could cost per month — or want to get pre-approved before you make an offer?</b>
+    Just ask, or reach out to Derek below. No cost, no obligation.
+  </div>
+
+  <div class="cobrand">
+    <div class="person">
+      <div class="avatar">DS</div>
+      <div>
+        <div class="cbtag">Questions about financing?</div>
+        <div class="pname">Derek Smith · Baxter Mortgage</div>
+        <div class="ptitle">Loan Officer · NMLS# 2810853</div>
+        <div class="pcontact">(207) 468-6998 · derek@baxtermortgage.com</div>
+      </div>
+    </div>
+    <div class="hosted">
+      <div class="cbtag">Open house hosted by</div>
+      <div class="line">&nbsp;</div><div class="ll">Agent name</div>
+      <div class="line" style="margin-top:8px">&nbsp;</div><div class="ll">Brokerage / phone</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="eho">EQUAL HOUSING</div>
+    <div class="disc">
+      By signing in, you agree the host agent and/or Baxter Mortgage may contact you about your visit; reply STOP to any
+      text to opt out. Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853. Equal Housing
+      Opportunity / Equal Housing Lender. This is not a commitment to lend. NMLS Consumer Access: nmlsconsumeraccess.org.
+    </div>
+  </footer>
+</div>
+</body>
+</html>
