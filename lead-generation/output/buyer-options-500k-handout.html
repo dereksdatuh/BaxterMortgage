@@ -1,0 +1,169 @@
+<!--
+  BUYER OPTIONS HANDOUT ($500K home) — Baxter Mortgage / Derek Smith.
+  Buyer-facing. Shows down payments + estimated payments = Reg Z triggering
+  terms, so it carries a labeled example rate + APR, repayment terms, and full
+  disclosures, and ships in DRAFT until a real rate/APR is entered and Baxter
+  compliance approves. Keep the disclosure footer + Equal Housing. Print 8.5x11.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your Options on a $500,000 Home — Baxter Mortgage</title>
+<style>
+  :root{--navy:#1B3A5C;--green:#7AC97A;--teal:#1E9B6E;--charcoal:#333;--mist:#F4F7F5;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#e9edf0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--charcoal);
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:8.5in;min-height:11in;margin:0 auto;background:#fff;padding:0.45in 0.55in;display:flex;flex-direction:column}
+  header{border-bottom:4px solid var(--teal);padding-bottom:11px;display:flex;justify-content:space-between;align-items:flex-end}
+  .brand{font-size:25px;font-weight:800;color:var(--navy);letter-spacing:1px}
+  .brand .x{color:var(--teal)}
+  .brand small{display:block;font-size:12.5px;font-weight:600;color:var(--teal);font-style:italic;letter-spacing:0}
+  .tagline{text-align:right;font-size:12px;color:var(--navy);font-weight:600}
+  .sub{color:var(--teal);font-weight:700;font-size:13px;margin-top:12px;letter-spacing:1px}
+  h1{color:var(--navy);font-size:26px;margin:2px 0 3px;line-height:1.08}
+  .lede{font-size:12.5px;color:var(--charcoal);line-height:1.45}
+  .cmp{display:flex;gap:12px;margin:12px 0}
+  .cmp .c{flex:1;border:1.5px solid #e0e6e2;border-radius:10px;overflow:hidden}
+  .cmp .c h2{color:#fff;font-size:15px;font-weight:800;padding:9px 13px;text-align:center}
+  .cmp .conv h2{background:var(--navy)} .cmp .fha h2{background:var(--teal)}
+  .cmp table{width:100%;font-size:11.5px;border-collapse:collapse}
+  .cmp td{padding:6px 13px;border-bottom:1px dotted #e2e2e2;vertical-align:top}
+  .cmp td.k{color:#777;width:38%} .cmp td.v{color:var(--navy);font-weight:600}
+  .cmp tr:last-child td{border-bottom:none}
+  .dp-h{color:var(--navy);font-size:15px;font-weight:800;margin:6px 0 4px}
+  table.dp{width:100%;border-collapse:collapse;font-size:11.5px}
+  table.dp th{background:var(--navy);color:#fff;padding:7px 8px;text-align:left;font-size:11px}
+  table.dp th.c,table.dp td.c{text-align:center}
+  table.dp td{padding:6px 8px;border-bottom:1px solid #e7ece9}
+  table.dp td.opt{font-weight:700;color:var(--navy)}
+  table.dp tr:nth-child(even) td{background:var(--mist)}
+  table.dp tr.hl td{background:#eaf5ef;font-weight:700}
+  .notes{font-size:10.5px;color:#666;line-height:1.5;margin:8px 0 4px}
+  .notes b{color:var(--navy)}
+  .assump{font-size:10px;color:#7a7a7a;line-height:1.45}
+  .draftbar{background:#5a4a00;color:#fff;font-size:12px;font-weight:700;text-align:center;
+    padding:7px 12px;border-radius:8px;margin-bottom:9px;line-height:1.35}
+  .watermark{position:fixed;inset:0;pointer-events:none;z-index:99;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .watermark span{font-size:70px;font-weight:800;color:rgba(90,74,0,0.09);transform:rotate(-32deg);white-space:nowrap;letter-spacing:4px;text-transform:uppercase}
+  .cobrand{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;padding:13px 17px;display:flex;align-items:center;gap:16px}
+  .person{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+  .avatar{width:54px;height:54px;flex:0 0 54px;border-radius:50%;background:#2c4f73;border:2px solid var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--green)}
+  .cbtag{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .pname{font-size:16px;font-weight:800;line-height:1.1}
+  .ptitle{font-size:11.5px;color:#cfe3d8}
+  .pcontact{font-size:11px;color:#eaf2ee;margin-top:2px}
+  .hosted{flex:0 0 34%;border-left:1px solid #3c5d7e;padding-left:16px}
+  .hosted .line{border-bottom:1px solid #6f8aa6;height:16px;margin:14px 0 4px}
+  .hosted .ll{font-size:10px;color:#9fb3c8}
+  footer{margin-top:11px;border-top:1.5px solid #e2e2e2;padding-top:8px;display:flex;gap:12px;align-items:center}
+  .eho{width:38px;height:38px;flex:0 0 38px;border:2px solid var(--navy);border-radius:4px;display:flex;
+    align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
+  .disc{font-size:9px;color:#888;line-height:1.4}
+  @media print{body{background:#fff}.page{margin:0}}
+</style>
+</head>
+<body>
+<div class="watermark"><span>Draft · Pending Compliance</span></div>
+<div class="page">
+  <div class="draftbar">⚠ DRAFT — PENDING COMPLIANCE REVIEW · Replace the example rate/APR with a live quote and get Baxter compliance sign-off before distributing.</div>
+  <header>
+    <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
+    <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
+  </header>
+
+  <div class="sub">YOUR FINANCING OPTIONS</div>
+  <h1>Buying a $500,000 Home: Your Options</h1>
+  <div class="lede">Two of the most common paths are <b>Conventional</b> and <b>FHA</b>. Here's how they compare, and
+  what your down payment and estimated payment could look like on a $500,000 home.</div>
+
+  <div class="cmp">
+    <div class="c conv">
+      <h2>Conventional</h2>
+      <table>
+        <tr><td class="k">Minimum down</td><td class="v">As little as 3%</td></tr>
+        <tr><td class="k">Typical credit</td><td class="v">~620+</td></tr>
+        <tr><td class="k">Mortgage insurance</td><td class="v">PMI — <b>cancels</b> once you reach ~20% equity</td></tr>
+        <tr><td class="k">Upfront MI</td><td class="v">None</td></tr>
+        <tr><td class="k">Best for</td><td class="v">Stronger credit; want to drop MI later; competitive offers</td></tr>
+      </table>
+    </div>
+    <div class="c fha">
+      <h2>FHA</h2>
+      <table>
+        <tr><td class="k">Minimum down</td><td class="v">3.5% (or 10% if credit 500–579)</td></tr>
+        <tr><td class="k">Typical credit</td><td class="v">~580+ (more flexible)</td></tr>
+        <tr><td class="k">Mortgage insurance</td><td class="v">MIP — monthly; often for the <b>life of the loan</b> if &lt;10% down</td></tr>
+        <tr><td class="k">Upfront MI</td><td class="v">1.75% (usually financed into the loan)</td></tr>
+        <tr><td class="k">Best for</td><td class="v">Lower credit; higher debt ratios; first-time buyers; gift funds</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="dp-h">Down payment options on $500,000</div>
+  <table class="dp">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th class="c">Down Payment</th>
+        <th class="c">Loan Amount</th>
+        <th class="c">Est. Mortgage Insurance</th>
+        <th class="c">Est. Monthly (P&amp;I + MI)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="opt">Conventional · 3%</td><td class="c">$15,000</td><td class="c">$485,000</td><td class="c">~$202/mo PMI</td><td class="c">~$3,348</td></tr>
+      <tr><td class="opt">FHA · 3.5%</td><td class="c">$17,500</td><td class="c">$482,500</td><td class="c">~$221/mo MIP</td><td class="c">~$3,350</td></tr>
+      <tr><td class="opt">Conventional · 5%</td><td class="c">$25,000</td><td class="c">$475,000</td><td class="c">~$198/mo PMI</td><td class="c">~$3,279</td></tr>
+      <tr><td class="opt">Conventional · 10%</td><td class="c">$50,000</td><td class="c">$450,000</td><td class="c">~$150/mo PMI</td><td class="c">~$3,069</td></tr>
+      <tr class="hl"><td class="opt">Conventional · 20%</td><td class="c">$100,000</td><td class="c">$400,000</td><td class="c">None</td><td class="c">~$2,594</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <b>Good to know:</b> The monthly figures above are <b>principal + interest + mortgage insurance only</b> —
+    property taxes, homeowners insurance, and any HOA are additional. Putting 20% down removes mortgage insurance
+    entirely. Also ask about <b>VA</b> (0% down for eligible veterans) and <b>USDA</b> (0% down in eligible rural
+    areas — much of Maine), plus <b>MaineHousing</b> down-payment assistance for first-time buyers.
+  </div>
+
+  <div class="assump">
+    Estimates assume an <b>example fixed rate of 6.75% (APR 6.94%, est.)</b> on a 30-year loan (360
+    monthly payments), a $500,000 sales price, and estimated PMI/MIP where applicable. These are <b>estimates for
+    illustration only — not a rate quote, offer, or commitment to lend</b>, and your actual rate, APR, payment, and
+    mortgage insurance depend on your credit, down payment, and program. Rate/APR as of the example date shown — REPLACE with your live rate-sheet date.
+  </div>
+
+  <div class="cobrand">
+    <div class="person">
+      <div class="avatar">DS</div>
+      <div>
+        <div class="cbtag">Let's find your number</div>
+        <div class="pname">Derek Smith · Baxter Mortgage</div>
+        <div class="ptitle">Loan Officer · NMLS# 2810853 — free, no obligation</div>
+        <div class="pcontact">(207) 468-6998 · derek@baxtermortgage.com</div>
+      </div>
+    </div>
+    <div class="hosted">
+      <div class="cbtag">Brought to you by</div>
+      <div class="line">&nbsp;</div><div class="ll">Your agent</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="eho">EQUAL HOUSING</div>
+    <div class="disc">
+      This is an advertisement. Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853. Equal
+      Housing Opportunity / Equal Housing Lender. Interest rate and APR shown are examples for illustration, are not
+      guaranteed, and are subject to change; your actual rate and APR may differ. Down payments, payments, and terms
+      shown are estimates and do not include all applicable fees. This is not an offer to extend credit, a commitment
+      to lend, a preapproval, or a rate lock. All loans subject to credit approval, income verification, and property
+      appraisal. Not affiliated with or endorsed by any government agency. NMLS Consumer Access: nmlsconsumeraccess.org.
+    </div>
+  </footer>
+</div>
+</body>
+</html>
