@@ -1,9 +1,9 @@
 <!--
-  PAYMENT BREAKDOWN FLYER — Baxter Mortgage / Derek Smith
-  Claude fills every {{field}} per open-house-flyer-workflow.md, then writes
-  the result to lead-generation/output/<address-slug>-payment-flyer.html.
-  Print at 8.5x11 (browser: Cmd/Ctrl+P -> Save as PDF). DO NOT remove the
-  disclosure footer or the Equal Housing block.
+  PAYMENT BREAKDOWN FLYER — Baxter Mortgage / Derek Smith. Reg Z advertisement:
+  interest rate + APR are shown (small but clear-and-conspicuous), repayment
+  terms + full disclosures included, DRAFT gate on by default. Claude fills every
+  {{field}} per open-house-flyer-workflow.md. Print at 8.5x11. Never remove the
+  disclosure footer, Equal Housing block, rate/APR, or the DRAFT gate.
 -->
 <!doctype html>
 <html lang="en">
@@ -13,83 +13,83 @@
 <style>
   :root{
     --navy:#1B3A5C; --green:#7AC97A; --teal:#1E9B6E;
-    --charcoal:#333333; --paper:#FFFFFF; --mist:#F4F7F5;
+    --ink:#2b3640; --muted:#7c8894; --line:#e6eae8; --mist:#F5F8F6; --paper:#fff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:#e9edf0}
-  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--charcoal);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:#dfe4e7}
+  body{font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;-webkit-font-smoothing:antialiased}
   .page{width:8.5in;min-height:11in;margin:0 auto;background:var(--paper);
-    padding:0.55in 0.6in;display:flex;flex-direction:column}
-  header{border-bottom:4px solid var(--teal);padding-bottom:14px;
-    display:flex;justify-content:space-between;align-items:flex-end}
-  .brand{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:1px}
+    padding:0.6in 0.62in;display:flex;flex-direction:column}
+  /* header */
+  header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:14px;
+    border-bottom:1px solid var(--line)}
+  .brand{font-size:27px;font-weight:800;color:var(--navy);letter-spacing:.5px;line-height:1}
   .brand .x{color:var(--teal)}
-  .brand small{display:block;font-size:13px;font-weight:600;color:var(--teal);
-    font-style:italic;letter-spacing:0}
-  .tagline{text-align:right;font-size:12px;color:var(--navy);font-weight:600}
-  h1{color:var(--navy);font-size:30px;margin:22px 0 4px;line-height:1.1}
-  .sub{color:var(--teal);font-weight:700;font-size:16px;margin-bottom:2px}
-  .listmeta{font-size:14px;color:var(--charcoal);margin-top:6px}
-  .listmeta b{color:var(--navy)}
-  .scenarios{display:flex;gap:14px;margin:24px 0 8px}
-  .card{flex:1;border:1.5px solid #dfe6e2;border-radius:10px;overflow:hidden;
-    display:flex;flex-direction:column}
-  .card h2{background:var(--navy);color:#fff;font-size:15px;padding:10px 12px;
-    text-align:center;font-weight:700}
-  .card .down{background:var(--mist);color:var(--teal);font-weight:700;
-    font-size:12px;text-align:center;padding:6px}
-  .hero{text-align:center;padding:14px 8px 4px}
-  .hero .amt{font-size:34px;font-weight:800;color:var(--navy);line-height:1}
-  .hero .per{font-size:12px;color:#777}
-  .rows{padding:10px 12px 14px;font-size:12.5px}
-  .rows div{display:flex;justify-content:space-between;padding:3px 0;
-    border-bottom:1px dotted #e2e2e2}
+  .brand small{display:block;font-size:12px;font-weight:600;color:var(--teal);font-style:italic;
+    letter-spacing:.2px;margin-top:3px}
+  .lo{text-align:right;font-size:11.5px;color:var(--navy);font-weight:600;line-height:1.5}
+  .lo b{color:var(--teal)}
+  /* title block */
+  .eyebrow{margin-top:22px;font-size:12px;font-weight:800;letter-spacing:2.5px;color:var(--teal);
+    text-transform:uppercase}
+  h1{color:var(--navy);font-size:33px;font-weight:800;line-height:1.06;margin:7px 0 0;letter-spacing:-.5px}
+  .rule{width:54px;height:3px;background:var(--green);border-radius:2px;margin:13px 0 11px}
+  .meta{font-size:13.5px;color:var(--muted);letter-spacing:.2px}
+  .meta b{color:var(--navy);font-weight:700}
+  .meta .dot{color:var(--green);margin:0 7px;font-weight:800}
+  /* cards */
+  .cards{display:flex;gap:15px;margin:22px 0 6px}
+  .card{flex:1;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 6px 18px rgba(27,58,92,.06);display:flex;flex-direction:column}
+  .card .top{border-top:4px solid var(--teal);padding:14px 14px 0;text-align:center}
+  .card .prog{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:.2px}
+  .card .pill{display:inline-block;margin-top:7px;background:var(--mist);color:var(--teal);
+    font-weight:800;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+    padding:4px 12px;border-radius:999px}
+  .hero{text-align:center;padding:13px 10px 6px}
+  .hero .lbl{font-size:9.5px;font-weight:800;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase}
+  .hero .amt{font-size:37px;font-weight:800;color:var(--navy);line-height:1;margin-top:3px;letter-spacing:-1px}
+  .hero .per{font-size:11px;color:var(--muted);margin-top:2px}
+  .hero .rate{font-size:10.5px;color:var(--muted);margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+  .hero .rate b{color:var(--navy);font-weight:700}
+  .rows{padding:6px 16px 16px;font-size:12.5px}
+  .rows div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1}
   .rows div:last-child{border-bottom:none}
-  .rows .k{color:#666}
-  .rows .v{color:var(--charcoal);font-weight:600}
-  .callout{background:var(--mist);border-left:4px solid var(--green);
-    padding:12px 14px;border-radius:6px;margin:14px 0;font-size:13px;color:var(--navy)}
+  .rows .k{color:var(--muted)} .rows .v{color:var(--ink);font-weight:700}
+  /* callout */
+  .callout{background:var(--mist);border-radius:12px;padding:15px 18px;margin:16px 0 0;
+    font-size:13px;color:var(--navy);line-height:1.5;border:1px solid #e4efe8}
   .callout b{color:var(--teal)}
-  .assump{font-size:11px;color:#777;margin-top:6px;line-height:1.5}
-  /* Co-branded footer: Derek (lender) + the listing agent, side by side.
-     Swap DS / TL with <img src="..."> for real
-     headshots, or leave the initials placeholder. */
-  .cobrand{margin-top:auto;background:var(--navy);color:#fff;border-radius:10px;
-    padding:14px 18px;display:flex;align-items:center;gap:16px}
-  .person{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
-  .avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;
-    background:#2c4f73;border:2px solid var(--green);overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    font-size:17px;font-weight:800;color:var(--green);text-align:center;line-height:1.05}
+  .assump{font-size:9.8px;color:var(--muted);line-height:1.5;margin-top:11px}
+  .assump b{color:var(--navy)}
+  /* draft gate */
+  .draftbar{background:#5a4a00;color:#fff;font-size:12px;font-weight:700;text-align:center;
+    padding:8px 12px;border-radius:9px;margin-bottom:13px;line-height:1.35}
+  .watermark{position:fixed;inset:0;pointer-events:none;z-index:99;display:flex;align-items:center;
+    justify-content:center;overflow:hidden}
+  .watermark span{font-size:72px;font-weight:800;color:rgba(90,74,0,.09);transform:rotate(-32deg);
+    white-space:nowrap;letter-spacing:5px;text-transform:uppercase}
+  /* co-brand */
+  .cobrand{margin-top:16px;background:var(--navy);color:#fff;border-radius:14px;
+    padding:15px 20px;display:flex;align-items:center;gap:18px}
+  .person{display:flex;align-items:center;gap:13px;flex:1;min-width:0}
+  .avatar{width:56px;height:56px;flex:0 0 56px;border-radius:50%;background:#274a6d;
+    border:2px solid var(--green);overflow:hidden;display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:800;color:var(--green)}
   .avatar img{width:100%;height:100%;object-fit:cover}
-  .pname{font-size:17px;font-weight:800;line-height:1.1}
-  .ptitle{font-size:12px;color:#cfe3d8}
-  .pnmls{font-size:11px;color:var(--green);font-weight:700}
-  .pcontact{font-size:11.5px;color:#eaf2ee;margin-top:2px;overflow-wrap:anywhere}
-  .cbdivider{width:1px;align-self:stretch;background:#3c5d7e;margin:2px 0}
-  .cbtag{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
-  footer{margin-top:12px;border-top:1.5px solid #e2e2e2;padding-top:10px;
-    display:flex;gap:12px;align-items:center}
-  .eho{width:42px;height:42px;flex:0 0 42px;border:2px solid var(--navy);
-    border-radius:4px;display:flex;align-items:center;justify-content:center;
-    font-size:9px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
-  .disc{font-size:9.5px;color:#888;line-height:1.45}
-  /* Reg Z: APR + rate rows carry the required trigger-term disclosures. */
-  .rows .rate,.rows .apr{border-bottom:1px solid #d8e2db}
-  .rows .apr .v{color:var(--navy);font-weight:800}
-  .rows .apr .k{color:var(--navy);font-weight:700}
-  /* Compliance gate: DRAFT banner + watermark stay until compliance approves.
-     Claude blanks <div class="draftbar">⚠ DRAFT — PENDING COMPLIANCE REVIEW · Rates &amp; APR are real (as of 08/10/2026). Not for distribution until Baxter Mortgage compliance has approved.</div> and <div class="watermark"><span>Draft · Pending Compliance</span></div> only after a real
-     rate/APR is entered AND Baxter compliance has signed off. */
-  .draftbar{background:#5a4a00;color:#fff;font-size:12px;font-weight:700;
-    text-align:center;padding:8px 12px;border-radius:8px;margin-bottom:12px;
-    letter-spacing:.3px;line-height:1.35}
-  .watermark{position:fixed;inset:0;pointer-events:none;z-index:99;
-    display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .watermark span{font-size:70px;font-weight:800;color:rgba(90,74,0,0.10);
-    transform:rotate(-32deg);white-space:nowrap;letter-spacing:4px;text-transform:uppercase}
-  @media print{ body{background:#fff} .page{margin:0;box-shadow:none} }
+  .cbtag{font-size:9.5px;color:var(--green);text-transform:uppercase;letter-spacing:1px;font-weight:800}
+  .pname{font-size:16.5px;font-weight:800;line-height:1.15;margin-top:1px}
+  .ptitle{font-size:11.5px;color:#c8dbcf}
+  .pcontact{font-size:11.5px;color:#e9f1ec;margin-top:2px;overflow-wrap:anywhere}
+  .cbdivider{width:1px;align-self:stretch;background:#39587a;margin:3px 0}
+  /* disclosure */
+  footer{margin-top:13px;display:flex;gap:13px;align-items:center}
+  .eho{width:42px;height:42px;flex:0 0 42px;border:1.5px solid var(--navy);border-radius:5px;
+    display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:800;
+    color:var(--navy);text-align:center;line-height:1.1}
+  .disc{font-size:9px;color:#9aa4ad;line-height:1.45}
+  @media print{body{background:#fff}.page{margin:0}.card{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -98,28 +98,32 @@
   <div class="draftbar">⚠ DRAFT — PENDING COMPLIANCE REVIEW · Rates &amp; APR are real (as of 08/10/2026). Not for distribution until Baxter Mortgage compliance has approved.</div>
   <header>
     <div class="brand">BA<span class="x">X</span>TER<small>mortgage — We'll Guide You Home</small></div>
-    <div class="tagline">Derek Smith · Loan Officer<br>Statewide Maine</div>
+    <div class="lo"><b>Derek Smith</b> · Loan Officer<br>Baxter Mortgage · Statewide Maine</div>
   </header>
 
-  <div class="sub">OPEN HOUSE · Sat August 15 · 10:00am–12:00pm</div>
-  <h1>What Would It Cost To Own<br>337 Route 133?</h1>
-  <div class="listmeta">
-    <b>5</b> bd · <b>2</b> ba · <b>2,759</b> sqft ·
-    Listed at <b>$669,000</b> · Winthrop, ME 04364
+  <div class="eyebrow">Open House · Sat August 15 · 10:00am–12:00pm</div>
+  <h1>What would it cost to own<br>337 Route 133?</h1>
+  <div class="rule"></div>
+  <div class="meta">
+    <b>5</b> bd <span class="dot">·</span> <b>2</b> ba <span class="dot">·</span>
+    <b>2,759</b> sqft <span class="dot">·</span> Listed at <b>$669,000</b>
+    <span class="dot">·</span> Winthrop, ME 04364
   </div>
 
-  <div class="scenarios">
+  <div class="cards">
     <!-- SCENARIO 1 -->
     <div class="card">
-      <h2>Conventional</h2>
-      <div class="down">5% down</div>
-      <div class="hero"><div class="amt">$5,025</div><div class="per">est. total / month</div></div>
+      <div class="top"><div class="prog">Conventional</div><span class="pill">5% down</span></div>
+      <div class="hero">
+        <div class="lbl">Est. total / month</div>
+        <div class="amt">$5,025</div>
+        <div class="per">principal, interest, taxes &amp; insurance</div>
+        <div class="rate">Rate <b>7.000%</b> &nbsp;·&nbsp; APR <b>7.341%</b></div>
+      </div>
       <div class="rows">
-        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">7.000%</span></div>
-        <div class="apr"><span class="k">APR</span><span class="v">7.341%</span></div>
         <div><span class="k">Down payment</span><span class="v">$33,450</span></div>
         <div><span class="k">Loan amount</span><span class="v">$635,550</span></div>
-        <div><span class="k">Principal & interest</span><span class="v">$4,228</span></div>
+        <div><span class="k">Principal &amp; interest</span><span class="v">$4,228</span></div>
         <div><span class="k">Taxes (est.)</span><span class="v">$358</span></div>
         <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
         <div><span class="k">Mortgage insurance</span><span class="v">$238 (PMI)</span></div>
@@ -128,15 +132,17 @@
     </div>
     <!-- SCENARIO 2 -->
     <div class="card">
-      <h2>Conventional</h2>
-      <div class="down">10% down</div>
-      <div class="hero"><div class="amt">$4,729</div><div class="per">est. total / month</div></div>
+      <div class="top"><div class="prog">Conventional</div><span class="pill">10% down</span></div>
+      <div class="hero">
+        <div class="lbl">Est. total / month</div>
+        <div class="amt">$4,729</div>
+        <div class="per">principal, interest, taxes &amp; insurance</div>
+        <div class="rate">Rate <b>6.999%</b> &nbsp;·&nbsp; APR <b>7.230%</b></div>
+      </div>
       <div class="rows">
-        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">6.999%</span></div>
-        <div class="apr"><span class="k">APR</span><span class="v">7.230%</span></div>
         <div><span class="k">Down payment</span><span class="v">$66,900</span></div>
         <div><span class="k">Loan amount</span><span class="v">$602,100</span></div>
-        <div><span class="k">Principal & interest</span><span class="v">$4,005</span></div>
+        <div><span class="k">Principal &amp; interest</span><span class="v">$4,005</span></div>
         <div><span class="k">Taxes (est.)</span><span class="v">$358</span></div>
         <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
         <div><span class="k">Mortgage insurance</span><span class="v">$166 (PMI)</span></div>
@@ -145,15 +151,17 @@
     </div>
     <!-- SCENARIO 3 -->
     <div class="card">
-      <h2>Conventional</h2>
-      <div class="down">20% down</div>
-      <div class="hero"><div class="amt">$4,118</div><div class="per">est. total / month</div></div>
+      <div class="top"><div class="prog">Conventional</div><span class="pill">20% down</span></div>
+      <div class="hero">
+        <div class="lbl">Est. total / month</div>
+        <div class="amt">$4,118</div>
+        <div class="per">principal, interest, taxes &amp; insurance</div>
+        <div class="rate">Rate <b>6.999%</b> &nbsp;·&nbsp; APR <b>6.999%</b></div>
+      </div>
       <div class="rows">
-        <div class="rate"><span class="k">Interest rate (fixed)</span><span class="v">6.999%</span></div>
-        <div class="apr"><span class="k">APR</span><span class="v">6.999%</span></div>
         <div><span class="k">Down payment</span><span class="v">$133,800</span></div>
         <div><span class="k">Loan amount</span><span class="v">$535,200</span></div>
-        <div><span class="k">Principal & interest</span><span class="v">$3,560</span></div>
+        <div><span class="k">Principal &amp; interest</span><span class="v">$3,560</span></div>
         <div><span class="k">Taxes (est.)</span><span class="v">$358</span></div>
         <div><span class="k">Insurance (est.)</span><span class="v">$200</span></div>
         <div><span class="k">Mortgage insurance</span><span class="v">$0</span></div>
@@ -163,26 +171,21 @@
   </div>
 
   <div class="callout">
-    <b>Curious what YOU would qualify for?</b> These are example scenarios — your
-    real payment depends on your rate, credit, and down payment. I'll run your
-    exact numbers in about 15 minutes, no cost and no obligation. First-time
-    buyer in Maine? Ask me about MaineHousing + down-payment assistance.
+    <b>Curious what YOU would qualify for?</b> These are example scenarios — your real payment depends on your
+    rate, credit, and down payment. I'll run your exact numbers in about 15 minutes, no cost and no obligation.
+    First-time buyer in Maine? Ask me about MaineHousing + down-payment assistance.
   </div>
 
   <div class="assump">
-    <b>Repayment terms:</b> each scenario assumes a fixed interest rate repaid in
-    360 equal monthly principal &amp; interest payments over
-    30 years. The monthly figure shown is an <b>estimated total
-    payment</b> that also includes estimated property taxes ($4,290 (2025)/yr),
-    homeowners insurance (~$2,400 est./yr), and any mortgage insurance / HOA —
-    these escrow items are estimates and are not part of the finance charge.
-    <b>APR</b> reflects the cost of credit as a yearly rate and assumes
-    the finance charges (points/fees) from your 08/10/2026 pricing; MI where applicable. Figures are <b>estimates for illustration only</b>,
-    based on a $669,000 sales price and the assumptions above — they are
-    <b>not an offer or commitment to lend, not a rate lock, and not a Loan
-    Estimate</b>. Your actual rate, APR, and payment depend on your credit,
-    down payment, loan amount, and program, and are subject to change. Rate/APR
-    accurate as of 08/10/2026, 30-day lock — 700 score, primary residence, conventional (per your pricing engine).
+    <b>Rates &amp; terms:</b> 5% down 7.000% (7.341% APR) · 10% down 6.999%
+    (7.230% APR) · 20% down 6.999% (6.999% APR). Each assumes a fixed rate repaid in
+    360 equal monthly principal &amp; interest payments over 30 years. The monthly figure is
+    an <b>estimated total</b> that also includes estimated property taxes ($4,290 (2025)/yr), homeowners insurance
+    (~$2,400 est./yr), and any mortgage insurance / HOA — escrow items are estimates and not part of the finance
+    charge. APR reflects the cost of credit as a yearly rate and assumes the finance charges (points/fees) from your 08/10/2026 pricing; MI where applicable. Figures are
+    <b>estimates for illustration only</b>, based on a $669,000 sales price — <b>not an offer or commitment
+    to lend, not a rate lock, and not a Loan Estimate</b>. Your actual rate, APR, and payment depend on your credit,
+    down payment, loan amount, and program, and are subject to change. Rate/APR accurate as of 08/10/2026, 30-day lock — 700 score, primary residence, conventional.
   </div>
 
   <div class="cobrand">
@@ -210,18 +213,14 @@
   <footer>
     <div class="eho">EQUAL HOUSING</div>
     <div class="disc">
-      This is an advertisement. Baxter Mortgage (NMLS# 2752768) | Derek Smith,
-      Loan Officer, NMLS# 2810853. Equal Housing Opportunity / Equal Housing
-      Lender. All loans subject to credit approval, income verification, and
-      property appraisal. Interest rates and Annual Percentage Rates (APR) shown
-      are examples for illustration, are not guaranteed, and are subject to
-      change without notice; your actual rate and APR may differ. Payment
-      amounts, down payments, and terms shown are estimates and do not include
-      all applicable fees. This is not an offer to extend credit, a commitment to
-      lend, a preapproval, or a rate lock. Not affiliated with or endorsed by any
-      government agency. Listing shown courtesy of Tiffany Libby &amp; Team, Signature Homes Real Estate Group;
-      Baxter Mortgage is not the listing broker. NMLS Consumer Access:
-      nmlsconsumeraccess.org.
+      This is an advertisement. Baxter Mortgage (NMLS# 2752768) | Derek Smith, Loan Officer, NMLS# 2810853. Equal
+      Housing Opportunity / Equal Housing Lender. All loans subject to credit approval, income verification, and
+      property appraisal. Interest rates and Annual Percentage Rates (APR) shown are examples for illustration, are
+      not guaranteed, and are subject to change; your actual rate and APR may differ. Payment amounts, down payments,
+      and terms shown are estimates and do not include all applicable fees. This is not an offer to extend credit, a
+      commitment to lend, a preapproval, or a rate lock. Not affiliated with or endorsed by any government agency.
+      Listing shown courtesy of Tiffany Libby &amp; Team, Signature Homes Real Estate Group; Baxter Mortgage is not the listing broker. NMLS
+      Consumer Access: nmlsconsumeraccess.org.
     </div>
   </footer>
 </div>
