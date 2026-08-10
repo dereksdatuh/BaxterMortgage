@@ -6,8 +6,7 @@ scripts for longer YouTube videos. Each one doubles as source material for
 
 ## First-Time Homebuyer Focus
 1. "A First-Time Homebuyer's Guide to Maine (2026 Edition)"
-2. "MaineHousing Programs Explained: First Home Loan & Down Payment
-   Assistance"
+2. "Low-Down-Payment Loans in Maine: FHA, VA & USDA Explained"
 3. "FHA vs. Conventional: Which Is Right for Your First Home in Maine?"
 4. "How Much House Can I Actually Afford? A Real Walkthrough"
 5. "Renting vs. Buying in Maine: The Real Numbers"

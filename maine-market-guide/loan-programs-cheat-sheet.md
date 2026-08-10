@@ -45,12 +45,12 @@ you) and with clients (to quickly match them to the right program).
   flexible reserve requirements — useful for second-home and luxury
   listings."
 
-### Down Payment Assistance (incl. MaineHousing programs)
+### Down Payment Assistance
 - **Best for:** First-time buyers (and some repeat buyers) needing help
   with down payment/closing costs.
-- **Pitch to Realtors:** "Pairing DPA with FHA or MaineHousing First Home
-  Loan can get a buyer into a home with little to no money out of pocket —
-  perfect for renters ready to buy who think they 'can't afford' it yet."
+- **Pitch to Realtors:** "Pairing down-payment assistance with FHA can get a
+  buyer into a home with little to no money out of pocket — perfect for
+  renters ready to buy who think they 'can't afford' it yet."
 
 ### Self-Employed / Bank Statement Loans
 - **Best for:** Business owners, 1099 contractors, gig workers whose tax

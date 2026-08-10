@@ -50,7 +50,7 @@ rate AND APR** per program before it leaves DRAFT (see
 ## 4. Optional Extras (make it better, not required)
 - [ ] Which loan programs to feature (default: Conventional 5% down, FHA 3.5%
       down, VA 0% down — swap per the buyer pool you expect)
-- [ ] Any first-time-buyer / MaineHousing angle worth calling out for this town
+- [ ] Any first-time-buyer angle worth calling out for this town
 
 ## Trigger phrase
 Paste the above and say: **"Build me the open-house flyer set."**

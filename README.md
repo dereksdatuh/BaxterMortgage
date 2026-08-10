@@ -26,7 +26,7 @@ all driven from the data files below.
 | Folder | What's in it |
 |---|---|
 | `branding/` | Brand voice, colors, email signature, disclosure language |
-| `maine-market-guide/` | Cheat sheets on every loan program you'll pitch (MaineHousing, FHA, VA, USDA, Conventional, Jumbo, Renovation) |
+| `maine-market-guide/` | Cheat sheets on every loan program you'll pitch (FHA, VA, USDA, Conventional, Jumbo, Renovation) |
 | `referral-partners/` | Scripts, emails, and a tracker for building relationships with Realtors, attorneys, financial planners, builders, CPAs |
 | `content-marketing/` | Social media calendar + post templates, email newsletters, blog topic bank |
 | `client-pipeline/` | Lead/client CRM tracker, follow-up sequences from inquiry to closing to repeat/referral |
