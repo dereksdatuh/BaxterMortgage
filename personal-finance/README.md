@@ -1,38 +1,45 @@
-# Derek's Budget
+# Derek's Roadmap
 
-**File:** `Derek_Budget.xlsx` · 7 sheets · built September 2026
+**File:** `Derek_Roadmap.xlsx` · 14 sheets · 1,688 formulas · built September 2026
 
-Right now the draw is the whole income picture. Log deals as they close and the
-Scenarios tab shows what actually changes.
+## Confirmed rules this model is built on
 
-| Sheet | What it's for |
+- The draw is **recoverable** and **100% of commission is applied to it**.
+- The advance grows by the **GROSS** draw (~$1,500/check), not the $1,231.58 net.
+- Taxes are withheld → **W-2**. No quarterly estimates.
+- Draws are **semi-monthly** (15th + month-end), **24/year**.
+
+## The numbers that follow from that
+
+| | |
 |---|---|
-| `Start Here` | How to use it, the five things that matter, what I guessed |
-| `Inputs` | Every number. Blue = edit, **yellow = confirm** |
-| `Budget` | What the draw covers and what it doesn't |
-| `Deal Log` | One row per closing; your 75 bps calculates itself |
-| `Scenarios` | Take-home at 0–6 loans/month under each comp structure |
-| `Goals` | Emergency fund, ring, Roth, house — cost per month |
-| `Money Split` | A check landed — type the amount, follow the steps |
+| Advance owed after 11 draws | **$16,500.00** (gross basis, not $13,547) |
+| Withholding rate | 17.89% |
+| Monthly draw | $3,000 gross → **$2,463.16 net to you** |
+| **Loans/month just to stop the advance growing** | **1.33** at $300k |
+| At 1 loan/month | balance **grows $750/mo** — never clears |
+| At 2 loans/month | pays down $1,500/mo → clears in **11 months** |
+| Living costs | $1,839.46/mo (+$1,000 marketing = $2,839.46) |
+| Surplus on the draw alone | −$376.30/mo (+$623.70 if Baxter funds marketing) |
 
-## Three questions for the owner
+**The one rule that shapes everything:** until the advance is gone, take-home is
+the net draw and nothing else. Closing three loans in a month and closing none
+feel identical in the bank account.
 
-1. Is the draw **recoverable**?
-2. **W-2 or 1099**?
-3. If recoverable, does the **whole commission** go to the advance, or only part?
+## Sheets
 
-Question 3 is the "% of each commission that repays the draw" dial on `Inputs`.
-At 100% your take-home stays pinned at the draw no matter how much you close,
-until the $13,547.38 clears.
+`Start Here` · `Roadmap` · `Dashboard` · `Inputs` · `Deal Log` · `Draw Payback` ·
+`Budget` · `Cash Flow` · `Accounts` · `Money Split` · `Goals` · `Credit & Home` ·
+`Savings & Retirement` · `Car Loan`
 
-## Numbers worth knowing
+Log deals on **Deal Log**; **Roadmap** and **Draw Payback** re-date themselves.
 
-- **24 paychecks a year, not 26** — your dates are the 15th and month-end.
-  $29,557.92/yr, not $32,021.08.
-- Draw is **$2,463.16/mo**. Living costs ~$1,839.46, plus $1,000 marketing.
-- **One $300k loan pays $2,250** — less than a month's draw. Under a
-  "greater of" structure, closing one loan in a month changes nothing.
-- Break-even is **1.26 loans/month** under greater-of, 0.17 under stacked.
+## Still to confirm
+
+Gross draw $1,500 (off a pay stub) · car insurance $165 · phone $60 · food $400 ·
+fun $250 · car maintenance $90 · savings APY 4.00% · credit limit $5,000 ·
+auto APR 7.49% · commission withholding 22%. Health insurance is $0 on the
+assumption you're on a parent's plan — you age off at 26.
 
 ---
 
