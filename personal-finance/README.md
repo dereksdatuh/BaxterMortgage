@@ -4,7 +4,8 @@
 
 ## Confirmed rules this model is built on
 
-- The draw is **recoverable** and **100% of commission is applied to it**.
+- The draw is **NON-RECOVERABLE** — leave with a balance and you owe nothing.
+- But **100% of commission offsets** the running balance before extra pay reaches you.
 - The advance grows by the **GROSS** draw (~$1,500/check), not the $1,231.58 net.
 - Taxes are withheld → **W-2**. No quarterly estimates.
 - Draws are **semi-monthly** (15th + month-end), **24/year**.
@@ -13,18 +14,21 @@
 
 | | |
 |---|---|
-| Advance owed after 11 draws | **$16,500.00** (gross basis, not $13,547) |
+| Draw balance to work through | **$16,500.00** (gross basis — not a debt) |
 | Withholding rate | 17.89% |
 | Monthly draw | $3,000 gross → **$2,463.16 net to you** |
-| **Loans/month just to stop the advance growing** | **1.33** at $300k |
-| At 1 loan/month | balance **grows $750/mo** — never clears |
-| At 2 loans/month | pays down $1,500/mo → clears in **11 months** |
+| **Loans/month to hold even** | **1.33** at $300k · **1.14** at $350k |
+| At 1 loan/month | balance **grows $750/mo** |
+| At 2 loans/month @ $350k | works down $2,250/mo → clears in **8 months** |
 | Living costs | $1,839.46/mo (+$1,000 marketing = $2,839.46) |
 | Surplus on the draw alone | −$376.30/mo (+$623.70 if Baxter funds marketing) |
 
-**The one rule that shapes everything:** until the advance is gone, take-home is
-the net draw and nothing else. Closing three loans in a month and closing none
-feel identical in the bank account.
+**The rule that shapes everything:** $36,000/yr is a guaranteed floor and is
+never clawed back. But until the balance is worked through, take-home is the net
+draw — closing three loans and closing none feel identical in the bank account.
+
+**To hit $100k** at 75 bps on $350k loans: 38 loans a year, ~3.2 a month. About
+14 of those replace the draw; the other 24 are money on top.
 
 ## Sheets
 
