@@ -45,3 +45,23 @@ assumption you're on a parent's plan — you age off at 26.
 
 *Planning model built from figures supplied by Derek Smith. Not tax, legal, or
 investment advice.*
+
+## Why the file shows numbers
+
+openpyxl writes formulas with no cached value, so every calculated cell renders
+blank until something recalculates the workbook. LibreOffice (the usual tool for
+this) does not run in the build environment, so `bake_values.py` evaluates all
+1,687 formulas with the `formulas` engine and injects the results as cached
+values directly into the sheet XML. Formulas stay live — Excel still
+recalculates on open — but the workbook is readable in any viewer.
+
+Re-run after changing the model:
+
+```
+pip install formulas
+python personal-finance/bake_values.py personal-finance/Derek_Roadmap.xlsx
+```
+
+Verified against hand calculations: advance $16,500 · 1.33 loans/mo to stop the
+balance growing · net draw $2,463.16/mo · living costs $1,839.46 · total out
+$2,839.46 · surplus −$376.30.
