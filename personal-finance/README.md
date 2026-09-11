@@ -30,13 +30,32 @@ draw — closing three loans and closing none feel identical in the bank account
 **To hit $100k** at 75 bps on $350k loans: 38 loans a year, ~3.2 a month. About
 14 of those replace the draw; the other 24 are money on top.
 
-## Sheets
+## Sheets (20)
 
-`Start Here` · `Roadmap` · `Dashboard` · `Inputs` · `Deal Log` · `Draw Payback` ·
-`Budget` · `Cash Flow` · `Accounts` · `Money Split` · `Goals` · `Credit & Home` ·
-`Savings & Retirement` · `Car Loan`
+**Core** — `Start Here` · `Roadmap` · `Dashboard` · `Inputs`
 
-Log deals on **Deal Log**; **Roadmap** and **Draw Payback** re-date themselves.
+**CRM** (Tyler Mount's Sphere of Influence framework) — `Sphere of Influence` ·
+`Follow-Up Queue` · `Weekly Rhythm` · `Newsletter Planner` · `Content Log` ·
+`CRM Playbook`
+
+**Money** — `Deal Log` · `Draw Payback` · `Budget` · `Cash Flow` · `Accounts` ·
+`Money Split` · `Goals` · `Credit & Home` · `Savings & Retirement` · `Car Loan`
+
+Log people on **Sphere of Influence**; log closings on **Deal Log**. Everything
+else re-dates itself.
+
+### CRM cadences
+
+| Category | Touch every |
+|---|---|
+| Prospect | 30 days |
+| Lead | 7 days |
+| Active Client | 3 days |
+| Closed Client | 90 days |
+| Dead Lead | 180 days |
+
+Column structure matches `client-pipeline/pipeline-tracker.csv` and
+`referral-partners/partner-tracker.csv` so data pastes across.
 
 ## Still to confirm
 
